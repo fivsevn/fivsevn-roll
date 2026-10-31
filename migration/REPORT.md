@@ -8,7 +8,7 @@ Captured on 31 October 2026 from the public WordPress API, all rendered Stills/B
 | Bygone | 136 photographs in one collection, no per-photo pages |
 | Motion | 66 existing posts; 66 distinct YouTube video IDs |
 | Unconfirmed photographs | 91 originals in `drafts/stills/` |
-| Other original Stills files | 10 empty placeholders and 3 Markdown files in drafts |
+| Other original Stills files | 9 original Finder metadata files, 1 empty placeholder and 3 Markdown files in drafts |
 | Shared imagery | Camera, Bygone banner and Motion banner |
 | Total asset-repository files | 509, each with source path, Git blob ID and SHA-256 |
 | Fonts | 4 localized Courier Prime files, separately checksummed |
