@@ -39,7 +39,8 @@ def build(root=ROOT, base_path=''):
     routes=[]
     def url(path):return base_path+path
     def template(name):return soup((root/'templates'/name).read_text())
-    def write(route,title,kind,body):
+    def stylesheet(name):return url('/site-assets/'+name+'.css')+'?v='+digest(out/'site-assets'/f'{name}.css')[:12]
+    def write(route,title,kind,body,detail=False):
         frame=body.select_one('.wp-site-blocks > .wp-block-group > .wp-block-group')
         if frame:
             frame['class']=frame.get('class',[])+['roll-page-frame']
@@ -50,7 +51,12 @@ def build(root=ROOT, base_path=''):
                 value=element.get(attr,'')
                 if value.startswith('/') and not value.startswith('//'):element[attr]=url(value)
         section='motion' if kind=='motion' else 'stills'
-        page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>roll.fivsevn/{section}</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{url('/site-assets/'+kind+'.css')}"><link rel="stylesheet" href="{url('/site-assets/roll.css')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}">{body}</body></html>'''
+        scripts='';detail_class=' roll-motion-detail' if kind=='motion' and detail else ''
+        if kind=='motion':
+            navigation=json.dumps({'base_path':base_path,'post_pages':{key:url(value) for key,value in motion_pages.items()}}).replace('<','\\u003c')
+            version=digest(out/'site-assets/motion-navigation.js')[:12]
+            scripts=f'<script type="application/json" id="motion-navigation-config">{navigation}</script><script defer src="{url("/site-assets/motion-navigation.js")}?v={version}"></script>'
+        page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>roll.fivsevn/{section}</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{stylesheet(kind)}"><link rel="stylesheet" href="{stylesheet('roll')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}{detail_class}">{body}{scripts}</body></html>'''
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page)
         routes.append(route)
     def list_item(post,expanded=False):
@@ -101,9 +107,12 @@ def build(root=ROOT, base_path=''):
         entry=page.select_one('.entry-content');entry.append(photos(post));entry.append(template('rights-notice.html'))
         write('/stills/'+post['id']+'/',post['title'],'stills',page)
     config=json.loads((root/'site-data/youtube.json').read_text());page_size=config['page_size']
+    motion=posts['motion'];pages=max(1,(len(motion)+page_size-1)//page_size)
+    motion_pages={post['id']:('/motion/' if i//page_size==0 else f'/motion/page/{i//page_size+1}/') for i,post in enumerate(motion)}
     def card(post,detail=False):
-        s=template('motion-card.html');s.li['class']=['wp-block-post'];s.li['id']=post['id']
+        s=template('motion-card.html');s.li['class']=['wp-block-post'];s.li['id']=post['id'];s.li['data-motion-room']=''
         a=s.select_one('h2 a');a.string=post['title'];a['href']='/motion/'+post['id']+'/'
+        if not detail:a['data-motion-open']=''
         embed=s.select_one('.entry-content');original_markup=str(embed.select_one('figure'));embed.clear()
         for v in post['extra']['video_ids']:
             figure=soup(original_markup).figure;iframe=figure.iframe
@@ -117,7 +126,7 @@ def build(root=ROOT, base_path=''):
         times[0].string=stamp.strftime('%M:%S');times[1].string=stamp.strftime('%m:%d')
         s.select_one('.wp-block-post-comments-count').string=str(post['extra'].get('comment_count',0))
         if detail:
-            leave=s.find('a',string='LEAVE ROOM');leave['href']='/motion/';leave['title']='Back to Motion'
+            leave=s.find('a',string='LEAVE ROOM');leave['href']=motion_pages[post['id']]+'#'+quote(post['id'],safe='');leave['title']='Back to Motion';leave['data-motion-return']=''
         authored=soup(render_motion_body(post.get('_body','')))
         feed=s.select_one('.roll-comment-feed')
         for block in reversed(list(authored.children)):
@@ -129,7 +138,6 @@ def build(root=ROOT, base_path=''):
             content=s.new_tag('div',attrs={'class':'roll-comment-body'});content.append(block);row.append(content)
             feed.insert(0,row)
         return s.li
-    motion=posts['motion'];pages=max(1,(len(motion)+page_size-1)//page_size)
     for n in range(1,pages+1):
         page=template('motion.html');ul=page.select_one('ul.wp-block-post-template')
         for post in motion[(n-1)*page_size:n*page_size]:ul.append(card(post))
@@ -143,7 +151,7 @@ def build(root=ROOT, base_path=''):
         page=template('motion.html');page.select_one('ul.wp-block-post-template').append(card(post,detail=True))
         home=page.find('a',string='HOME')
         if home:home.find_parent('p').parent.decompose()
-        write('/motion/'+post['id']+'/',post['title'],'motion',page)
+        write('/motion/'+post['id']+'/',post['title'],'motion',page,detail=True)
     def redirect(route,target):
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);link=url(target)
         section='motion' if target.startswith('/motion/') else 'stills'

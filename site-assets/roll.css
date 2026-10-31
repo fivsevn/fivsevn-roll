@@ -2,6 +2,8 @@
 .roll-page-frame { justify-content: center; }
 .roll-page-column { margin-inline: auto; min-width: 0; }
 .roll-page-column > .entry-content { width: 100%; box-sizing: border-box; }
+.roll-bygone .roll-bygone-banner { position: relative; left: 50%; transform: translateX(-50%); width: min(760px, calc(100vw - 48px)); max-width: none; margin-inline: 0 !important; }
+.roll-bygone .roll-bygone-banner a, .roll-bygone .roll-bygone-banner img { display: block; width: 100%; }
 .roll-photos { display: grid; gap: 24px; margin-top: 30px !important; }
 .roll-photos figure { margin: 0; }
 .roll-photos img { display: block; width: 100%; height: auto; }

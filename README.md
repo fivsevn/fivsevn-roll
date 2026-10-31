@@ -69,7 +69,7 @@ No API key is required for the public source. The optional `YOUTUBE_FIVSEVN_CHAN
 
 The original Motion player, room frame, pagination, title links and decorative comment feed are retained. On the source page, the heart and “Drop a comment…” are decorative text, not a live comment form; this migration preserves that behavior. The new title links open local Motion detail pages.
 
-Write optional Motion text in the body of its `index.md`, after the closing frontmatter `---`. Paragraphs, emphasis, headings, lists, links, code and tables are rendered as author messages at the top of COMMENT FEED, above the existing room comments. Empty bodies add no message. The publication time and saved author supply the message timestamp and name; there is no separate text database. The same text appears in the list and detail room. Motion detail pages show only the room, with LEAVE ROOM returning to `/motion/`.
+Write optional Motion text in the body of its `index.md`, after the closing frontmatter `---`. Paragraphs, emphasis, headings, lists, links, code and tables are rendered as author messages at the top of COMMENT FEED, above the existing room comments. Empty bodies add no message. The publication time and saved author supply the message timestamp and name; there is no separate text database. The same text appears in the list and detail room. Motion detail pages show only the room. LEAVE ROOM returns to that video's list page and aligns the room with its screen position when leaving the detail, following Flux, Savour and Fieldlog. Direct visits have a generated page-and-card anchor fallback; per-tab navigation state also supports the browser Back button.
 
 ## Build and verify
 
@@ -78,6 +78,7 @@ python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
 python -m unittest discover -s tests -v
+node --test tests/test_motion_navigation.mjs
 python scripts/build.py
 python scripts/check.py
 python -m http.server 8000 --directory _site
