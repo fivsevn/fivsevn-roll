@@ -21,7 +21,7 @@ class PublishingTests(unittest.TestCase):
         self.assertEqual(b'',result.stdout, 'Reviewed originals must not be silently ignored by Git')
 
     def test_asset_paths_cannot_escape_package(self):
-        package=ROOT/'stills/w-ren-min-rd-m-e'
+        package=ROOT/'stills/2026/06/w-ren-min-rd-m-e'
         for path in ['../drafts/test.jpg','assets/../../../drafts/test.jpg','/etc/passwd','assets\\test.jpg']:
             with self.assertRaises(ValueError):safe_asset(package,path)
         self.assertTrue(safe_asset(package,'assets/1.JPG').is_file())
@@ -40,7 +40,7 @@ class PublishingTests(unittest.TestCase):
             root=Path(temp)
             for folder in ['schemas','templates','site-assets','site-data']:shutil.copytree(ROOT/folder,root/folder)
             shutil.copyfile(ROOT/'CNAME',root/'CNAME')
-            package=root/'stills/w-ren-min-rd-m-e';shutil.copytree(ROOT/'stills/w-ren-min-rd-m-e',package)
+            package=root/'stills/2026/06/w-ren-min-rd-m-e';shutil.copytree(ROOT/'stills/2026/06/w-ren-min-rd-m-e',package)
             data,_=read_post(package/'index.md');data['status']='draft';write_post(package/'index.md',data)
             (root/'drafts').mkdir();(root/'drafts/PRIVATE.txt').write_text('DRAFT-CANARY')
             (root/'_site').mkdir();(root/'_site/stale.jpg').write_bytes(b'stale')

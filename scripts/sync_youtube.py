@@ -2,7 +2,7 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import hashlib,json,os,re,sys
-from content import ROOT,read_post,write_post
+from content import ROOT,read_post,write_post,motion_path
 from youtube_source import get_channel_videos,get_video_metadata,Video
 
 
@@ -27,8 +27,9 @@ def plan(videos,root=ROOT):
         stamp=datetime.fromisoformat(v.published_at.replace('Z','+00:00'))
         if stamp.tzinfo is None:raise ValueError('Publication time needs timezone')
         local=stamp.astimezone(ZoneInfo('Asia/Shanghai'));date=local.date().isoformat()
-        slug='youtube-'+v.video_id.lower().replace('_','-')+'-'+hashlib.sha256(v.video_id.encode()).hexdigest()[:8]
-        path=root/'motion'/slug/'index.md'
+        slug_id=re.sub(r'[-_]+','-',v.video_id.lower()).strip('-') or 'video'
+        slug='youtube-'+slug_id+'-'+hashlib.sha256(v.video_id.encode()).hexdigest()[:8]
+        path=motion_path(root,slug,local.isoformat())
         if path.exists():raise ValueError(f'Refusing to overwrite {path}')
         pending.append((path,dict(id=slug,title=v.title,module='motion',submodule='roll',topic=None,type='log',status='published',canonical=True,summary=None,parents=[],related=[],tags=[],audience=['public'],languages=['zh','en','ja'],maturity='evolving',confidence=None,visibility='public',source_of_truth='site',filename_policy='entrypoint',created=date,updated=date,metadata_updated=date,extra={'profile':'roll-post-v1','published_at':local.isoformat(),'author':'五月七日','source':'https://www.youtube.com/watch?v='+v.video_id,'video_ids':[v.video_id]})))
         seen.add(v.video_id)

@@ -8,6 +8,7 @@ import argparse, hashlib, json, re, shutil
 from PIL import Image, ImageOps
 from content import ROOT, load_posts, safe_asset
 from bygone import render_pages as bygone_pages
+from motion_body import render as render_motion_body
 
 
 def soup(text):
@@ -62,7 +63,7 @@ def build(root=ROOT, base_path=''):
     def photos(post,collection=False):
         fragment=soup('<div class="roll-photos"></div>');target=fragment.div
         for n,item in enumerate(post['extra']['images']):
-            original=safe_asset(post['_path'].parent,item['file']);rel=original.relative_to(root).as_posix();dest=out/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,dest)
+            original=safe_asset(post['_path'].parent,item['file']);rel='stills/'+post['id']+'/'+item['file'];dest=out/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,dest)
             with Image.open(original) as im:
                 width,height=ImageOps.exif_transpose(im).size
                 # Keep originals byte-for-byte; display-only derivatives are disposable.
@@ -100,7 +101,7 @@ def build(root=ROOT, base_path=''):
         entry=page.select_one('.entry-content');entry.append(photos(post));entry.append(template('rights-notice.html'))
         write('/stills/'+post['id']+'/',post['title'],'stills',page)
     config=json.loads((root/'site-data/youtube.json').read_text());page_size=config['page_size']
-    def card(post):
+    def card(post,detail=False):
         s=template('motion-card.html');s.li['class']=['wp-block-post'];s.li['id']=post['id']
         a=s.select_one('h2 a');a.string=post['title'];a['href']='/motion/'+post['id']+'/'
         embed=s.select_one('.entry-content');original_markup=str(embed.select_one('figure'));embed.clear()
@@ -115,6 +116,18 @@ def build(root=ROOT, base_path=''):
         for t in times:t['datetime']=post['extra']['published_at']
         times[0].string=stamp.strftime('%M:%S');times[1].string=stamp.strftime('%m:%d')
         s.select_one('.wp-block-post-comments-count').string=str(post['extra'].get('comment_count',0))
+        if detail:
+            leave=s.find('a',string='LEAVE ROOM');leave['href']='/motion/';leave['title']='Back to Motion'
+        authored=soup(render_motion_body(post.get('_body','')))
+        feed=s.select_one('.roll-comment-feed')
+        for block in reversed(list(authored.children)):
+            if not getattr(block,'name',None):continue
+            row=s.new_tag('div',attrs={'class':'roll-authored-message'})
+            time=s.new_tag('time',attrs={'datetime':post['extra']['published_at']});time.string=stamp.strftime('%H:%M');row.append(time)
+            author=s.new_tag('span',attrs={'class':'roll-comment-author'});author.string=post['extra'].get('author','fivsevn');row.append(author)
+            marker=s.new_tag('span',attrs={'aria-hidden':'true'});marker.string='>';row.append(marker)
+            content=s.new_tag('div',attrs={'class':'roll-comment-body'});content.append(block);row.append(content)
+            feed.insert(0,row)
         return s.li
     motion=posts['motion'];pages=max(1,(len(motion)+page_size-1)//page_size)
     for n in range(1,pages+1):
@@ -127,8 +140,9 @@ def build(root=ROOT, base_path=''):
             nav.append(a)
         ul.parent.append(nav);write('/motion/' if n==1 else f'/motion/page/{n}/','Motion','motion',page)
     for post in motion:
-        page=template('motion.html');page.select_one('ul.wp-block-post-template').append(card(post))
-        back=page.new_tag('a',href='/motion/');back.string='◁ motion';page.select_one('.entry-content').append(back)
+        page=template('motion.html');page.select_one('ul.wp-block-post-template').append(card(post,detail=True))
+        home=page.find('a',string='HOME')
+        if home:home.find_parent('p').parent.decompose()
         write('/motion/'+post['id']+'/',post['title'],'motion',page)
     def redirect(route,target):
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);link=url(target)
