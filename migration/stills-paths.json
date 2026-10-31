@@ -1,6 +1,6 @@
 {
   "timezone": "Asia/Shanghai",
-  "layout": "stills/YYYY/MM/{id}/index.md with assets/",
+  "layout": "stills/YYYY/MM/{id}/index.md with assets/; independent Bygone collection at stills/bygone/",
   "source_commit": "d25b3a1fc6cde02244e7f991ab2ed1f3a77cc495",
   "files": [
     {
@@ -2237,7 +2237,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19911228-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19911228-01.jpg",
+      "new_path": "stills/bygone/assets/19911228-01.jpg",
       "sha256": "4145664708cb4cc94f9c57bad37817cde8b711846e78e6faec99e111de2bb85e",
       "git_blob": "3350cf95fb9e3d4c9b60e53ef17b3a68cddd5941",
       "group": "bygone",
@@ -2245,7 +2245,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19911228-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19911228-02.jpg",
+      "new_path": "stills/bygone/assets/19911228-02.jpg",
       "sha256": "9ed6d045f19572ac5bed98eef990013473365eaade436d109601dd1aabd73aae",
       "git_blob": "87065c71c3bd8652d221dc1a9a7f954e177c262a",
       "group": "bygone",
@@ -2253,7 +2253,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19931113.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19931113.jpg",
+      "new_path": "stills/bygone/assets/19931113.jpg",
       "sha256": "5a6b06467297ad38e1207649d32e5c94bf4dd7cc3078a7342a2f0bdbb51d4186",
       "git_blob": "b1ca57b398c816018038bd6c0e31ac493b0b0cb8",
       "group": "bygone",
@@ -2261,7 +2261,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950000-01-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950000-01-01.jpg",
+      "new_path": "stills/bygone/assets/19950000-01-01.jpg",
       "sha256": "02dce07451f1f85a690f658674fe1587b30e1d151b1b76e774d13d5513d29d9e",
       "git_blob": "ad2f320ebee55118c4ef25a230ad5f57bd6ea34d",
       "group": "bygone",
@@ -2269,7 +2269,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950000-01-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950000-01-02.jpg",
+      "new_path": "stills/bygone/assets/19950000-01-02.jpg",
       "sha256": "239758015ca002029940aae390bba86f2888734486bc525732090d2e66a069cd",
       "git_blob": "50ec88902ac2dc956f693c8e86b5ceeb900ac0b0",
       "group": "bygone",
@@ -2277,7 +2277,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950000-01-03.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950000-01-03.jpg",
+      "new_path": "stills/bygone/assets/19950000-01-03.jpg",
       "sha256": "ff0265ce00e0de49e0f1291458ac7714bdf3cca0967aa201ed4bd1fb6505e25e",
       "git_blob": "ece93905b7f05bff113292149710f4475bc4aa8e",
       "group": "bygone",
@@ -2285,7 +2285,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950000-02-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950000-02-01.jpg",
+      "new_path": "stills/bygone/assets/19950000-02-01.jpg",
       "sha256": "822d3e077f3578d58fa03c374af020252c10b48d130a8ca1fca5aa83c3549c46",
       "git_blob": "605b91325087bda0caa5487538d973394bec43b6",
       "group": "bygone",
@@ -2293,7 +2293,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950000-02-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950000-02-02.jpg",
+      "new_path": "stills/bygone/assets/19950000-02-02.jpg",
       "sha256": "ce75ccf1e005c528eefaf09cdc16e706086fa2acd336f47cf9b7d33dbf631a1f",
       "git_blob": "2930b036d2c64937bb833a663276b4d711741457",
       "group": "bygone",
@@ -2301,7 +2301,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950802.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950802.jpg",
+      "new_path": "stills/bygone/assets/19950802.jpg",
       "sha256": "4504ccf3092933208c0eb43840527f2de4517748923e2cfad1f282297fe5b59e",
       "git_blob": "df71470c454c278a80fe2961e3d824923ce8a910",
       "group": "bygone",
@@ -2309,7 +2309,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950826-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950826-01.jpg",
+      "new_path": "stills/bygone/assets/19950826-01.jpg",
       "sha256": "d622c81e1f823914af720b2cc6e2cef104ce1ba7e79927676d6823a729e32846",
       "git_blob": "cb3a1b6f8c9026554b38ee77ed78415bdf503fad",
       "group": "bygone",
@@ -2317,7 +2317,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950826-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950826-02.jpg",
+      "new_path": "stills/bygone/assets/19950826-02.jpg",
       "sha256": "14cbd79e6942d9a7c8c032f2581f2d27b8fb9d932d33c3ad3849724d02df22a0",
       "git_blob": "8b77a188c9a6ca84a9346f951f4005f566d822b3",
       "group": "bygone",
@@ -2325,7 +2325,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950901.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950901.jpg",
+      "new_path": "stills/bygone/assets/19950901.jpg",
       "sha256": "9765109e11015d95af67a5ab7c86f5687aabb1c4dea2429b82fc5fcd31dcbb05",
       "git_blob": "f5638e0f8803bd1c44154795265f79ce7cf75600",
       "group": "bygone",
@@ -2333,7 +2333,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19950906.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19950906.jpg",
+      "new_path": "stills/bygone/assets/19950906.jpg",
       "sha256": "e94fec07038150879365cbe7b8f2ede4e5a526240ce14533535e55e39ba1e67f",
       "git_blob": "9a9a863fed25b077fa5e3fedabd3875b2fe9533c",
       "group": "bygone",
@@ -2341,7 +2341,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19951118.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19951118.jpg",
+      "new_path": "stills/bygone/assets/19951118.jpg",
       "sha256": "319ea22864036856057c3f3c6dcc7f7b752dccd483333b2cf3f4a563abbd35e4",
       "git_blob": "adf06c08f509d0d6731c39e9d8c3a4bf3a799c8f",
       "group": "bygone",
@@ -2349,7 +2349,7 @@
     },
     {
       "old_path": "stills/bygone/assets/1996-undated.jpg",
-      "new_path": "stills/2026/06/bygone/assets/1996-undated.jpg",
+      "new_path": "stills/bygone/assets/1996-undated.jpg",
       "sha256": "b7a54f236f139f3d62a80e01acb6523defdde0425b2424394a5f2484879723a2",
       "git_blob": "5ed90e7f2191e9b8ae7e4933d27ca4d3191f0448",
       "group": "bygone",
@@ -2357,7 +2357,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-1.jpg",
+      "new_path": "stills/bygone/assets/19960906-1.jpg",
       "sha256": "efdb1d364658fb15cd4a07df036b71f9742d1773d82269aa1062462aea234674",
       "git_blob": "0b94db34af3c7e39a0e3bc6292898de84e74d806",
       "group": "bygone",
@@ -2365,7 +2365,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-10.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-10.jpg",
+      "new_path": "stills/bygone/assets/19960906-10.jpg",
       "sha256": "bfc6dbcf78ff7eaf2f02bbae8095bd9d87fdb7b50f5e932841d759e37312ff51",
       "git_blob": "ce8ffae036a94b1a53151f90ff5bb40c2597f3ab",
       "group": "bygone",
@@ -2373,7 +2373,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-11.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-11.jpg",
+      "new_path": "stills/bygone/assets/19960906-11.jpg",
       "sha256": "8834d5117118238b475c771ee31e6138a48d225e972688dd80e1ac7f9d54136f",
       "git_blob": "32ab62237633358f0ad5c4348e4ae36d31424fc8",
       "group": "bygone",
@@ -2381,7 +2381,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-12.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-12.jpg",
+      "new_path": "stills/bygone/assets/19960906-12.jpg",
       "sha256": "2c7b5af0ddf22558dd11437007a8344c697fc5a0e79b50e054fcc36b2adef84f",
       "git_blob": "2bce94e7ed67875511de0bf9c8f8ce143e502f61",
       "group": "bygone",
@@ -2389,7 +2389,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-13.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-13.jpg",
+      "new_path": "stills/bygone/assets/19960906-13.jpg",
       "sha256": "df72b1d100fe371b6e50cb8208e07aae3e00c0dd9a0cd3ece5d45f7b67917360",
       "git_blob": "c1fa02c0e8677801aaf37472a3dbb6fb0d0fad8d",
       "group": "bygone",
@@ -2397,7 +2397,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-14.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-14.jpg",
+      "new_path": "stills/bygone/assets/19960906-14.jpg",
       "sha256": "57108eb8782b410e405c628c2cfef3f58d2b301659f8f776d4cf6ab40cda663e",
       "git_blob": "e4ff18c30efe8da966dcab0b20a6cfc200fb25e2",
       "group": "bygone",
@@ -2405,7 +2405,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-15.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-15.jpg",
+      "new_path": "stills/bygone/assets/19960906-15.jpg",
       "sha256": "ca300a07986d902fb0e805ded2d7f899025a166d6088a5ba499d044736be3c18",
       "git_blob": "adf75aebbd5368a95ad508ff9c8934565b8162c9",
       "group": "bygone",
@@ -2413,7 +2413,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-16.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-16.jpg",
+      "new_path": "stills/bygone/assets/19960906-16.jpg",
       "sha256": "2e67aee563310892d936f7f3c0537ee8070fb09f4be90de07103f028c380d238",
       "git_blob": "e5cc6676da96bdab0f5d04a0c5ba375c97af8729",
       "group": "bygone",
@@ -2421,7 +2421,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-17.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-17.jpg",
+      "new_path": "stills/bygone/assets/19960906-17.jpg",
       "sha256": "ce9377e9337cc7eb02c58332eb24fc32e64cce4a479817695d306f4d56545db2",
       "git_blob": "714fb43bcb7fa1a7b73d148b7c5ef99ab0ed6fcb",
       "group": "bygone",
@@ -2429,7 +2429,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-18.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-18.jpg",
+      "new_path": "stills/bygone/assets/19960906-18.jpg",
       "sha256": "acc87d2d93c09ce1b328fe6b72a85efed31e15bb61b739eaea2c0c20c63b792d",
       "git_blob": "542f6c3a779a881b37212f818c42a46335096ab4",
       "group": "bygone",
@@ -2437,7 +2437,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-19.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-19.jpg",
+      "new_path": "stills/bygone/assets/19960906-19.jpg",
       "sha256": "4346c55cd0eb5620ad08049d5289ed3e789fbd888cc1b31ffd438b6edc38d3c1",
       "git_blob": "6eab63a6fd845c225c3339324a90de822eabab8a",
       "group": "bygone",
@@ -2445,7 +2445,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-2.jpg",
+      "new_path": "stills/bygone/assets/19960906-2.jpg",
       "sha256": "0dca8902a02d8aff9d914843d6ddf8b5181c64989f8d7169b2c5de71e23a9e38",
       "git_blob": "d96fb9cc202fb27bac082092e4ee3b9938dd404b",
       "group": "bygone",
@@ -2453,7 +2453,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-20.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-20.jpg",
+      "new_path": "stills/bygone/assets/19960906-20.jpg",
       "sha256": "7c2e04b59ad76640f6927144878c0ffc1aa40f70624c135afa422dda4a4f4721",
       "git_blob": "7463106960da21c0144da83fb9c61532f1fadd2b",
       "group": "bygone",
@@ -2461,7 +2461,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-21.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-21.jpg",
+      "new_path": "stills/bygone/assets/19960906-21.jpg",
       "sha256": "208fa5738c08794cd7db3b14fc695952742af16572ebbfa432fc35c07fca3263",
       "git_blob": "3abf699042f4b6333936799051f75db7f5e59f31",
       "group": "bygone",
@@ -2469,7 +2469,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-3.jpg",
+      "new_path": "stills/bygone/assets/19960906-3.jpg",
       "sha256": "3af79f86be9470bf270736dbe5f8c5afc3fbe130f63b3699ebfee8e5535e3ac2",
       "git_blob": "200124fa756c5301e1923c7586b15f3adddab304",
       "group": "bygone",
@@ -2477,7 +2477,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-4.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-4.jpg",
+      "new_path": "stills/bygone/assets/19960906-4.jpg",
       "sha256": "2dd1460256f382ca83e59ce6c77e8771b177838dded9717b542c970ac1533d13",
       "git_blob": "aea399cae0997c219aa56267e113c4202e7fad7b",
       "group": "bygone",
@@ -2485,7 +2485,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-5.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-5.jpg",
+      "new_path": "stills/bygone/assets/19960906-5.jpg",
       "sha256": "6134c12ed005a01032dd271fda02f9cfeac8d82a1f9475a07ec012440a3451dd",
       "git_blob": "ddbe4da4adf4bffbd8997b1e316c2e9e8a2f0d42",
       "group": "bygone",
@@ -2493,7 +2493,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-6.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-6.jpg",
+      "new_path": "stills/bygone/assets/19960906-6.jpg",
       "sha256": "17006a1dedb7ebced0ba726959a2d27bfe8b1e5b0a26bdabe7cb52fa2082114e",
       "git_blob": "3ec474435e419e2cfb631f515e89e62704f05017",
       "group": "bygone",
@@ -2501,7 +2501,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-7.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-7.jpg",
+      "new_path": "stills/bygone/assets/19960906-7.jpg",
       "sha256": "0eb6252da47d7bbfa63eaaeda168bb3d9509f19f34ceef90e3957cc8714cb46b",
       "git_blob": "f0bdfb85d0ec3c93446f84ee228c74b2c54e4025",
       "group": "bygone",
@@ -2509,7 +2509,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-8.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-8.jpg",
+      "new_path": "stills/bygone/assets/19960906-8.jpg",
       "sha256": "4a76fbd1b78e86f243f9908589e4d30d0f725957a1415780d05b5b523bae886e",
       "git_blob": "f5589d90d62447544543a4f324eb2999503acc8b",
       "group": "bygone",
@@ -2517,7 +2517,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960906-9.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960906-9.jpg",
+      "new_path": "stills/bygone/assets/19960906-9.jpg",
       "sha256": "ba751252535a9496255bcddc23b68ab82a6223e0a7a63f231837a381d50befb0",
       "git_blob": "6d630a3a14d435f968dd9b9d3c7cb11d061d7b55",
       "group": "bygone",
@@ -2525,7 +2525,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-01.jpg",
+      "new_path": "stills/bygone/assets/19960907-01.jpg",
       "sha256": "4e75c2de1c928728710b6a46369ecb86bf118c5fc78f2056f1f4854caa9a1a9a",
       "git_blob": "27f3414ce03f330b07b9824fdcd3c9e9cb32c020",
       "group": "bygone",
@@ -2533,7 +2533,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-02.jpg",
+      "new_path": "stills/bygone/assets/19960907-02.jpg",
       "sha256": "1e2497ed80a81c3003fc78637d195d30cb1d87a34902f7d1cfdccf374dcff0a3",
       "git_blob": "0f505311d0dbb3a63b6dc9ceaa935cf493f5456f",
       "group": "bygone",
@@ -2541,7 +2541,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-03.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-03.jpg",
+      "new_path": "stills/bygone/assets/19960907-03.jpg",
       "sha256": "5561f50b182cc952a1d1c6265dffc33b3afb228764f5877d16712df307dc9cd6",
       "git_blob": "7f78192764e0653baacdb7db1f62d3e7922c823d",
       "group": "bygone",
@@ -2549,7 +2549,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-04.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-04.jpg",
+      "new_path": "stills/bygone/assets/19960907-04.jpg",
       "sha256": "4fe9ff598c6c073c28df981f03d17e6b79edffaee1187795fab2079c41836ad2",
       "git_blob": "87b4b11fc1d7d2b8e1282dea3b6210946e296274",
       "group": "bygone",
@@ -2557,7 +2557,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-5.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-5.jpg",
+      "new_path": "stills/bygone/assets/19960907-5.jpg",
       "sha256": "1798c55d2e5c5a8430ac090a66d73f441b87290672d1d85bce1a172879857f48",
       "git_blob": "aea0a275ffcbd58185310a522f9807c25f3bf4a1",
       "group": "bygone",
@@ -2565,7 +2565,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-6.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-6.jpg",
+      "new_path": "stills/bygone/assets/19960907-6.jpg",
       "sha256": "7ef9b6f135df50723f20e56821b8456d7e46c882d2fa6d72a689049dc8fd3f9a",
       "git_blob": "cbc31679630fb2d7692b67c0e1a5196e98294b3b",
       "group": "bygone",
@@ -2573,7 +2573,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-7.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-7.jpg",
+      "new_path": "stills/bygone/assets/19960907-7.jpg",
       "sha256": "69d4dceeaf1fc5222b63d5af0be565b5ff6e04111470c40696c53c5ced61a9bc",
       "git_blob": "1f9afbe3c2abb8bd1c860d0ba372aeeb217dcc65",
       "group": "bygone",
@@ -2581,7 +2581,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960907-8.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960907-8.jpg",
+      "new_path": "stills/bygone/assets/19960907-8.jpg",
       "sha256": "be55d1a73805ef6f9ed7dbc85026bc115544f268ab434d78552dd39a3ca767bb",
       "git_blob": "1441189492e7a8d938ac50f345c8d341b1de508b",
       "group": "bygone",
@@ -2589,7 +2589,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-04.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-04.jpg",
+      "new_path": "stills/bygone/assets/19960910-04.jpg",
       "sha256": "3a1a917a91cf98eb3d94dd101290a6fee1897b12889f6c8940f4fa4be4a293cf",
       "git_blob": "67289650122e4aa925dba24871feba62fd5d6d1e",
       "group": "bygone",
@@ -2597,7 +2597,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-05.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-05.jpg",
+      "new_path": "stills/bygone/assets/19960910-05.jpg",
       "sha256": "62e71df76fca8171595b7180a845bcb4767be2a8f16d14ef05ffd9858a959a74",
       "git_blob": "af637b48df6fa812946f1a373bdb63281b9ea230",
       "group": "bygone",
@@ -2605,7 +2605,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-1.jpg",
+      "new_path": "stills/bygone/assets/19960910-1.jpg",
       "sha256": "d8342273c2ddffad1e8dfeb7b2db4afe26943a0a7974d7b924e67e6527c6eb94",
       "git_blob": "6882bc99810d687c615c8b08abd996f1722f404e",
       "group": "bygone",
@@ -2613,7 +2613,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-10.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-10.jpg",
+      "new_path": "stills/bygone/assets/19960910-10.jpg",
       "sha256": "ab49b2ffa7c3c356263a41399fd3e513c36b7b18e905add8461bb44d6fc8b1c5",
       "git_blob": "58a05caf178da53ecdf5f47b64457f672895c6c6",
       "group": "bygone",
@@ -2621,7 +2621,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-11.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-11.jpg",
+      "new_path": "stills/bygone/assets/19960910-11.jpg",
       "sha256": "819a5cc40e5266267a1401427afd70598bc1b6da69990d789d6f8657c8054384",
       "git_blob": "75320a91e3ac88120f7e66d4044fc8e1f56a7bfd",
       "group": "bygone",
@@ -2629,7 +2629,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-12.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-12.jpg",
+      "new_path": "stills/bygone/assets/19960910-12.jpg",
       "sha256": "0a309807c84b4ba85392953c5245214492daf767b45d42ea9c028ac829de044e",
       "git_blob": "c94fa3df5a9159d43b6c273d7934576dd7392b31",
       "group": "bygone",
@@ -2637,7 +2637,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-13.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-13.jpg",
+      "new_path": "stills/bygone/assets/19960910-13.jpg",
       "sha256": "5fda3a1a90cc1da589d36426ed083d5753f797dbef7b02e7dd871aaf1da0eb4e",
       "git_blob": "c6ed898ef2026642a7a2609c811b84689b0b3ed4",
       "group": "bygone",
@@ -2645,7 +2645,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-14.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-14.jpg",
+      "new_path": "stills/bygone/assets/19960910-14.jpg",
       "sha256": "115f283da53bb383c21a26ba75596953d12479767802cbc6ca84f7d17f7ba280",
       "git_blob": "1529746756475146e0e4b40fbd9cbfc70224a32d",
       "group": "bygone",
@@ -2653,7 +2653,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-15.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-15.jpg",
+      "new_path": "stills/bygone/assets/19960910-15.jpg",
       "sha256": "0933b3bf3b9258929c2f2acaeac95ba28e6b5bbe125cf21fc2db5b975ede058a",
       "git_blob": "5e65288b613a887b7a7dd89fa2b55f3bee450a1d",
       "group": "bygone",
@@ -2661,7 +2661,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-2.jpg",
+      "new_path": "stills/bygone/assets/19960910-2.jpg",
       "sha256": "364f892dbcb4937ba72b8309b826dd050a8f13818c210ec1a267d1ac5e6e52e1",
       "git_blob": "7feb271bb010a27c45f5fced6e950e7da7951836",
       "group": "bygone",
@@ -2669,7 +2669,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-3.jpg",
+      "new_path": "stills/bygone/assets/19960910-3.jpg",
       "sha256": "d2171107f4c88936c95fdbac91ed347e90c752226a891ae3dde175a72b8d44c5",
       "git_blob": "e7b701c75c32185d58671d596816e4095fed41e0",
       "group": "bygone",
@@ -2677,7 +2677,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-6.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-6.jpg",
+      "new_path": "stills/bygone/assets/19960910-6.jpg",
       "sha256": "267446487ed5e823d8335158238ad75d3d9f5fff8cdf7adfcd7a971d6a8f0eb7",
       "git_blob": "083b920f1af198fa6ea1b3e6056778b09bd8f054",
       "group": "bygone",
@@ -2685,7 +2685,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-7.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-7.jpg",
+      "new_path": "stills/bygone/assets/19960910-7.jpg",
       "sha256": "d9e8729e9103a5465e70734bc4f1dc4244464b4008f94f21930e4b260cf4c021",
       "git_blob": "ed27181313521dee767c9d56db9f94247368c6e6",
       "group": "bygone",
@@ -2693,7 +2693,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960910-9.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960910-9.jpg",
+      "new_path": "stills/bygone/assets/19960910-9.jpg",
       "sha256": "bba9c30b3cf8aa053021a7d02fb5ddff199f2f9ab49c99ea3dbcb8356acbc520",
       "git_blob": "43f6cf0c2187741641d94d14a472ba51c804475d",
       "group": "bygone",
@@ -2701,7 +2701,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-1.jpg",
+      "new_path": "stills/bygone/assets/19960912-1.jpg",
       "sha256": "7f0d6ebd81cd310c9fa11be580db8fb8ee048c8537c4c5ff78e42d1438027e51",
       "git_blob": "71e9ff440728d94e93e95b3c2a77a56a0a62aa64",
       "group": "bygone",
@@ -2709,7 +2709,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-2.jpg",
+      "new_path": "stills/bygone/assets/19960912-2.jpg",
       "sha256": "a779499803eaaf50c8d6752e82f0396d87b6114eae59fe883ca31568492245ed",
       "git_blob": "8d58c9de733d3db4186b7d42d050dccc199d19b6",
       "group": "bygone",
@@ -2717,7 +2717,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-3.jpg",
+      "new_path": "stills/bygone/assets/19960912-3.jpg",
       "sha256": "3db9cebb874cfc8822cf77ed4961f6d4fbef90c464876dfac632387518b9dd49",
       "git_blob": "66ec47c085c5e9db7378d887edbf6cec1a84299f",
       "group": "bygone",
@@ -2725,7 +2725,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-4.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-4.jpg",
+      "new_path": "stills/bygone/assets/19960912-4.jpg",
       "sha256": "89a36a9a820ba2b82cf26dcdd45aab2c4d46f3cab21dcbbd322c70846e3d08fc",
       "git_blob": "2b755e5f39cceabb14be78589ffdd7405b644f97",
       "group": "bygone",
@@ -2733,7 +2733,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-5.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-5.jpg",
+      "new_path": "stills/bygone/assets/19960912-5.jpg",
       "sha256": "6468b8ab63cef3819f5cfa5fcfb0593bbd09d04551bbca4db878d8f1895b37d8",
       "git_blob": "23368a7337be4ee084b2ebb738c4773a90d3d8cd",
       "group": "bygone",
@@ -2741,7 +2741,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-6.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-6.jpg",
+      "new_path": "stills/bygone/assets/19960912-6.jpg",
       "sha256": "d706351df1a9b3a2d132f94fe5c2cf1d796ba1c1a587278b9ce38ac727b8341c",
       "git_blob": "34e2627e4175c31cd4f27a77ed98e9e97ef95b98",
       "group": "bygone",
@@ -2749,7 +2749,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-7.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-7.jpg",
+      "new_path": "stills/bygone/assets/19960912-7.jpg",
       "sha256": "177c7e9e3f3658f722e288797f511480692b2a50d98dd8d29e9200c33ae9417d",
       "git_blob": "95056a16c65e722d9b06b9927d2dc8323ff244aa",
       "group": "bygone",
@@ -2757,7 +2757,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960912-8.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960912-8.jpg",
+      "new_path": "stills/bygone/assets/19960912-8.jpg",
       "sha256": "67e3635bc92850121343e42a362606fcaf38599a1fcd95de2dcb99a94cc23880",
       "git_blob": "f53e801dc3824e4a785d50e820bdb2b280589eda",
       "group": "bygone",
@@ -2765,7 +2765,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960914-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960914-1.jpg",
+      "new_path": "stills/bygone/assets/19960914-1.jpg",
       "sha256": "cb4cbc19040d95388e88f7d231dd0ee5cff6c964a47fd2c8d295cea56e4680bc",
       "git_blob": "210b3c4a236b43c610985fdb32be095f82901ce3",
       "group": "bygone",
@@ -2773,7 +2773,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960914-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960914-2.jpg",
+      "new_path": "stills/bygone/assets/19960914-2.jpg",
       "sha256": "f49298ec9d5a19476ba0b901c42187fa940ae79f61252a8591ed6f2570d1066b",
       "git_blob": "867c7b0955b33b51faaf121d5ce308653067833f",
       "group": "bygone",
@@ -2781,7 +2781,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960914-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960914-3.jpg",
+      "new_path": "stills/bygone/assets/19960914-3.jpg",
       "sha256": "2a211b76feca7948a5eb7aa9d4257c92b88baee12514fdf6975d75ede9504cc7",
       "git_blob": "32b4ef3d6a7c4f7983864f7f7be8f28ffccf8b1f",
       "group": "bygone",
@@ -2789,7 +2789,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960915.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960915.jpg",
+      "new_path": "stills/bygone/assets/19960915.jpg",
       "sha256": "a7dc41af67439404369562651964f7f95b62b0432a151639dbb4458d3ceed923",
       "git_blob": "07860edaf0ef3a6bf42d6039c1c3abfc5b039506",
       "group": "bygone",
@@ -2797,7 +2797,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960917-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960917-1.jpg",
+      "new_path": "stills/bygone/assets/19960917-1.jpg",
       "sha256": "84b973ae9b146462aa535b02c80afedbc0f3796d0a3833829c1de7a5d3fd7ba1",
       "git_blob": "5c2202ee86919bfcb5f1e395e0afec2d008f0457",
       "group": "bygone",
@@ -2805,7 +2805,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960917-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960917-2.jpg",
+      "new_path": "stills/bygone/assets/19960917-2.jpg",
       "sha256": "97ddbd2fe1a11d7fa03a833fecff61980a1c8967fd8a8d7618e3065c15b7c01e",
       "git_blob": "c081038375f15483d81b0a54b3c6adb2a8de16fd",
       "group": "bygone",
@@ -2813,7 +2813,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960917-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960917-3.jpg",
+      "new_path": "stills/bygone/assets/19960917-3.jpg",
       "sha256": "39ea9d72e1b74eab7d900b5c8d4d5cf7fbeadb136a4b8adccd8fe902edfb38cc",
       "git_blob": "6a15e76ae01bd6db76bf08d1f7c69cce24bc31f7",
       "group": "bygone",
@@ -2821,7 +2821,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960917-4.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960917-4.jpg",
+      "new_path": "stills/bygone/assets/19960917-4.jpg",
       "sha256": "d4f8df9f020555663967fff5adef5a06272f4cb6aed3b8da1275507e6c42e6d6",
       "git_blob": "290485fc74ab5b204e0b320bf328e373b3122a48",
       "group": "bygone",
@@ -2829,7 +2829,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960917-5.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960917-5.jpg",
+      "new_path": "stills/bygone/assets/19960917-5.jpg",
       "sha256": "25b062545c92e78b9e59ffce44d043185c9185090772b733df9fe58fd3290a97",
       "git_blob": "94d6e726f5940c4da9f0127749168e7f25020f41",
       "group": "bygone",
@@ -2837,7 +2837,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960917-6.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960917-6.jpg",
+      "new_path": "stills/bygone/assets/19960917-6.jpg",
       "sha256": "aae9c479fa8cc0c90d7c2d9c42ae5347e31b839eb38d7b671a1fdb7d323d36b7",
       "git_blob": "db0def574656c5c9f76123743382309afe13b170",
       "group": "bygone",
@@ -2845,7 +2845,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960917-7.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960917-7.jpg",
+      "new_path": "stills/bygone/assets/19960917-7.jpg",
       "sha256": "97cd6893c06ed31654047baf3a0c0dbd911877598903b121b173734b8c6f88fd",
       "git_blob": "9abab2c0dbe46445c9ece579d89e09a3479e415a",
       "group": "bygone",
@@ -2853,7 +2853,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960925-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960925-1.jpg",
+      "new_path": "stills/bygone/assets/19960925-1.jpg",
       "sha256": "2cfffa9cb957b37fddef6fd2cce6172b934f25eff155352326cd2b69abc72fa3",
       "git_blob": "eb03c26813a401da4afa82565c5f2d06d395c2f7",
       "group": "bygone",
@@ -2861,7 +2861,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960925-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960925-2.jpg",
+      "new_path": "stills/bygone/assets/19960925-2.jpg",
       "sha256": "4b9d666659d24fb917025f1f225a8512b734fdf61c5017690ece446cc5b1c9b5",
       "git_blob": "9a635f82e7f82de305efd928a3b6565b5c11e59b",
       "group": "bygone",
@@ -2869,7 +2869,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960927-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960927-1.jpg",
+      "new_path": "stills/bygone/assets/19960927-1.jpg",
       "sha256": "100bffab61cb3c3b62b3e6bc9933ea4f94b38aafb37387d10bcd812a245aaca8",
       "git_blob": "adea26a2dd36c1c275ee05ff0ea981c9423fa5ce",
       "group": "bygone",
@@ -2877,7 +2877,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960927-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960927-2.jpg",
+      "new_path": "stills/bygone/assets/19960927-2.jpg",
       "sha256": "5bcb3e20057d408ee97756281a0745d3baf68bb32fa14f95e301e4eaebf329e8",
       "git_blob": "df15881fdadb73e2099c6434bbdee964bd4dcaa6",
       "group": "bygone",
@@ -2885,7 +2885,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960927-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960927-3.jpg",
+      "new_path": "stills/bygone/assets/19960927-3.jpg",
       "sha256": "b1aedb91fd08cda032cbe595797c7f4b1da2faf04a5596daabec774661e061ef",
       "git_blob": "395cda8838508d289bc44441323bdaa4234ef411",
       "group": "bygone",
@@ -2893,7 +2893,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960928-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960928-1.jpg",
+      "new_path": "stills/bygone/assets/19960928-1.jpg",
       "sha256": "c69af4d92a0e758ddf412d7d645e3329b8cd795b7cd02c3ffa45f64b347b8fe7",
       "git_blob": "e16eb38bf761fb772c119b3dc6f380f6da3f7b2f",
       "group": "bygone",
@@ -2901,7 +2901,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960928-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960928-2.jpg",
+      "new_path": "stills/bygone/assets/19960928-2.jpg",
       "sha256": "1b494c13470fd7b71f93fc826ccd76f58d32c6946e1936eb2adadb098bc44818",
       "git_blob": "a9170205b7034ad2754a82770b5160cea889579d",
       "group": "bygone",
@@ -2909,7 +2909,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960928-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960928-3.jpg",
+      "new_path": "stills/bygone/assets/19960928-3.jpg",
       "sha256": "9abcc2d0964e50c4514026e1e82320f5d729c39ea45e8e355fc9086d5c5b5010",
       "git_blob": "d602520add4c5209a4451958aa66dce2868905c2",
       "group": "bygone",
@@ -2917,7 +2917,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19960928-4.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19960928-4.jpg",
+      "new_path": "stills/bygone/assets/19960928-4.jpg",
       "sha256": "85d9cd4c2664a57a3e25d93c4d1550793f1fe7e9591645d9e699549b5f9a98d8",
       "git_blob": "b5688410d9a09cede1f51d8e68ce372c63b05c85",
       "group": "bygone",
@@ -2925,7 +2925,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961000-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961000-01.jpg",
+      "new_path": "stills/bygone/assets/19961000-01.jpg",
       "sha256": "92b2d68f67f004fa3437be5f57f9b40bde89427f0fd79c053cd8745ba81f287b",
       "git_blob": "57ded61fd60c74bd6397f9b6c873560300f31174",
       "group": "bygone",
@@ -2933,7 +2933,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961000-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961000-02.jpg",
+      "new_path": "stills/bygone/assets/19961000-02.jpg",
       "sha256": "5f35ede425ea257286fb4064a3b09de7afbd91a0359104042dd0f9440adfab6c",
       "git_blob": "08bc86264524075f7e1fb690ca179607bc8fb85f",
       "group": "bygone",
@@ -2941,7 +2941,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961002-1.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961002-1.jpg",
+      "new_path": "stills/bygone/assets/19961002-1.jpg",
       "sha256": "aa88f472f928cf4eec425b5027c5a73b784e7cdf8a1c385f13a77db096ef2ffa",
       "git_blob": "1ad98d01e6a67946d8bc0130f289625c69c8c0aa",
       "group": "bygone",
@@ -2949,7 +2949,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961002-2.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961002-2.jpg",
+      "new_path": "stills/bygone/assets/19961002-2.jpg",
       "sha256": "63512474e4817295c6b15624453871d81193d506b6fcc2b848fa6d7f9fc5eb57",
       "git_blob": "7b2accded6877f8e6530a57e356e4c8d65cfb246",
       "group": "bygone",
@@ -2957,7 +2957,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961002-3.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961002-3.jpg",
+      "new_path": "stills/bygone/assets/19961002-3.jpg",
       "sha256": "c2901cb29ead85ff898b1f142e91383dbfada5b7776fdf03d854b747c7b5966b",
       "git_blob": "33ca9fcd6073ca6d54629ff861ddf081b716b758",
       "group": "bygone",
@@ -2965,7 +2965,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961011-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961011-01.jpg",
+      "new_path": "stills/bygone/assets/19961011-01.jpg",
       "sha256": "0b8638668ce11c5df4abebfee4704cc9d4da6fad182b919636bd254ae31f4277",
       "git_blob": "0da4c185725b36a95a072645973a24d509557c20",
       "group": "bygone",
@@ -2973,7 +2973,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961011-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961011-02.jpg",
+      "new_path": "stills/bygone/assets/19961011-02.jpg",
       "sha256": "556ccbfa30eae3976fe14152f9c0aaeed4f1e454344ea58bb5c44c75e62ef689",
       "git_blob": "7bfada8a82efffcbe0171476a59706572448b6b5",
       "group": "bygone",
@@ -2981,7 +2981,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961011-03.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961011-03.jpg",
+      "new_path": "stills/bygone/assets/19961011-03.jpg",
       "sha256": "f46904a1450c44a1ac7103d6bfd663e04e93eaace9a0116ebc02c5b10ca54003",
       "git_blob": "0aa9606c434d2cdf8b16b6bde23f00aa5118daa2",
       "group": "bygone",
@@ -2989,7 +2989,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961120.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961120.jpg",
+      "new_path": "stills/bygone/assets/19961120.jpg",
       "sha256": "1253b06e0e23c4437610b7d0da3d41823836795ee7e1e366921b05d71e315c7a",
       "git_blob": "74d4ed35686e9aeb6cfdaedada8835cfaa577533",
       "group": "bygone",
@@ -2997,7 +2997,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961126.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961126.jpg",
+      "new_path": "stills/bygone/assets/19961126.jpg",
       "sha256": "57e4581129d951e53b9a29554c9d6fa3caa679f6893cfef578853b620cb6c26c",
       "git_blob": "cafc7bb7f4361a9d363d7d80b10ce592af1dda61",
       "group": "bygone",
@@ -3005,7 +3005,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19961221.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19961221.jpg",
+      "new_path": "stills/bygone/assets/19961221.jpg",
       "sha256": "f2b304b9d3b261815a357ddde5e1587a045fc9315fdbba93684d8d064b74f326",
       "git_blob": "bc95b9cb26720f361c0cc5cf3e3cbc05ee25777a",
       "group": "bygone",
@@ -3013,7 +3013,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19970211-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19970211-01.jpg",
+      "new_path": "stills/bygone/assets/19970211-01.jpg",
       "sha256": "37153228ac3704066015eabacd2d90279b04db03c50a895e7758d91328099431",
       "git_blob": "2a5bffade1ed83e4a709248709f4f70228dbe440",
       "group": "bygone",
@@ -3021,7 +3021,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19971122-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19971122-01.jpg",
+      "new_path": "stills/bygone/assets/19971122-01.jpg",
       "sha256": "8aeff234615f104477ae0c459609406e1c8eaeadd157238d419c79d027dfa466",
       "git_blob": "ad01ac7acc709161118ea1d71a57a3f2135ea46c",
       "group": "bygone",
@@ -3029,7 +3029,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19971122-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19971122-02.jpg",
+      "new_path": "stills/bygone/assets/19971122-02.jpg",
       "sha256": "438097ff3d51ab96c11c2910973a12ae596634e478d707e6b610566ea6d3a9b5",
       "git_blob": "cf76880d74d25913cd5420d95105c5092a898365",
       "group": "bygone",
@@ -3037,7 +3037,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-01.jpg",
+      "new_path": "stills/bygone/assets/19980131-01.jpg",
       "sha256": "7066a7d5db2f1f278714fc32d707b36384a7cfeda10ed6813312cbe9d8d7c658",
       "git_blob": "3ad439440f5cba64c605c6bc20fcae9bde9520c5",
       "group": "bygone",
@@ -3045,7 +3045,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-02.jpg",
+      "new_path": "stills/bygone/assets/19980131-02.jpg",
       "sha256": "7283bb28d1a1654fd349d61be81a6dd112c74576e027c1416c2b32d0624b2209",
       "git_blob": "8da454bfd7943a2fe8b31cb0f5075f58bb9e4a2a",
       "group": "bygone",
@@ -3053,7 +3053,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-03.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-03.jpg",
+      "new_path": "stills/bygone/assets/19980131-03.jpg",
       "sha256": "9faa19e2f3071d9f4a7cd2e4e9c087a892f7a67cd662b5f06377497844094f85",
       "git_blob": "ac958e5caa7b40a6e496f1a5cfe7d3ea22ea96f7",
       "group": "bygone",
@@ -3061,7 +3061,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-04.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-04.jpg",
+      "new_path": "stills/bygone/assets/19980131-04.jpg",
       "sha256": "741a35479dc35e560a252543ac226a61bf30eaf36c1e1181e1369c5fa198f8d0",
       "git_blob": "d3da3b08a884d52f35d4cd7eb794830c9e00350f",
       "group": "bygone",
@@ -3069,7 +3069,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-05.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-05.jpg",
+      "new_path": "stills/bygone/assets/19980131-05.jpg",
       "sha256": "a82da017dbd9269953755eef96e3c9e92d4868a3b19788a061c485c075b2f3ea",
       "git_blob": "f464c332f63fef2179cbbd3a79982df1142a442d",
       "group": "bygone",
@@ -3077,7 +3077,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-06.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-06.jpg",
+      "new_path": "stills/bygone/assets/19980131-06.jpg",
       "sha256": "aaa6995042c8d988b1bbe667f7090ba456d7a53b619bc80ba4e7a1ef42a4c8cf",
       "git_blob": "aa72da4fa3d201db0ef1488be45c314b9d623167",
       "group": "bygone",
@@ -3085,7 +3085,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-07.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-07.jpg",
+      "new_path": "stills/bygone/assets/19980131-07.jpg",
       "sha256": "80520e00b75b2ccac517c4030e7ab1bcfc8967c7a0f1394bcdfd1a387b67fc48",
       "git_blob": "b8d32819097c8dc221898bfc2a4f3a2e33954012",
       "group": "bygone",
@@ -3093,7 +3093,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-08.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-08.jpg",
+      "new_path": "stills/bygone/assets/19980131-08.jpg",
       "sha256": "1801a69e2137250b04a88dc83606bb98629ec442a5ef8f033880999b7c6ab97b",
       "git_blob": "a47a14318646fe29e61481e38d0b6f4af90bd885",
       "group": "bygone",
@@ -3101,7 +3101,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-09.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-09.jpg",
+      "new_path": "stills/bygone/assets/19980131-09.jpg",
       "sha256": "3f73e31620a00ee1bc0a0a866169282d3d0a7b46a8f6a85731d64cc293874c81",
       "git_blob": "016cd14c308656222075a3d310d870ed03792cf1",
       "group": "bygone",
@@ -3109,7 +3109,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-10.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-10.jpg",
+      "new_path": "stills/bygone/assets/19980131-10.jpg",
       "sha256": "7a8a217480d310a7f4dcc20e33ae63249496b0b3c969deca1bab1aeed06b92ac",
       "git_blob": "b555a299c7d73e9e4ab3017e1aa7506a4b18164a",
       "group": "bygone",
@@ -3117,7 +3117,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980131-11.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980131-11.jpg",
+      "new_path": "stills/bygone/assets/19980131-11.jpg",
       "sha256": "5d64106dfe79cc661d3e0f8ee45b6c3f62730d189fa27a9b1e182a3c5dd7ea58",
       "git_blob": "74dc67ea58f7338a2476514f7b87b055db54f7e5",
       "group": "bygone",
@@ -3125,7 +3125,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980201-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980201-01.jpg",
+      "new_path": "stills/bygone/assets/19980201-01.jpg",
       "sha256": "dd516766caaad23d9e0fb7d77379a2ef3ccda657d6e521cf79f79b3811fc6692",
       "git_blob": "2b0312fb0d61b304d6b08deba4b638a14b0ae7bc",
       "group": "bygone",
@@ -3133,7 +3133,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980201-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980201-02.jpg",
+      "new_path": "stills/bygone/assets/19980201-02.jpg",
       "sha256": "c6b01d8ec7f9490ed856c9c03447932aa8e6220615690e391086922d8c66be38",
       "git_blob": "798c0431a633b52629540eaabdf549f388160a57",
       "group": "bygone",
@@ -3141,7 +3141,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980201-03.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980201-03.jpg",
+      "new_path": "stills/bygone/assets/19980201-03.jpg",
       "sha256": "f58992724536db56f8d81c7f5a84bbcf03a503efb6789afaac1b4b0f0af41378",
       "git_blob": "8ceb87b9208d4bb5c90db95f3553f98fe3d864d6",
       "group": "bygone",
@@ -3149,7 +3149,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19980201-04.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19980201-04.jpg",
+      "new_path": "stills/bygone/assets/19980201-04.jpg",
       "sha256": "0c6487e47e323a1ac59c86f00b90281830e1e9208c0d833bd05a6df562e7be4d",
       "git_blob": "05b211b08c6d8a1485a708def24a0217058c30ea",
       "group": "bygone",
@@ -3157,7 +3157,7 @@
     },
     {
       "old_path": "stills/bygone/assets/19990522-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/19990522-01.jpg",
+      "new_path": "stills/bygone/assets/19990522-01.jpg",
       "sha256": "83993f6cc258c8cdb66e45f6e319173d4580db0306879884609dc4d8022b29fd",
       "git_blob": "d2738ed0ed4db3a8ccba97397721e831ece2fce2",
       "group": "bygone",
@@ -3165,7 +3165,7 @@
     },
     {
       "old_path": "stills/bygone/assets/20040801-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/20040801-01.jpg",
+      "new_path": "stills/bygone/assets/20040801-01.jpg",
       "sha256": "e7a4c5258f4e3479797258bad4660f9b2a78ba6075002a8f07a8ae218d9cb80c",
       "git_blob": "d9f3df12cce9da403409a3a94401cefaef699a9c",
       "group": "bygone",
@@ -3173,7 +3173,7 @@
     },
     {
       "old_path": "stills/bygone/assets/fuji01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/fuji01.jpg",
+      "new_path": "stills/bygone/assets/fuji01.jpg",
       "sha256": "517a0260abb8cb3ba9d451475796023219e3580f7c8b46dd6140065d50dc1f16",
       "git_blob": "bcc591b260232b6d4d504e8c27c508c981990ea8",
       "group": "bygone",
@@ -3181,7 +3181,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-01-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-01-01.jpg",
+      "new_path": "stills/bygone/assets/undated-01-01.jpg",
       "sha256": "6ed7589c78b0a6d74c7341de8401be849613db72cdd74be3d4f5ae070c453e36",
       "git_blob": "492306902a80dde57bc804d957da7556424a1005",
       "group": "bygone",
@@ -3189,7 +3189,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-02-01-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-02-01-01.jpg",
+      "new_path": "stills/bygone/assets/undated-02-01-01.jpg",
       "sha256": "5c94fee1bc8050828dfe2ad098687aebfc2f621834144746a518a70f5c66224c",
       "git_blob": "4698b025e82db92c6f8b35b1ead6b4f684e3150e",
       "group": "bygone",
@@ -3197,7 +3197,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-03-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-03-01.jpg",
+      "new_path": "stills/bygone/assets/undated-03-01.jpg",
       "sha256": "422d8ec5a0ae42b1cdb3e2f99bb418afe4c9b7e41e4bdb3196748906adc6387b",
       "git_blob": "726fd1234ad41065dc314c964a37cbf376dfdd91",
       "group": "bygone",
@@ -3205,7 +3205,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-04-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-04-01.jpg",
+      "new_path": "stills/bygone/assets/undated-04-01.jpg",
       "sha256": "1e63881aad4f0b96b2137578469c7b0725854ef626268913806af96b44652559",
       "git_blob": "bf8f66406ece141e3f767a21a9e758ee7a245e85",
       "group": "bygone",
@@ -3213,7 +3213,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-05-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-05-01.jpg",
+      "new_path": "stills/bygone/assets/undated-05-01.jpg",
       "sha256": "21634c92b6a629d312f153395d052f0ccb5b83aec7a17ff8c4381bc47b4b9a7b",
       "git_blob": "5805a90ecb5808e58f55c58caf40248ca826eb4e",
       "group": "bygone",
@@ -3221,7 +3221,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-05-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-05-02.jpg",
+      "new_path": "stills/bygone/assets/undated-05-02.jpg",
       "sha256": "16a91db22d64d0608d2dc7d6c235fd682a5c01f9d66c32bc30e445b1db97d293",
       "git_blob": "07cda8accc2d2d539152b01354a09948037323f6",
       "group": "bygone",
@@ -3229,7 +3229,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-06-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-06-01.jpg",
+      "new_path": "stills/bygone/assets/undated-06-01.jpg",
       "sha256": "4071bbf2ffeb90b132495e7010df7b305c329a2b8e40dd359095270298e1e1c1",
       "git_blob": "6a7164a4ae3e810c812f0487552c629c66f2babd",
       "group": "bygone",
@@ -3237,7 +3237,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-07-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-07-01.jpg",
+      "new_path": "stills/bygone/assets/undated-07-01.jpg",
       "sha256": "d7e41888de00ff391eb124915ee90e23aa1c661f385f1bb5d90686882f6b1666",
       "git_blob": "a05f08c6d639ff0e5dc2dc47109cb513ca7c45fc",
       "group": "bygone",
@@ -3245,7 +3245,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-08-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-08-01.jpg",
+      "new_path": "stills/bygone/assets/undated-08-01.jpg",
       "sha256": "9e0f9f92f5b016498eab6819fffab796d4264fb28dd75eec5d941d9d317b67a4",
       "git_blob": "0d32300c2be4767c336d2ee9b01baa580950be21",
       "group": "bygone",
@@ -3253,7 +3253,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-08-02.jpg.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-08-02.jpg.jpg",
+      "new_path": "stills/bygone/assets/undated-08-02.jpg.jpg",
       "sha256": "4b75b0b66a927ce15be66c9fcd22a003f328dc946d59f783b4e967c74999e8a3",
       "git_blob": "0010c23d90aae5cbc552105fb3e448acdf1633bb",
       "group": "bygone",
@@ -3261,7 +3261,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-08-03.jpg.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-08-03.jpg.jpg",
+      "new_path": "stills/bygone/assets/undated-08-03.jpg.jpg",
       "sha256": "1f10d9c30cc4500a679dc474ebcfad19c72fccf8f5b7b96ea2f04d25ae1c228c",
       "git_blob": "21bf8d70426fc3a412ec62532cbefeb60c15a652",
       "group": "bygone",
@@ -3269,7 +3269,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-09-01.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-09-01.jpg",
+      "new_path": "stills/bygone/assets/undated-09-01.jpg",
       "sha256": "c2d30ec45352bc75b1e45a0a1ac267f618ca59ec6583582b8a1775d649c79e7d",
       "git_blob": "de51a190f057d527e2a901877fba6afae343e15f",
       "group": "bygone",
@@ -3277,7 +3277,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-09-02.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-09-02.jpg",
+      "new_path": "stills/bygone/assets/undated-09-02.jpg",
       "sha256": "b347f9bbc3230c2ac5dcd6f57eac650df698be471530db7c33c3457547cdd198",
       "git_blob": "8d82d216982c5190d1a938b77cba89c374d2fa2d",
       "group": "bygone",
@@ -3285,7 +3285,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-09-03.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-09-03.jpg",
+      "new_path": "stills/bygone/assets/undated-09-03.jpg",
       "sha256": "2989534dd37c20a12601161485a789b84c0a76da501d330f9a3a5a8dd27d5d99",
       "git_blob": "b91aecabe481f08ddbe5b9c3c0cae707b5db7d7c",
       "group": "bygone",
@@ -3293,7 +3293,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-09-04.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-09-04.jpg",
+      "new_path": "stills/bygone/assets/undated-09-04.jpg",
       "sha256": "ad12936da19ff443247b5c2f2829b436e5832e7bd93ab29c00f87521ec6108c3",
       "git_blob": "b26a7f116a8e8e3b71a024c305d60cb9f2c3edde",
       "group": "bygone",
@@ -3301,7 +3301,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-09-05.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-09-05.jpg",
+      "new_path": "stills/bygone/assets/undated-09-05.jpg",
       "sha256": "6e51338768d90ceb4d1b46918da9dfd395f03e317282a0d4917850f567421178",
       "git_blob": "8f0ed4a9edca4ae8f250f7ecace3bfaf85a3943d",
       "group": "bygone",
@@ -3309,7 +3309,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-09-06.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-09-06.jpg",
+      "new_path": "stills/bygone/assets/undated-09-06.jpg",
       "sha256": "40d297d2496dc3db6c49081ff440a66f6e3dbdfddfe6636e5e30a95257cd0a98",
       "git_blob": "8b61086b3d2c0f9dbd2404408195597ee7600c57",
       "group": "bygone",
@@ -3317,7 +3317,7 @@
     },
     {
       "old_path": "stills/bygone/assets/undated-09-07.jpg",
-      "new_path": "stills/2026/06/bygone/assets/undated-09-07.jpg",
+      "new_path": "stills/bygone/assets/undated-09-07.jpg",
       "sha256": "1b93be1630ce57b30f03d4b29f04dc7d6dba793b4ce79df88d1bedd16dab71c9",
       "git_blob": "ac2f189ff5e33aa1c31a1f6f82e042624fb34078",
       "group": "bygone",
@@ -3325,7 +3325,7 @@
     },
     {
       "old_path": "stills/bygone/index.md",
-      "new_path": "stills/2026/06/bygone/index.md",
+      "new_path": "stills/bygone/index.md",
       "sha256": "082d355c5078bc32f45cad7fa54734c135cce0d2c3a4e08a5a99fa1e29257943",
       "git_blob": "45e657e3ef10e07ddf53b206b5517c2129d9012f",
       "group": "bygone",

@@ -8,6 +8,12 @@
 .roll-photos figure { margin: 0; }
 .roll-photos img { display: block; width: 100%; height: auto; }
 .roll-photos a { display: block; }
+.roll-stills-body { width: 100%; box-sizing: border-box; margin-top: 32px; font: 13px/1.7 "Courier Prime", monospace; overflow-wrap: anywhere; text-align: left; }
+.roll-stills-body > :first-child { margin-top: 0; }
+.roll-stills-body > :last-child { margin-bottom: 0; }
+.roll-stills-body :is(pre,table) { max-width: 100%; overflow-x: auto; display: block; }
+.roll-stills-body pre { white-space: pre-wrap; }
+.roll-stills-body :is(ul,ol) { padding-left: 1.5em; }
 .roll-stills #rights-notice { margin-top: 48px; margin-bottom: 60px; }
 .roll-stills #rights-notice p { width: 100%; }
 .roll-pagination { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .67rem; width: 100%; margin: 20px 0; font: 10px/1.3 "Courier Prime", monospace; }

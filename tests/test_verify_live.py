@@ -57,12 +57,18 @@ class LiveVerificationTests(unittest.TestCase):
             verify(BASE_URL, self.root)
         self.assertCountEqual(fetched, ['build-receipt.json', 'CNAME',
                                        '.well-known/probe.txt', 'nested/.nojekyll'])
+        proof = json.loads((self.root / '_site/.verified-live.json').read_text())
+        self.assertEqual('fixture', proof['fingerprint'])
+        self.assertEqual(hashlib.sha256(receipt).hexdigest(), proof['receipt_sha256'])
+        self.assertEqual(BASE_URL, proof['url'])
 
     def test_public_missing_or_changed_file_still_fails(self):
         receipt = self.receipt({'index.html': b'expected'})
         for status in (404, 200):
             with self.subTest(status=status):
                 calls = Counter()
+                proof_path = self.root / '_site/.verified-live.json'
+                proof_path.write_text('{"fingerprint":"fixture"}')
 
                 def get(url, **kwargs):
                     calls[url] += 1
@@ -72,6 +78,7 @@ class LiveVerificationTests(unittest.TestCase):
                     with self.assertRaisesRegex(RuntimeError, 'Live file mismatch: index.html'):
                         verify(BASE_URL, self.root)
                 self.assertEqual(3, calls[BASE_URL + '/index.html'])
+                self.assertFalse(proof_path.exists())
 
     def test_transient_network_failure_is_retried(self):
         receipt = self.receipt({'index.html': b'expected'})
@@ -97,6 +104,7 @@ class LiveVerificationTests(unittest.TestCase):
                 verify(BASE_URL, self.root)
         self.assertEqual(12, get.call_count)
         self.assertTrue(all(call.args[0].endswith('/build-receipt.json') for call in get.call_args_list))
+        self.assertFalse((self.root / '_site/.verified-live.json').exists())
 
 
 if __name__ == '__main__':

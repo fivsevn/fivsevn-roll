@@ -37,18 +37,21 @@ class MotionRoomTests(unittest.TestCase):
         self.assertEqual(2,len(messages))
         self.assertIs(feed.find(recursive=False),messages[0])
         self.assertEqual('拍摄记录',messages[0].strong.get_text())
-        self.assertEqual(self.post['extra']['author'],messages[0].select_one('.roll-comment-author').get_text())
+        self.assertEqual('guest_d',messages[0].select_one('.roll-comment-author').get_text())
         self.assertLess(str(feed).index('拍摄记录'),str(feed).index('guest_507'))
         self.assertEqual('/preview/motion/#'+self.post['id'],page.find('a',string='LEAVE ROOM')['href'])
         self.assertFalse(any(a.get_text() in {'HOME','◁ motion'} and not a.find_parent('li') for a in page.select('a')))
         listing=BeautifulSoup((self.root/'_site/motion/index.html').read_text(),'html.parser')
-        self.assertEqual(2,len(listing.select('.roll-authored-message')))
+        self.assertFalse(listing.select('.roll-authored-message'))
+        self.assertNotIn('拍摄记录',listing.get_text())
 
     def test_detail_fallback_returns_to_its_current_list_page_and_card(self):
         posts=load_posts(ROOT)['motion'][:2]
         for post in posts:
             data={k:v for k,v in post.items() if not k.startswith('_')}
-            write_post(motion_path(self.root,data['id'],data['extra']['published_at']),data)
+            path=motion_path(self.root,data['id'],data['extra']['published_at'])
+            write_post(path,data)
+            with path.open('a') as stream:stream.write('DETAIL-ONLY-MOTION-TEXT')
         config_path=self.root/'site-data/youtube.json'
         config=json.loads(config_path.read_text());config['page_size']=1
         config_path.write_text(json.dumps(config))
@@ -61,6 +64,8 @@ class MotionRoomTests(unittest.TestCase):
         listing=BeautifulSoup((self.root/'_site/motion/page/2/index.html').read_text(),'html.parser')
         self.assertEqual(posts[1]['id'],listing.select_one('[data-motion-room]')['id'])
         self.assertEqual('/preview/motion/'+posts[1]['id']+'/',listing.select_one('[data-motion-open]')['href'])
+        self.assertNotIn('DETAIL-ONLY-MOTION-TEXT',listing.get_text())
+        self.assertIn('DETAIL-ONLY-MOTION-TEXT',page.select_one('.roll-comment-feed').get_text())
 
     def test_empty_body_has_no_placeholder_and_hidden_text_is_not_published(self):
         page=self.render()
