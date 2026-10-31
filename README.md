@@ -7,11 +7,11 @@ The repository follows Flux, Savour and Fieldlog's publishing pattern: editable 
 ## Repository layout
 
 ```text
-stills/<group>/index.md       Metadata and ordered photo list
-stills/<group>/assets/        Original filenames and original bytes
-stills/bygone/                One photo collection; no per-photo posts
+stills/YYYY/MM/<group>/index.md  Metadata and ordered photo list
+stills/YYYY/MM/<group>/assets/   Original filenames and original bytes
+stills/2026/06/bygone/           One photo collection; no per-photo posts
 drafts/stills/               Unarranged originals, excluded from the website
-motion/<id>/index.md          Saved YouTube entries
+motion/YYYY/MM/<timestamp>-<id>/index.md  YouTube entries by publication time
 site-assets/                 Local camera/banner images, fonts and CSS
 templates/                   Retained legacy layout and exact Rights Notice
 site-data/                   Legacy display order and verified channel identity
@@ -25,9 +25,9 @@ _site/                       Generated artifact; ignored by Git
 
 ## Publish a photo group
 
-1. Prepare a directory such as `stills/2026-11-walk/` with one `index.md` and an `assets/` subdirectory.
+1. Prepare a directory such as `stills/2026/11/2026-11-walk/` with one `index.md` and an `assets/` subdirectory.
 2. Copy the intended photographs to `assets/`, retaining the original filenames. List only those photographs, in the intended order, under `extra.images`.
-3. Use an existing group as the metadata template. Set a unique `id` matching the directory name, a title, and a fixed timezone-aware `extra.published_at`.
+3. Use an existing group as the metadata template. Set a unique `id` matching the group directory name, a title, and a fixed timezone-aware `extra.published_at`. The archive year/month must match this publication time in Asia/Shanghai.
 4. Set both `status: published` and `visibility: public` when the group is ready. `draft`, `hidden`, `private`, `internal`, or missing publication controls never imply publication.
 5. Run the checks below, commit, and push to `main`. Review the Build and deploy Roll workflow and its live verification step.
 
@@ -49,13 +49,15 @@ extra:
 
 The surrounding metadata uses the shared fivsevn core schema. The existing `site-post-v1` profile currently restricts modules to Flux, Savour and Fieldlog; Roll therefore uses an explicit local `roll-post-v1` extension with ordered images or video IDs, rather than changing the shared upstream repository or claiming compliance with a profile that excludes Roll.
 
-The builder retains original photo bytes and creates WebP display derivatives in `_site/` for still images over 1600 pixels. Group photographs link to the original file. Bygone photographs have no links and no separate post pages. Editing `extra.images` changes the order; directory listing and filename order are never used to curate a group.
+The builder retains original photo bytes and creates WebP display derivatives in `_site/` for still images over 1600 pixels. Group photographs link to the original file. Bygone photographs have no links and no separate post pages. Editing `extra.images` changes the order; directory listing and filename order are never used to curate a group. Year/month folders only organize the repository: public `/stills/<group>/` pages and `/stills/<group>/assets/` addresses remain unchanged. `migration/stills-paths.json` records the archive moves.
 
 Bygone retains the original photo cards, dates, captions and 27-card pagination. Reviewed card metadata lives in `site-data/bygone.json`; add its display metadata when adding a photograph to the collection. All Stills tabs use `roll.fivsevn/stills`, and Motion tabs use `roll.fivsevn/motion`. A Stills detail shows an expanded roll arrow and its viewfinder link returns to the Stills list.
 
 To hide a saved package, change its status or visibility. A clean build removes its page, media, aliases and sitemap entry. Keep the package if it should remain recoverable. Editing the imported archive itself requires an intentional update to its corresponding migration checksum record; the integrity check otherwise reports the change.
 
 ## Motion and YouTube
+
+Motion follows Savour and Fieldlog's dated archive layout: `motion/YYYY/MM/YYYY-MM-DD-HHMMSS-<id>/index.md`. The directory timestamp comes from the saved `extra.published_at` in Asia/Shanghai, so folder names sort chronologically; website pages display entries newest first. Folder moves preserve the original Markdown bytes, IDs and `/motion/<id>/` public links; `migration/motion-paths.json` records the original locations. Newly synced videos use the same layout. Stills keeps its existing portfolio grouping and display order.
 
 The verified channel is [fivsevn](https://www.youtube.com/channel/UCIUoYaFm5uRLY9DEcdFG-VQ), ID `UCIUoYaFm5uRLY9DEcdFG-VQ`. This was checked against official channel HTML, official RSS and the existing assets-repository configuration on 31 October 2026.
 
@@ -66,6 +68,8 @@ The reader checks the full public uploads catalogue, traverses continuation page
 No API key is required for the public source. The optional `YOUTUBE_FIVSEVN_CHANNEL_ID` GitHub Secret must match the reviewed ID. If an authenticated source is introduced later, use GitHub Secrets and keep credentials out of content and browser code. No WordPress password, WordPress write operation or old-site publishing workflow is used here.
 
 The original Motion player, room frame, pagination, title links and decorative comment feed are retained. On the source page, the heart and “Drop a comment…” are decorative text, not a live comment form; this migration preserves that behavior. The new title links open local Motion detail pages.
+
+Write optional Motion text in the body of its `index.md`, after the closing frontmatter `---`. Paragraphs, emphasis, headings, lists, links, code and tables are rendered as author messages at the top of COMMENT FEED, above the existing room comments. Empty bodies add no message. The publication time and saved author supply the message timestamp and name; there is no separate text database. The same text appears in the list and detail room. Motion detail pages show only the room, with LEAVE ROOM returning to `/motion/`.
 
 ## Build and verify
 

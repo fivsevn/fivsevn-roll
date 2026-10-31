@@ -4,3 +4,4 @@ jsonschema==4.26.0
 Pillow==13.0.0
 requests==2.34.2
 feedparser==6.0.14
+Markdown==3.11.2

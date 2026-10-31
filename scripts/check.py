@@ -54,6 +54,7 @@ def check(root=ROOT,base_path=''):
                 cards=collection_page.select('li.wp-block-post')
                 if len(cards)!=len(expected[(number-1)*page_size:number*page_size]):errors.append(f'Bygone page size: {number}')
                 if any(card.select('a') for card in cards):errors.append(f'Bygone card links: {number}')
+                if collection_page.select('.wp-block-post-comments-count'):errors.append(f'Bygone comment count: {number}')
                 images.extend(collection_page.select('li.wp-block-post figure img'))
         else:
             images=page.select('.roll-photos img')
@@ -65,6 +66,12 @@ def check(root=ROOT,base_path=''):
         for image,item in zip(images,expected):
             name=Path(unquote(urlparse(image['src']).path)).name;original=Path(item['file']).name
             if name not in {original,str(Path(original).with_suffix('.display.webp'))}:errors.append(f"Image ordering: {p['id']}: {name}")
+    for p in posts['motion']:
+        if not public(p):continue
+        page=BeautifulSoup((out/'motion'/p['id']/'index.html').read_text(),'html.parser')
+        leave=page.find('a',string='LEAVE ROOM')
+        if not leave or leave.get('href')!=base_path+'/motion/':errors.append(f"Leave Motion room: {p['id']}")
+        if any(a.get_text() in {'HOME','◁ motion'} and not a.find_parent('li') for a in page.select('a')):errors.append(f"Extra Motion footer navigation: {p['id']}")
     draft_hashes={r['sha256'] for r in manifest['files'] if r['status']=='needs-review' and Path(r['source_path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'}}
     for p in files:
         if p.suffix.lower() in {'.jpg','.jpeg','.png','.webp'} and sha(p) in draft_hashes:errors.append(f'Draft bytes leaked: {p}')

@@ -35,7 +35,6 @@ def render_pages(root, post, rendered_photos, template):
             stamp = card.select_one('time')
             stamp['datetime'] = record['published_at']
             stamp.string = record['display_date']
-            card.select_one('.wp-block-post-comments-count').string = record['comment_count']
             if card.select('a'):
                 raise ValueError('Bygone cards must not link to individual photos or posts')
             listing.append(card)
