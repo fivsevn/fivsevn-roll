@@ -3,6 +3,7 @@ from tempfile import TemporaryDirectory
 import shutil
 import sys
 import unittest
+import json
 from bs4 import BeautifulSoup
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
@@ -38,10 +39,28 @@ class MotionRoomTests(unittest.TestCase):
         self.assertEqual('拍摄记录',messages[0].strong.get_text())
         self.assertEqual(self.post['extra']['author'],messages[0].select_one('.roll-comment-author').get_text())
         self.assertLess(str(feed).index('拍摄记录'),str(feed).index('guest_507'))
-        self.assertEqual('/preview/motion/',page.find('a',string='LEAVE ROOM')['href'])
+        self.assertEqual('/preview/motion/#'+self.post['id'],page.find('a',string='LEAVE ROOM')['href'])
         self.assertFalse(any(a.get_text() in {'HOME','◁ motion'} and not a.find_parent('li') for a in page.select('a')))
         listing=BeautifulSoup((self.root/'_site/motion/index.html').read_text(),'html.parser')
         self.assertEqual(2,len(listing.select('.roll-authored-message')))
+
+    def test_detail_fallback_returns_to_its_current_list_page_and_card(self):
+        posts=load_posts(ROOT)['motion'][:2]
+        for post in posts:
+            data={k:v for k,v in post.items() if not k.startswith('_')}
+            write_post(motion_path(self.root,data['id'],data['extra']['published_at']),data)
+        config_path=self.root/'site-data/youtube.json'
+        config=json.loads(config_path.read_text());config['page_size']=1
+        config_path.write_text(json.dumps(config))
+        build(self.root,base_path='/preview')
+        page=BeautifulSoup((self.root/'_site/motion'/posts[1]['id']/'index.html').read_text(),'html.parser')
+        self.assertEqual('/preview/motion/page/2/#'+posts[1]['id'],page.select_one('[data-motion-return]')['href'])
+        self.assertIn('roll-motion-detail',page.body['class'])
+        navigation=json.loads(page.select_one('#motion-navigation-config').string)
+        self.assertEqual('/preview/motion/page/2/',navigation['post_pages'][posts[1]['id']])
+        listing=BeautifulSoup((self.root/'_site/motion/page/2/index.html').read_text(),'html.parser')
+        self.assertEqual(posts[1]['id'],listing.select_one('[data-motion-room]')['id'])
+        self.assertEqual('/preview/motion/'+posts[1]['id']+'/',listing.select_one('[data-motion-open]')['href'])
 
     def test_empty_body_has_no_placeholder_and_hidden_text_is_not_published(self):
         page=self.render()
