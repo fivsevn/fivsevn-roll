@@ -1,8 +1,13 @@
-"""Compare the deployed receipt and every public file with this build."""
+"""Compare the deployed receipt and every served public file with this build."""
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import quote
 import argparse,hashlib,json,time,requests
 from content import ROOT
+
+# This root-level build marker is omitted by the Pages artifact upload. It is
+# still covered by receipt equality, but is not a public HTTP resource. Keep
+# this exact allowlist: CNAME and any other dotfiles must still be verified.
+PAGES_CONTROL_FILES = frozenset({'.nojekyll'})
 
 
 def verify(url,root=ROOT):
@@ -16,13 +21,19 @@ def verify(url,root=ROOT):
         time.sleep(10)
     def check(item):
         path,expected=item
+        failure = 'no response'
         for attempt in range(3):
-            r=requests.get(url.rstrip('/')+'/'+quote(path,safe='/'),timeout=45)
-            if r.status_code==200 and hashlib.sha256(r.content).hexdigest()==expected:return
+            try:
+                r=requests.get(url.rstrip('/')+'/'+quote(path,safe='/'),timeout=45)
+                if r.status_code==200 and hashlib.sha256(r.content).hexdigest()==expected:return
+                failure = f'HTTP {r.status_code}' if r.status_code != 200 else 'content hash mismatch'
+            except requests.RequestException as exc:
+                failure = type(exc).__name__
             if attempt<2:time.sleep(2)
-        raise RuntimeError(f'Live file mismatch: {path} ({r.status_code})')
-    with ThreadPoolExecutor(max_workers=8) as pool:list(pool.map(check,receipt['files'].items()))
-    print(f"Verified {len(receipt['files'])} live files at {url}; {receipt['fingerprint']}")
+        raise RuntimeError(f'Live file mismatch: {path} ({failure})')
+    public_files = {path: sha for path, sha in receipt['files'].items() if path not in PAGES_CONTROL_FILES}
+    with ThreadPoolExecutor(max_workers=8) as pool:list(pool.map(check,public_files.items()))
+    print(f"Verified receipt and {len(public_files)} live files at {url}; {receipt['fingerprint']}")
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--url',default='https://roll.fivsevn.com');verify(p.parse_args().url)
