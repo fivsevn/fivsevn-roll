@@ -1,0 +1,30 @@
+name: Check Roll
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Restore reviewed migration files for the first branch check
+        if: hashFiles('migration/PENDING') != ''
+        run: python scripts/restore_assets.py
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/build.py
+      - run: python scripts/check.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roll-site-preview
+          path: _site
+          include-hidden-files: true
+          retention-days: 7

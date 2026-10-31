@@ -1,0 +1,67 @@
+name: Build and deploy Roll
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['drafts/**', 'migration/**', 'README.md', 'docs/**']
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      sync_youtube:
+        description: Fetch new public YouTube uploads
+        type: boolean
+        default: false
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: roll-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Verify tests before importing content
+        run: python -m unittest discover -s tests -v
+      - name: Append new verified YouTube uploads
+        if: github.event_name == 'schedule' || inputs.sync_youtube == true
+        env:
+          YOUTUBE_FIVSEVN_CHANNEL_ID: ${{ secrets.YOUTUBE_FIVSEVN_CHANNEL_ID }}
+        run: python scripts/sync_youtube.py
+      - id: pages
+        uses: actions/configure-pages@v5
+      - run: python scripts/build.py --base-path "${{ steps.pages.outputs.base_path }}"
+      - run: python scripts/check.py --base-path "${{ steps.pages.outputs.base_path }}"
+      - name: Save new video packages without overwriting concurrent edits
+        run: |
+          git fetch origin main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- motion
+          if ! git diff --cached --quiet; then
+            git commit -m 'publish: Import verified YouTube uploads'
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify all public page and media bytes
+        run: python scripts/verify_live.py --url "${{ steps.deployment.outputs.page_url }}"
