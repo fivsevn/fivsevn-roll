@@ -25,6 +25,9 @@ def build(root=ROOT, base_path=''):
     if out.exists(): shutil.rmtree(out)
     out.mkdir()
     shutil.copytree(root/'site-assets', out/'site-assets')
+    if base_path:
+        for css in (out/'site-assets').glob('*.css'):
+            css.write_text(css.read_text().replace("url('/site-assets/", "url('"+base_path+"/site-assets/").replace('url("/site-assets/', 'url("'+base_path+'/site-assets/'))
     # Explicit site-assets scope. Source metadata, migration records and drafts are never copied.
     for p in (out/'site-assets').rglob('*'):
         if p.is_symlink() or p.is_file() and p.suffix.lower() not in {'.css','.js','.woff2','.woff','.ttf','.webp','.png','.svg','.ico'}:
@@ -67,6 +70,8 @@ def build(root=ROOT, base_path=''):
         return fragment.div
     stills=[p for p in posts['stills'] if p['extra'].get('mode')!='collection']
     page=template('stills.html');ul=page.select_one('ul.wp-block-post-template')
+    if not any(p['id']=='bygone' for p in posts['stills']):
+        for link in page.select('a[href="/stills/bygone/"]'):link.parent.decompose()
     for post in stills:ul.append(list_item(post))
     write('/stills/','Stills','stills',page)
     for post in posts['stills']:
