@@ -7,6 +7,7 @@ from urllib.parse import urlparse, quote
 import argparse, hashlib, json, re, shutil
 from PIL import Image, ImageOps
 from content import ROOT, load_posts, safe_asset
+from bygone import render_pages as bygone_pages
 
 
 def soup(text):
@@ -38,16 +39,24 @@ def build(root=ROOT, base_path=''):
     def url(path):return base_path+path
     def template(name):return soup((root/'templates'/name).read_text())
     def write(route,title,kind,body):
+        frame=body.select_one('.wp-site-blocks > .wp-block-group > .wp-block-group')
+        if frame:
+            frame['class']=frame.get('class',[])+['roll-page-frame']
+            column=frame.find('div',class_='wp-block-group',recursive=False)
+            if column:column['class']=column.get('class',[])+['roll-page-column']
         for element in body.select('[href], [src]'):
             for attr in ('href','src'):
                 value=element.get(attr,'')
                 if value.startswith('/') and not value.startswith('//'):element[attr]=url(value)
-        page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} · roll.fivsevn</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{url('/site-assets/'+kind+'.css')}"><link rel="stylesheet" href="{url('/site-assets/roll.css')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}">{body}</body></html>'''
+        section='motion' if kind=='motion' else 'stills'
+        page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>roll.fivsevn/{section}</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{url('/site-assets/'+kind+'.css')}"><link rel="stylesheet" href="{url('/site-assets/roll.css')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}">{body}</body></html>'''
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page)
         routes.append(route)
-    def list_item(post):
+    def list_item(post,expanded=False):
         s=template('stills-item.html');a=s.select_one('h2 a');a.string=post['title'];a['href']='/stills/'+post['id']+'/'
         a['target']='_blank';a['rel']='noopener'
+        if expanded:
+            s.select_one('p.wp-block-paragraph').string='▽'
         time=s.select_one('time');time['datetime']=post['extra']['published_at'];time.string=post['extra'].get('display_date',post['extra']['published_at'][:10])
         s.li['class']=['wp-block-post'];return s.li
     def photos(post,collection=False):
@@ -76,10 +85,11 @@ def build(root=ROOT, base_path=''):
     write('/stills/','Stills','stills',page)
     for post in posts['stills']:
         if post['extra'].get('mode')=='collection':
-            page=template('bygone.html');page.select_one('.wp-block-query').replace_with(photos(post,True));page.select_one('.entry-content').append(template('rights-notice.html'))
-            write('/stills/'+post['id']+'/',post['title'],'bygone',page)
+            for route,page in bygone_pages(root,post,photos(post,True),template):
+                write(route,post['title'],'bygone',page)
             continue
-        page=template('stills.html');ul=page.select_one('ul.wp-block-post-template');ul.append(list_item(post))
+        page=template('stills.html');ul=page.select_one('ul.wp-block-post-template');ul.append(list_item(post,expanded=True))
+        back=page.find('a',string='viewfinder');back['href']='/stills/';back['title']='Back to Stills'
         # Detail uses the unchanged camera/header/current roll row, followed immediately by the group.
         for banner in page.select('a[href="/stills/bygone/"]'):banner.parent.decompose()
         header=page.select_one('.entry-content').find('div',recursive=False)
@@ -122,7 +132,8 @@ def build(root=ROOT, base_path=''):
         write('/motion/'+post['id']+'/',post['title'],'motion',page)
     def redirect(route,target):
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);link=url(target)
-        dest.write_text(f'<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={escape(link)}"><link rel="canonical" href="https://roll.fivsevn.com{target}"><title>Roll</title><a href="{escape(link)}">Continue to Roll</a></html>')
+        section='motion' if target.startswith('/motion/') else 'stills'
+        dest.write_text(f'<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={escape(link)}"><link rel="canonical" href="https://roll.fivsevn.com{target}"><title>roll.fivsevn/{section}</title><a href="{escape(link)}">Continue to Roll</a></html>')
     redirect('/','/stills/')
     for kind in posts:
         for post in posts[kind]:

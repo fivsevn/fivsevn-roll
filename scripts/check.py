@@ -25,6 +25,9 @@ def check(root=ROOT,base_path=''):
         if any(x in text for x in ('/drafts/','footer.rs','cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets')):errors.append(f'Forbidden public reference: {rel}')
         if p.suffix!='.html':continue
         s=BeautifulSoup(text,'html.parser')
+        if rel.startswith(('stills/','motion/')):
+            section=rel.split('/')[0]
+            if not s.title or s.title.get_text()!=f'roll.fivsevn/{section}':errors.append(f'Page title: {rel}')
         for e in s.select('[href],[src]'):
             for a in ('href','src'):
                 v=e.get(a,'');u=urlparse(v)
@@ -41,12 +44,27 @@ def check(root=ROOT,base_path=''):
     for p in posts['stills']:
         if not public(p):continue
         page=BeautifulSoup((out/'stills'/p['id']/'index.html').read_text(),'html.parser')
-        images=page.select('.roll-photos img');expected=p['extra']['images']
+        expected=p['extra']['images']
+        if p['extra'].get('mode')=='collection':
+            config=json.loads((root/'site-data/bygone.json').read_text())
+            page_size=config['page_size'];images=[]
+            for number in range(1,max(1,(len(expected)+page_size-1)//page_size)+1):
+                file=out/'stills'/p['id']/('index.html' if number==1 else f'page/{number}/index.html')
+                collection_page=BeautifulSoup(file.read_text(),'html.parser')
+                cards=collection_page.select('li.wp-block-post')
+                if len(cards)!=len(expected[(number-1)*page_size:number*page_size]):errors.append(f'Bygone page size: {number}')
+                if any(card.select('a') for card in cards):errors.append(f'Bygone card links: {number}')
+                images.extend(collection_page.select('li.wp-block-post figure img'))
+        else:
+            images=page.select('.roll-photos img')
+            arrow=page.select_one('li.wp-block-post p.wp-block-paragraph')
+            if not arrow or arrow.get_text()!='▽':errors.append(f"Expanded roll arrow: {p['id']}")
+            back=page.find('a',string='viewfinder')
+            if not back or back.get('href')!=base_path+'/stills/':errors.append(f"Back to Stills: {p['id']}")
         if len(images)!=len(expected):errors.append(f"Image count: {p['id']}")
         for image,item in zip(images,expected):
             name=Path(unquote(urlparse(image['src']).path)).name;original=Path(item['file']).name
             if name not in {original,str(Path(original).with_suffix('.display.webp'))}:errors.append(f"Image ordering: {p['id']}: {name}")
-        if p['extra'].get('mode')=='collection' and page.select('.roll-photos a'):errors.append('Bygone images must not link to individual posts')
     draft_hashes={r['sha256'] for r in manifest['files'] if r['status']=='needs-review' and Path(r['source_path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'}}
     for p in files:
         if p.suffix.lower() in {'.jpg','.jpeg','.png','.webp'} and sha(p) in draft_hashes:errors.append(f'Draft bytes leaked: {p}')
