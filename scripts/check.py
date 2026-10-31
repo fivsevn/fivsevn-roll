@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse,unquote
 import argparse,hashlib,json
 from content import ROOT,load_posts,public
+from build import stills_page_size
 
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -11,6 +12,11 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def check(root=ROOT,base_path=''):
     posts=load_posts(root,True);out=root/'_site';errors=[]
+    stills=[p for p in posts['stills'] if public(p) and p['extra'].get('mode')!='collection']
+    stills_size=stills_page_size(root);stills_count=max(1,(len(stills)+stills_size-1)//stills_size)
+    stills_routes=['/stills/' if number==1 else f'/stills/page/{number}/' for number in range(1,stills_count+1)]
+    stills_listing_files={route.strip('/')+'/index.html' for route in stills_routes}
+    stills_pages={post['id']:stills_routes[index//stills_size] for index,post in enumerate(stills)}
     manifest=json.loads((root/'migration/assets.json').read_text())
     for row in manifest['files']:
         path=root/row['destination']
@@ -38,9 +44,26 @@ def check(root=ROOT,base_path=''):
                     path=path[len(base_path):]
                 target=out/path.lstrip('/') if path.startswith('/') else p.parent/path
                 if not target.exists():errors.append(f'Broken link: {rel}: {v}')
-        if rel.startswith('stills/') and rel.endswith('/index.html') and rel!='stills/index.html':
+        if rel.startswith('stills/') and rel.endswith('/index.html') and rel not in stills_listing_files:
             n=s.select_one('#rights-notice');expected=json.loads((root/'migration/rights-notice.json').read_text())['paragraphs']
             if not n or [x.get_text() for x in n.select('p')]!=expected:errors.append(f'Rights Notice changed: {rel}')
+    for index,route in enumerate(stills_routes):
+        listing_path=out/route.strip('/')/'index.html'
+        if not listing_path.is_file():
+            errors.append(f'Missing Stills list page: {route}');continue
+        listing=BeautifulSoup(listing_path.read_text(),'html.parser')
+        actual=[a.get('href') for a in listing.select('ul.wp-block-post-template h2 a')]
+        expected=[base_path+'/stills/'+p['id']+'/' for p in stills[index*stills_size:(index+1)*stills_size]]
+        if actual!=expected:errors.append(f'Stills portfolio ordering: {route}')
+        pager=listing.select_one('.roll-stills-pagination')
+        if stills_count==1:
+            if pager:errors.append('Single-page Stills must not show pagination')
+        elif not pager or [a.get('href') for a in pager.select('a.page-numbers')]!=[base_path+value for value in stills_routes] or [a.get_text() for a in pager.select('[aria-current="page"]')]!=[str(index+1)]:
+            errors.append(f'Stills pagination: {route}')
+        if pager:
+            previous=pager.select_one('[rel="prev"]');following=pager.select_one('[rel="next"]')
+            if (index>0 and (not previous or previous.get('href')!=base_path+stills_routes[index-1])) or (index==0 and previous):errors.append(f'Stills previous page: {route}')
+            if (index<stills_count-1 and (not following or following.get('href')!=base_path+stills_routes[index+1])) or (index==stills_count-1 and following):errors.append(f'Stills next page: {route}')
     for p in posts['stills']:
         if not public(p):continue
         page=BeautifulSoup((out/'stills'/p['id']/'index.html').read_text(),'html.parser')
@@ -61,7 +84,7 @@ def check(root=ROOT,base_path=''):
             arrow=page.select_one('li.wp-block-post p.wp-block-paragraph')
             if not arrow or arrow.get_text()!='▽':errors.append(f"Expanded roll arrow: {p['id']}")
             back=page.find('a',string='viewfinder')
-            if not back or back.get('href')!=base_path+'/stills/':errors.append(f"Back to Stills: {p['id']}")
+            if not back or back.get('href')!=base_path+stills_pages[p['id']]:errors.append(f"Back to Stills: {p['id']}")
         if len(images)!=len(expected):errors.append(f"Image count: {p['id']}")
         for image,item in zip(images,expected):
             name=Path(unquote(urlparse(image['src']).path)).name;original=Path(item['file']).name

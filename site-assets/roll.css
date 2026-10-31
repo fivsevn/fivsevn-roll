@@ -10,8 +10,15 @@
 .roll-photos a { display: block; }
 .roll-stills #rights-notice { margin-top: 48px; margin-bottom: 60px; }
 .roll-stills #rights-notice p { width: 100%; }
-.roll-pagination { display: flex; flex-wrap: wrap; gap: 20px; margin: 25px 0 60px; font: 11px "Courier Prime", monospace; }
-.roll-pagination [aria-current="page"] { color: white; text-decoration: none; }
+.roll-pagination { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .67rem; width: 100%; margin: 20px 0; font: 10px/1.3 "Courier Prime", monospace; }
+.roll-pagination a, .roll-pagination a:visited, .roll-pagination [aria-current="page"] { color: var(--wp--preset--color--primary); }
+.roll-pagination a { text-decoration: underline; }
+.roll-pagination [aria-current="page"], .roll-pagination a[aria-label] { text-decoration: none; }
+.roll-stills-paged-list { width: 100%; }
+.roll-bygone-pagination .wp-block-query-pagination-numbers { display: flex; align-items: center; gap: .67rem; }
+.roll-bygone-pagination :is(.wp-block-query-pagination-previous-arrow, .wp-block-query-pagination-next-arrow) { margin: 0; }
+.roll-motion-home { margin-top: 24px; text-align: left; }
+.roll-motion-home p { margin: 0; }
 .roll-comment-feed > .roll-authored-message { display: grid; grid-template-columns: auto auto auto minmax(0, 1fr); gap: 7px; align-items: baseline; width: 100%; font: inherit; }
 .roll-authored-message > time { color: var(--wp--preset--color--contrast); font-size: 11px; }
 .roll-comment-author { color: var(--wp--preset--color--secondary); overflow-wrap: anywhere; }

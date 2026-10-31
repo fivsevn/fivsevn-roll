@@ -19,10 +19,19 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def stills_page_size(root):
+    config=json.loads((root/'site-data/stills.json').read_text())
+    size=config.get('page_size') if isinstance(config,dict) else None
+    if type(size) is not int or size < 1:
+        raise ValueError('Stills page_size must be a positive integer')
+    return size
+
+
 def build(root=ROOT, base_path=''):
     if base_path and not re.fullmatch(r'/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*', base_path):
         raise ValueError('Invalid base path')
     posts = load_posts(root)
+    stills_size=stills_page_size(root)
     out = root/'_site'
     if out.exists(): shutil.rmtree(out)
     out.mkdir()
@@ -59,6 +68,17 @@ def build(root=ROOT, base_path=''):
         page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>roll.fivsevn/{section}</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{stylesheet(kind)}"><link rel="stylesheet" href="{stylesheet('roll')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}{detail_class}">{body}{scripts}</body></html>'''
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page)
         routes.append(route)
+    def pagination(page,page_routes,current,label,extra_class=''):
+        nav=page.new_tag('nav',attrs={'class':('roll-pagination '+extra_class).strip(),'aria-label':label})
+        if current>1:
+            link=page.new_tag('a',attrs={'href':page_routes[current-2],'rel':'prev','aria-label':'Previous Page'});link.string='«';nav.append(link)
+        for number,route in enumerate(page_routes,start=1):
+            link=page.new_tag('a',attrs={'href':route,'class':'page-numbers'});link.string=str(number)
+            if number==current:link['aria-current']='page'
+            nav.append(link)
+        if current<len(page_routes):
+            link=page.new_tag('a',attrs={'href':page_routes[current],'rel':'next','aria-label':'Next Page'});link.string='»';nav.append(link)
+        return nav
     def list_item(post,expanded=False):
         s=template('stills-item.html');a=s.select_one('h2 a');a.string=post['title'];a['href']='/stills/'+post['id']+'/'
         a['target']='_blank';a['rel']='noopener'
@@ -85,18 +105,28 @@ def build(root=ROOT, base_path=''):
             target.append(fig)
         return fragment.div
     stills=[p for p in posts['stills'] if p['extra'].get('mode')!='collection']
-    page=template('stills.html');ul=page.select_one('ul.wp-block-post-template')
-    if not any(p['id']=='bygone' for p in posts['stills']):
-        for link in page.select('a[href="/stills/bygone/"]'):link.parent.decompose()
-    for post in stills:ul.append(list_item(post))
-    write('/stills/','Stills','stills',page)
+    stills_count=max(1,(len(stills)+stills_size-1)//stills_size)
+    def stills_route(number):return '/stills/' if number==1 else f'/stills/page/{number}/'
+    stills_pages={post['id']:stills_route(index//stills_size+1) for index,post in enumerate(stills)}
+    for number in range(1,stills_count+1):
+        page=template('stills.html');ul=page.select_one('ul.wp-block-post-template')
+        if not any(p['id']=='bygone' for p in posts['stills']):
+            for link in page.select('a[href="/stills/bygone/"]'):link.parent.decompose()
+        for post in stills[(number-1)*stills_size:number*stills_size]:ul.append(list_item(post))
+        if stills_count>1:
+            ul.parent['class']=ul.parent.get('class',[])+['roll-stills-paged-list']
+            placeholder=ul.parent.find('div',class_='wp-elements-35',recursive=False)
+            if placeholder and not placeholder.find(True) and not placeholder.get_text(strip=True):placeholder.decompose()
+            nav=pagination(page,[stills_route(target) for target in range(1,stills_count+1)],number,'Stills pages','roll-stills-pagination')
+            ul.insert_after(nav)
+        write(stills_route(number),'Stills','stills',page)
     for post in posts['stills']:
         if post['extra'].get('mode')=='collection':
             for route,page in bygone_pages(root,post,photos(post,True),template):
                 write(route,post['title'],'bygone',page)
             continue
         page=template('stills.html');ul=page.select_one('ul.wp-block-post-template');ul.append(list_item(post,expanded=True))
-        back=page.find('a',string='viewfinder');back['href']='/stills/';back['title']='Back to Stills'
+        back=page.find('a',string='viewfinder');back['href']=stills_pages[post['id']];back['title']='Back to Stills'
         # Detail uses the unchanged camera/header/current roll row, followed immediately by the group.
         for banner in page.select('a[href="/stills/bygone/"]'):banner.parent.decompose()
         header=page.select_one('.entry-content').find('div',recursive=False)
@@ -141,11 +171,7 @@ def build(root=ROOT, base_path=''):
     for n in range(1,pages+1):
         page=template('motion.html');ul=page.select_one('ul.wp-block-post-template')
         for post in motion[(n-1)*page_size:n*page_size]:ul.append(card(post))
-        nav=page.new_tag('nav',attrs={'class':'roll-pagination','aria-label':'Motion pages'})
-        for i in range(1,pages+1):
-            a=page.new_tag('a',attrs={'href':'/motion/' if i==1 else f'/motion/page/{i}/'});a.string=str(i)
-            if i==n:a['aria-current']='page'
-            nav.append(a)
+        nav=pagination(page,['/motion/' if i==1 else f'/motion/page/{i}/' for i in range(1,pages+1)],n,'Motion pages')
         ul.parent.append(nav);write('/motion/' if n==1 else f'/motion/page/{n}/','Motion','motion',page)
     for post in motion:
         page=template('motion.html');page.select_one('ul.wp-block-post-template').append(card(post,detail=True))
