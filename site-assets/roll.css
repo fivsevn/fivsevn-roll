@@ -9,6 +9,5 @@
 .roll-pagination [aria-current="page"] { color: white; text-decoration: none; }
 a:focus-visible { outline: 1px solid #58e8b7; outline-offset: 4px; }
 @media (max-width: 480px) {
-  .roll-stills li.wp-block-post > .is-layout-flex { column-gap: 7px; row-gap: 5px; }
   .roll-photos { gap: 16px; }
 }

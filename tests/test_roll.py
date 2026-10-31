@@ -20,7 +20,7 @@ class PublishingTests(unittest.TestCase):
         self.assertTrue(safe_asset(package,'assets/1.JPG').is_file())
 
     def test_legacy_group_order_and_draft_boundary(self):
-        posts=load_posts();groups=[p for p in posts['stills'] if p['id']!='bygone']
+        posts=load_posts(include_hidden=True);groups=[p for p in posts['stills'] if p['extra'].get('legacy_id')]
         self.assertEqual(17,len(groups));self.assertEqual(266,sum(len(p['extra']['images']) for p in groups))
         self.assertEqual(['assets/1.JPG','assets/2.JPG','assets/3.JPG'],groups[0]['extra']['images'] and [i['file'] for i in groups[0]['extra']['images']])
         self.assertEqual(136,len(next(p for p in posts['stills'] if p['id']=='bygone')['extra']['images']))
@@ -37,7 +37,9 @@ class PublishingTests(unittest.TestCase):
             data,_=read_post(package/'index.md');data['status']='draft';write_post(package/'index.md',data)
             (root/'drafts').mkdir();(root/'drafts/PRIVATE.txt').write_text('DRAFT-CANARY')
             (root/'_site').mkdir();(root/'_site/stale.jpg').write_bytes(b'stale')
-            build(root)
+            build(root,base_path='/fivsevn-roll')
+            self.assertIn("url('/fivsevn-roll/site-assets/fonts/",(root/'_site/site-assets/stills.css').read_text())
+            self.assertNotIn('href="/fivsevn-roll/stills/bygone/"',(root/'_site/stills/index.html').read_text())
             self.assertFalse((root/'_site/stills/w-ren-min-rd-m-e').exists())
             self.assertFalse((root/'_site/2026/06/01/w-ren-min-rd-m-e').exists())
             self.assertFalse((root/'_site/drafts').exists());self.assertFalse((root/'_site/stale.jpg').exists())
