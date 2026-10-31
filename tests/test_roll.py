@@ -1,7 +1,7 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
-import copy,json,shutil,sys,unittest
+import copy,json,shutil,sys,unittest,subprocess
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from content import ROOT,read_post,write_post,public,safe_asset,load_posts
 from sync_youtube import plan,existing_ids,sync,Video
@@ -12,6 +12,13 @@ class PublishingTests(unittest.TestCase):
     def test_public_requires_both_controls(self):
         for data in [{},{'status':'published'},{'visibility':'public'},{'status':'draft','visibility':'public'},{'status':'published','visibility':'private'}]:self.assertFalse(public(data))
         self.assertTrue(public({'status':'published','visibility':'public'}))
+
+    def test_all_manifest_files_are_eligible_for_git_archiving(self):
+        rows=json.loads((ROOT/'migration/assets.json').read_text())['files']
+        paths='\0'.join(r['destination'] for r in rows)+'\0'
+        result=subprocess.run(['git','check-ignore','--no-index','-z','--stdin'],input=paths.encode(),cwd=ROOT,capture_output=True)
+        self.assertIn(result.returncode,(0,1))
+        self.assertEqual(b'',result.stdout, 'Reviewed originals must not be silently ignored by Git')
 
     def test_asset_paths_cannot_escape_package(self):
         package=ROOT/'stills/w-ren-min-rd-m-e'
