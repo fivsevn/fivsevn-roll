@@ -31,7 +31,7 @@ The 91 draft photographs have no confirmed publication evidence in the audited S
 
 Stills keeps the original camera image, `STILLS / ROLL_057`, viewfinder, load-roll typography and listing. Detail pages retain this header and the current roll row, then the ordered photographs and exact Rights Notice. The complete old `footer.rs` block is omitted from every new page at the user's request.
 
-Rights Notice was extracted directly from the W Ren min Rd.(M) E page and visually checked against the supplied screenshot. `rights-notice.json` preserves all five paragraph strings; `templates/rights-notice.html` is their display source. Bygone retains its banner and presents only photographs, followed by the same notice.
+Rights Notice was extracted directly from the W Ren min Rd.(M) E page and visually checked against the supplied screenshot. `rights-notice.json` preserves all five paragraph strings; `templates/rights-notice.html` is their display source. Bygone retains its original banner, photo cards, dates, captions, pagination and notice, with all individual photo/post links removed. Its 136 photographs retain the original six page divisions (27/27/27/27/27/1); reviewed display metadata is in `site-data/bygone.json`.
 
 Motion uses the legacy card markup and CSS. The comment feed, heart and input-looking strip were static decoration in the source HTML; no live comment service was present. YouTube remains an external player, so playback depends on YouTube access and video embedding permissions.
 

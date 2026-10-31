@@ -51,6 +51,8 @@ The surrounding metadata uses the shared fivsevn core schema. The existing `site
 
 The builder retains original photo bytes and creates WebP display derivatives in `_site/` for still images over 1600 pixels. Group photographs link to the original file. Bygone photographs have no links and no separate post pages. Editing `extra.images` changes the order; directory listing and filename order are never used to curate a group.
 
+Bygone retains the original photo cards, dates, captions and 27-card pagination. Reviewed card metadata lives in `site-data/bygone.json`; add its display metadata when adding a photograph to the collection. All Stills tabs use `roll.fivsevn/stills`, and Motion tabs use `roll.fivsevn/motion`. A Stills detail shows an expanded roll arrow and its viewfinder link returns to the Stills list.
+
 To hide a saved package, change its status or visibility. A clean build removes its page, media, aliases and sitemap entry. Keep the package if it should remain recoverable. Editing the imported archive itself requires an intentional update to its corresponding migration checksum record; the integrity check otherwise reports the change.
 
 ## Motion and YouTube
