@@ -1,7 +1,8 @@
 """Compare the deployed receipt and every served public file with this build."""
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
 from urllib.parse import quote
-import argparse,hashlib,json,time,requests
+import argparse,hashlib,json,os,tempfile,time,requests
 from content import ROOT
 
 # This root-level build marker is omitted by the Pages artifact upload. It is
@@ -11,7 +12,10 @@ PAGES_CONTROL_FILES = frozenset({'.nojekyll'})
 
 
 def verify(url,root=ROOT):
-    receipt=json.loads((root/'_site/build-receipt.json').read_text())
+    marker=root/'_site/.verified-live.json'
+    marker.unlink(missing_ok=True)
+    receipt_bytes=(root/'_site/build-receipt.json').read_bytes()
+    receipt=json.loads(receipt_bytes)
     for attempt in range(12):
         try:
             r=requests.get(url.rstrip('/')+'/build-receipt.json',params={'v':receipt['fingerprint']},timeout=30);r.raise_for_status()
@@ -33,6 +37,13 @@ def verify(url,root=ROOT):
         raise RuntimeError(f'Live file mismatch: {path} ({failure})')
     public_files = {path: sha for path, sha in receipt['files'].items() if path not in PAGES_CONTROL_FILES}
     with ThreadPoolExecutor(max_workers=8) as pool:list(pool.map(check,public_files.items()))
+    proof={'version':1,'fingerprint':receipt['fingerprint'],
+           'receipt_sha256':hashlib.sha256(receipt_bytes).hexdigest(),
+           'url':url.rstrip('/'),'verified_at':datetime.now(timezone.utc).isoformat()}
+    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',prefix='.verified-live-',dir=marker.parent,delete=False) as temporary:
+        json.dump(proof,temporary,ensure_ascii=False,indent=2)
+        temporary.write('\n')
+    os.replace(temporary.name,marker)
     print(f"Verified receipt and {len(public_files)} live files at {url}; {receipt['fingerprint']}")
 
 if __name__=='__main__':

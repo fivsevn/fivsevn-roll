@@ -11,12 +11,17 @@ on:
         description: Fetch new public YouTube uploads
         type: boolean
         default: false
+      import_stills:
+        description: Publish currently unprocessed image-inbox files as one Stills group
+        type: boolean
+        default: false
 permissions:
   contents: write
   pages: write
   id-token: write
 concurrency:
   group: roll-pages
+  queue: max
   cancel-in-progress: false
 jobs:
   publish:
@@ -40,6 +45,12 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Verify Motion return navigation
         run: node --test tests/test_motion_navigation.mjs
+      - name: Publish this push's Stills image batch
+        if: github.event_name == 'push'
+        run: python scripts/import_stills.py --event-path "$GITHUB_EVENT_PATH" --stage
+      - name: Publish a manually requested Stills image batch
+        if: github.event_name == 'workflow_dispatch' && inputs.import_stills == true
+        run: python scripts/import_stills.py --manual --stage
       - name: Append new verified YouTube uploads
         if: github.event_name == 'schedule' || inputs.sync_youtube == true
         env:
@@ -49,21 +60,56 @@ jobs:
         uses: actions/configure-pages@v5
       - run: python scripts/build.py --base-path "${{ steps.pages.outputs.base_path }}"
       - run: python scripts/check.py --base-path "${{ steps.pages.outputs.base_path }}"
-      - name: Save new video packages without overwriting concurrent edits
+      - name: Save generated packages without overwriting concurrent edits
         run: |
-          git fetch origin main
-          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # The Stills importer staged only its exact new package and ledger.
           git add -- motion
           if ! git diff --cached --quiet; then
-            git commit -m 'publish: Import verified YouTube uploads'
-            git push origin HEAD:main
+            git commit -m 'publish: Save Stills upload batch and verified YouTube uploads'
           fi
+          for attempt in 1 2 3; do
+            git fetch origin main
+            previous_head=$(git rev-parse HEAD)
+            git rebase FETCH_HEAD
+            if [ "$(git rev-parse HEAD)" != "$previous_head" ]; then
+              python -m unittest discover -s tests -v
+              node --test tests/test_motion_navigation.mjs
+              python scripts/build.py --base-path "${{ steps.pages.outputs.base_path }}"
+              python scripts/check.py --base-path "${{ steps.pages.outputs.base_path }}"
+            fi
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" = 3 ]; then
+              echo '::error::Main kept changing. Rerun this push workflow; its upload batch is preserved in Git history.'
+              exit 1
+            fi
+          done
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
+      - name: Check that this deployment still represents the latest main
+        run: |
+          git fetch origin main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
       - id: deployment
         uses: actions/deploy-pages@v4
       - name: Verify all public page and media bytes
         run: python scripts/verify_live.py --url "${{ steps.deployment.outputs.page_url }}"
+      - name: Clear only image uploads that were verified live
+        run: |
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse FETCH_HEAD)" ]; then
+            echo 'Newer work arrived. The live site is verified; inbox copies are retained for the next run.'
+            exit 0
+          fi
+          python scripts/stills_inbox.py
+          git add -u -- stills/trigger_imgs
+          if ! git diff --cached --quiet; then
+            git commit -m 'publish: Clear verified Stills image inbox copies'
+            if ! git push origin HEAD:main; then
+              echo 'Newer work arrived during cleanup. Remote inbox copies are retained; published originals are safe.'
+            fi
+          fi

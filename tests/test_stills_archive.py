@@ -5,6 +5,7 @@ import json
 import shutil
 import sys
 import unittest
+from urllib.parse import unquote
 
 from PIL import Image
 from bs4 import BeautifulSoup
@@ -42,6 +43,18 @@ class StillsArchiveTests(unittest.TestCase):
         self.assertEqual('stills/2026/05/test-stills/index.md', path.relative_to(self.root).as_posix())
         self.assertEqual('test-stills', load_posts(self.root)['stills'][0]['id'])
 
+    def test_bygone_is_an_independent_collection_outside_the_date_archive(self):
+        path, data = self.save(slug='bygone')
+        data['extra']['mode'] = 'collection'
+        write_post(path, data)
+        self.assertEqual('stills/bygone/index.md', path.relative_to(self.root).as_posix())
+        self.assertEqual('bygone', load_posts(self.root)['stills'][0]['id'])
+        dated = self.root / 'stills/2026/06/bygone'
+        dated.parent.mkdir(parents=True)
+        path.parent.rename(dated)
+        with self.assertRaises(ValueError):
+            load_posts(self.root)
+
     def test_misdated_or_flat_package_cannot_be_silently_skipped(self):
         correct, data = self.save()
         wrong_paths = [self.root / 'stills' / data['id'] / 'index.md',
@@ -75,6 +88,29 @@ class StillsArchiveTests(unittest.TestCase):
         self.assertEqual('/stills/test-stills/assets/sample.png', page.select_one('.roll-photos a')['href'])
         self.assertEqual(original, (output / 'stills/test-stills/assets/sample.png').read_bytes())
         self.assertFalse((output / 'stills/2026').exists())
+
+    def test_same_stem_uploads_do_not_overwrite_photos_or_original_webp(self):
+        path, data = self.save()
+        for folder in ('templates', 'site-assets'):
+            shutil.copytree(ROOT / folder, self.root / folder)
+        shutil.copyfile(ROOT / 'CNAME', self.root / 'CNAME')
+        names = ['photo.jpg', 'photo.png', 'photo.display.webp']
+        colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255)]
+        for name, color in zip(names, colors):
+            Image.new('RGB', (1700, 2) if name != names[-1] else (2, 2), color).save(path.parent / 'assets' / name)
+        data['extra']['images'] = [{'file': 'assets/' + name, 'alt': name} for name in names]
+        write_post(path, data)
+        build(self.root)
+        output = self.root / '_site'
+        page = BeautifulSoup((output / 'stills/test-stills/index.html').read_text(), 'html.parser')
+        sources = [unquote(image['src']).lstrip('/') for image in page.select('.roll-photos img')]
+        self.assertEqual(3, len(set(sources)))
+        for index, source in enumerate(sources):
+            with Image.open(output / source) as image:
+                self.assertGreater(image.convert('RGB').getpixel((0, 0))[index], 200)
+        for name in names:
+            self.assertEqual((path.parent / 'assets' / name).read_bytes(),
+                             (output / 'stills/test-stills/assets' / name).read_bytes())
 
 
 if __name__ == '__main__':

@@ -5,10 +5,11 @@ from bs4 import BeautifulSoup
 from html import escape
 from urllib.parse import urlparse, quote
 import argparse, hashlib, json, re, shutil
+from collections import Counter
 from PIL import Image, ImageOps
 from content import ROOT, load_posts, safe_asset
 from bygone import render_pages as bygone_pages
-from motion_body import render as render_motion_body
+from motion_body import render as render_body
 
 
 def soup(text):
@@ -25,6 +26,22 @@ def stills_page_size(root):
     if type(size) is not int or size < 1:
         raise ValueError('Stills page_size must be a positive integer')
     return size
+
+
+def photo_display_paths(post):
+    """Keep established URLs unless a thumbnail would collide with another file."""
+    originals={'stills/'+post['id']+'/'+item['file'] for item in post['extra']['images']}
+    candidates=Counter(str(Path(path).with_suffix('.display.webp')) for path in originals)
+    reserved=set(originals)|set(candidates)
+    paths={}
+    for path in sorted(originals):
+        display=str(Path(path).with_suffix('.display.webp'))
+        if display in originals or candidates[display]>1:
+            suffix=hashlib.sha256(path.encode()).hexdigest()[:12]
+            display=path+'.'+suffix+'.display.webp'
+            while display in reserved:display=display+'.webp'
+        paths[path]=display;reserved.add(display)
+    return paths
 
 
 def build(root=ROOT, base_path=''):
@@ -88,13 +105,14 @@ def build(root=ROOT, base_path=''):
         s.li['class']=['wp-block-post'];return s.li
     def photos(post,collection=False):
         fragment=soup('<div class="roll-photos"></div>');target=fragment.div
+        display_paths=photo_display_paths(post)
         for n,item in enumerate(post['extra']['images']):
             original=safe_asset(post['_path'].parent,item['file']);rel='stills/'+post['id']+'/'+item['file'];dest=out/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,dest)
             with Image.open(original) as im:
                 width,height=ImageOps.exif_transpose(im).size
                 # Keep originals byte-for-byte; display-only derivatives are disposable.
                 if max(width,height)>1600 and not getattr(im,'is_animated',False):
-                    image=ImageOps.exif_transpose(im);image.thumbnail((1600,1600));rel_display=str(Path(rel).with_suffix('.display.webp'));thumb=out/rel_display
+                    image=ImageOps.exif_transpose(im);image.thumbnail((1600,1600));rel_display=display_paths[rel];thumb=out/rel_display
                     image.save(thumb,'WEBP',quality=88,icc_profile=im.info.get('icc_profile',b''));width,height=image.size
                 else:rel_display=rel
             fig=fragment.new_tag('figure',attrs={'class':'wp-block-image','id':f'photo-{n+1}'})
@@ -103,6 +121,12 @@ def build(root=ROOT, base_path=''):
             else:
                 a=fragment.new_tag('a',attrs={'href':'/'+quote(rel,safe='/'),'aria-label':f"{post['title']} — photo {n+1}, original"});a.append(img);fig.append(a)
             target.append(fig)
+        return fragment.div
+    def stills_body(post):
+        rendered=render_body(post.get('_body',''))
+        if not rendered:return None
+        fragment=soup('<div class="roll-stills-body"></div>')
+        for block in list(soup(rendered).children):fragment.div.append(block)
         return fragment.div
     stills=[p for p in posts['stills'] if p['extra'].get('mode')!='collection']
     stills_count=max(1,(len(stills)+stills_size-1)//stills_size)
@@ -122,7 +146,12 @@ def build(root=ROOT, base_path=''):
         write(stills_route(number),'Stills','stills',page)
     for post in posts['stills']:
         if post['extra'].get('mode')=='collection':
-            for route,page in bygone_pages(root,post,photos(post,True),template):
+            collection_pages=bygone_pages(root,post,photos(post,True),template)
+            for index,(route,page) in enumerate(collection_pages):
+                # Collection notes follow the complete album, once on its final page.
+                if index==len(collection_pages)-1:
+                    body=stills_body(post)
+                    if body:page.select_one('#rights-notice').insert_before(body)
                 write(route,post['title'],'bygone',page)
             continue
         page=template('stills.html');ul=page.select_one('ul.wp-block-post-template');ul.append(list_item(post,expanded=True))
@@ -134,7 +163,10 @@ def build(root=ROOT, base_path=''):
             if not getattr(child,'name',None):continue
             if 'wp-block-spacer' in child.get('class',[]):child.decompose()
             else:break
-        entry=page.select_one('.entry-content');entry.append(photos(post));entry.append(template('rights-notice.html'))
+        entry=page.select_one('.entry-content');entry.append(photos(post))
+        body=stills_body(post)
+        if body:entry.append(body)
+        entry.append(template('rights-notice.html'))
         write('/stills/'+post['id']+'/',post['title'],'stills',page)
     config=json.loads((root/'site-data/youtube.json').read_text());page_size=config['page_size']
     motion=posts['motion'];pages=max(1,(len(motion)+page_size-1)//page_size)
@@ -157,13 +189,13 @@ def build(root=ROOT, base_path=''):
         s.select_one('.wp-block-post-comments-count').string=str(post['extra'].get('comment_count',0))
         if detail:
             leave=s.find('a',string='LEAVE ROOM');leave['href']=motion_pages[post['id']]+'#'+quote(post['id'],safe='');leave['title']='Back to Motion';leave['data-motion-return']=''
-        authored=soup(render_motion_body(post.get('_body','')))
+        authored=soup(render_body(post.get('_body','')) if detail else '')
         feed=s.select_one('.roll-comment-feed')
         for block in reversed(list(authored.children)):
             if not getattr(block,'name',None):continue
             row=s.new_tag('div',attrs={'class':'roll-authored-message'})
             time=s.new_tag('time',attrs={'datetime':post['extra']['published_at']});time.string=stamp.strftime('%H:%M');row.append(time)
-            author=s.new_tag('span',attrs={'class':'roll-comment-author'});author.string=post['extra'].get('author','fivsevn');row.append(author)
+            author=s.new_tag('span',attrs={'class':'roll-comment-author'});author.string='guest_d';row.append(author)
             marker=s.new_tag('span',attrs={'aria-hidden':'true'});marker.string='>';row.append(marker)
             content=s.new_tag('div',attrs={'class':'roll-comment-body'});content.append(block);row.append(content)
             feed.insert(0,row)

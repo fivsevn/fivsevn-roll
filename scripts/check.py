@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse,unquote
 import argparse,hashlib,json
 from content import ROOT,load_posts,public
-from build import stills_page_size
+from build import stills_page_size,photo_display_paths
 
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -86,9 +86,10 @@ def check(root=ROOT,base_path=''):
             back=page.find('a',string='viewfinder')
             if not back or back.get('href')!=base_path+stills_pages[p['id']]:errors.append(f"Back to Stills: {p['id']}")
         if len(images)!=len(expected):errors.append(f"Image count: {p['id']}")
+        displays=photo_display_paths(p)
         for image,item in zip(images,expected):
-            name=Path(unquote(urlparse(image['src']).path)).name;original=Path(item['file']).name
-            if name not in {original,str(Path(original).with_suffix('.display.webp'))}:errors.append(f"Image ordering: {p['id']}: {name}")
+            path=unquote(urlparse(image['src']).path);original='stills/'+p['id']+'/'+item['file']
+            if path not in {base_path+'/'+original,base_path+'/'+displays[original]}:errors.append(f"Image ordering: {p['id']}: {path}")
     motion=[p for p in posts['motion'] if public(p)]
     page_size=json.loads((root/'site-data/youtube.json').read_text())['page_size']
     for index,p in enumerate(motion):

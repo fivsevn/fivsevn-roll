@@ -39,12 +39,14 @@ def motion_path(root, slug, published_at):
 
 
 def stills_path(root, slug, published_at):
-    """Group archive folders by publication month, keeping portfolio IDs intact."""
+    """Date grouped albums while keeping the dedicated Bygone collection separate."""
     if not slug or slug in {'.', '..'} or '/' in slug or '\\' in slug:
         raise ValueError('Invalid Stills package ID')
     stamp = datetime.fromisoformat(published_at)
     if stamp.tzinfo is None:
         raise ValueError('Publication time needs timezone')
+    if slug == 'bygone':
+        return root / 'stills' / 'bygone' / 'index.md'
     local = stamp.astimezone(PUBLICATION_ZONE)
     return root / 'stills' / local.strftime('%Y') / local.strftime('%m') / slug / 'index.md'
 
@@ -84,9 +86,9 @@ def load_posts(root=ROOT, include_hidden=False):
             stamp = datetime.fromisoformat(extra['published_at'])
             if stamp.tzinfo is None:
                 raise ValueError(f'{path}: publication time requires timezone')
-            if kind == 'stills' and body.strip():
-                raise ValueError(f'{path}: Stills uses ordered extra.images; body rendering is not supported')
             if kind == 'stills':
+                if data['id'] == 'bygone' and extra.get('mode') != 'collection':
+                    raise ValueError(f'{path}: bygone is reserved for the dedicated collection')
                 expected_path = stills_path(root, data['id'], extra['published_at'])
                 if path != expected_path:
                     raise ValueError(f'{path}: Stills path must match publication year/month: {expected_path}')
