@@ -55,7 +55,7 @@ def render_pages(root, post, rendered_photos, template):
             return link
 
         if number > 1:
-            navigation.append(arrow(number - 1, 'previous', '←'))
+            navigation.append(arrow(number - 1, 'previous', '«'))
         numbers = page.new_tag('div', attrs={'class': 'wp-block-query-pagination-numbers'})
         visible = sorted({1, pages} | set(range(max(1, number - 2), min(pages, number + 2) + 1)))
         previous = None
@@ -76,6 +76,6 @@ def render_pages(root, post, rendered_photos, template):
             previous = current
         navigation.append(numbers)
         if number < pages:
-            navigation.append(arrow(number + 1, 'next', '→'))
+            navigation.append(arrow(number + 1, 'next', '»'))
         result.append((route(number), page))
     return result

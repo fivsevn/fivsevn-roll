@@ -53,6 +53,8 @@ The builder retains original photo bytes and creates WebP display derivatives in
 
 Bygone retains the original photo cards, dates, captions and 27-card pagination. Reviewed card metadata lives in `site-data/bygone.json`; add its display metadata when adding a photograph to the collection. All Stills tabs use `roll.fivsevn/stills`, and Motion tabs use `roll.fivsevn/motion`. A Stills detail shows an expanded roll arrow and its viewfinder link returns to the Stills list.
 
+Stills keeps its portfolio order and uses `site-data/stills.json` to set a positive integer `page_size` (currently 30 groups). The current 17 groups fit on one page, so no page controls appear. When the collection exceeds that limit, compact numbered controls with `«` and `»` arrows appear below the roll list and above the Bygone album; later list pages use `/stills/page/N/`. The first page has no previous arrow and the last page has no next arrow. A group's existing detail URL stays unchanged, and its `viewfinder` link returns to the list page containing that group. Hidden and draft groups are excluded before pagination; Bygone retains its separate 27-photo pagination.
+
 To hide a saved package, change its status or visibility. A clean build removes its page, media, aliases and sitemap entry. Keep the package if it should remain recoverable. Editing the imported archive itself requires an intentional update to its corresponding migration checksum record; the integrity check otherwise reports the change.
 
 ## Motion and YouTube
