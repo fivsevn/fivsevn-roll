@@ -31,7 +31,7 @@ class IdentityError(RuntimeError):
 
 
 def _request(method, url, **kwargs):
-    """Retry reads, including the read-only browse POST; never WordPress writes."""
+    """Retry YouTube reads, including the read-only browse POST."""
     for attempt in range(len(RETRY_DELAYS) + 1):
         try:
             response = getattr(requests, method)(url, timeout=TIMEOUT, **kwargs)

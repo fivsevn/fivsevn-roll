@@ -78,7 +78,28 @@ jobs:
         uses: actions/configure-pages@v5
       - run: python scripts/build.py --base-path "${{ steps.pages.outputs.base_path }}"
       - run: python scripts/check.py --base-path "${{ steps.pages.outputs.base_path }}"
+      - name: Skip an unchanged scheduled deployment
+        id: content
+        run: |
+          python - <<'PY_GATE'
+          import json, os
+          from pathlib import Path
+          import requests
+          publish = True
+          if os.environ['GITHUB_EVENT_NAME'] == 'schedule':
+              receipt = json.loads(Path('_site/build-receipt.json').read_text())
+              url = 'https://' + Path('CNAME').read_text().strip() + '/build-receipt.json'
+              try:
+                  response = requests.get(url, params={'v': receipt['fingerprint']}, timeout=30)
+                  response.raise_for_status()
+                  publish = response.json() != receipt
+              except (requests.RequestException, ValueError):
+                  pass
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('changed=' + str(publish).lower() + '\n')
+          PY_GATE
       - name: Save generated packages without overwriting concurrent edits
+        if: steps.content.outputs.changed == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -106,17 +127,22 @@ jobs:
             fi
           done
       - uses: actions/upload-pages-artifact@v4
+        if: steps.content.outputs.changed == 'true'
         with:
           path: _site
       - name: Check that this deployment still represents the latest main
+        if: steps.content.outputs.changed == 'true'
         run: |
           git fetch origin main
           test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
       - id: deployment
+        if: steps.content.outputs.changed == 'true'
         uses: actions/deploy-pages@v4
       - name: Verify all public page and media bytes
+        if: steps.content.outputs.changed == 'true'
         run: python scripts/verify_live.py --url "${{ steps.deployment.outputs.page_url }}"
       - name: Clear only image uploads that were verified live
+        if: steps.content.outputs.changed == 'true'
         run: |
           git fetch origin main
           if [ "$(git rev-parse HEAD)" != "$(git rev-parse FETCH_HEAD)" ]; then

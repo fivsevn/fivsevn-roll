@@ -44,22 +44,35 @@ def photo_display_paths(post):
     return paths
 
 
+def validate_shared_assets(source):
+    """Reject links before copying: copytree otherwise hides their origin."""
+    if source.is_symlink() or not source.is_dir():
+        raise ValueError(f'Invalid shared asset directory: {source}')
+    allowed = {'.css', '.js', '.woff2', '.woff', '.ttf', '.webp', '.png', '.svg', '.ico'}
+    for path in source.rglob('*'):
+        if path.is_symlink():
+            raise ValueError(f'Symlink not permitted in shared assets: {path}')
+        if path.is_dir():
+            continue
+        if not path.is_file() or path.suffix.lower() not in allowed:
+            raise ValueError(f'Unexpected shared asset: {path}')
+
+
 def build(root=ROOT, base_path=''):
     if base_path and not re.fullmatch(r'/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*', base_path):
         raise ValueError('Invalid base path')
     posts = load_posts(root)
     stills_size=stills_page_size(root)
+    validate_shared_assets(root/'site-assets')
     out = root/'_site'
     if out.exists(): shutil.rmtree(out)
     out.mkdir()
-    shutil.copytree(root/'site-assets', out/'site-assets')
+    # Never dereference a link introduced after validation; reject it below.
+    shutil.copytree(root/'site-assets', out/'site-assets', symlinks=True)
+    validate_shared_assets(out/'site-assets')
     if base_path:
         for css in (out/'site-assets').glob('*.css'):
             css.write_text(css.read_text().replace("url('/site-assets/", "url('"+base_path+"/site-assets/").replace('url("/site-assets/', 'url("'+base_path+'/site-assets/'))
-    # Explicit site-assets scope. Source metadata, migration records and drafts are never copied.
-    for p in (out/'site-assets').rglob('*'):
-        if p.is_symlink() or p.is_file() and p.suffix.lower() not in {'.css','.js','.woff2','.woff','.ttf','.webp','.png','.svg','.ico'}:
-            raise ValueError(f'Unexpected shared asset: {p}')
     shutil.copyfile(root/'CNAME',out/'CNAME')
     (out/'.nojekyll').touch()
     routes=[]
