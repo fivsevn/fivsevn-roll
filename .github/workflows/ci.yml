@@ -11,17 +11,32 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: fivsevn-agy/fivsevn-spec
+          ref: main
+          path: .metadata-spec
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Restore reviewed migration files for the first branch check
-        if: hashFiles('migration/PENDING') != ''
-        run: python scripts/restore_assets.py
+      - name: Verify shared contract copies
+        run: |
+          cmp scripts/site_post_metadata.py .metadata-spec/tools/site_post_metadata.py
+          cmp scripts/media_naming.py .metadata-spec/tools/media_naming.py
+          cmp schemas/content-metadata.schema.json .metadata-spec/content/content-metadata.schema.json
+          cmp schemas/site-post.schema.json .metadata-spec/content/site-post.schema.json
       - run: python -m unittest discover -s tests -v
       - name: Verify Motion return navigation
         run: node --test tests/test_motion_navigation.mjs
+      - name: Validate publication media and metadata
+        run: |
+          python scripts/media_naming.py check --site stills --root stills
+          python .metadata-spec/tools/check_metadata.py --profile site-post-v1 --site stills --content-root stills --root . --schema .metadata-spec/content/content-metadata.schema.json
+          python scripts/media_naming.py check --site motion --root motion
+          python .metadata-spec/tools/check_metadata.py --profile site-post-v1 --site motion --content-root motion --root . --schema .metadata-spec/content/content-metadata.schema.json
       - run: python scripts/build.py
       - run: python scripts/check.py
       - uses: actions/upload-artifact@v4

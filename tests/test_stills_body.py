@@ -52,7 +52,7 @@ class StillsBodyTests(unittest.TestCase):
         self.assertIs(notice, notes.find_next_sibling())
         self.assertEqual('街头影像', notes.strong.get_text())
         self.assertEqual('/preview/motion/', notes.a['href'])
-        expected = json.loads((ROOT / 'migration/rights-notice.json').read_text())['paragraphs']
+        expected = json.loads((ROOT / 'site-data/rights-notice.json').read_text())['paragraphs']
         self.assertEqual(expected, [p.get_text() for p in notice.select('p')])
         listing = self.page('stills')
         self.assertFalse(listing.select('.roll-stills-body'))

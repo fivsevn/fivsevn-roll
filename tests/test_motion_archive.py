@@ -16,8 +16,7 @@ class MotionArchiveTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         (self.root / 'schemas').mkdir()
-        shutil.copyfile(ROOT / 'schemas/content-metadata.schema.json',
-                        self.root / 'schemas/content-metadata.schema.json')
+        shutil.copytree(ROOT / 'schemas', self.root / 'schemas', dirs_exist_ok=True)
         (self.root / 'site-data').mkdir()
         (self.root / 'site-data/history.json').write_text(json.dumps({'stills': [], 'motion': []}))
 

@@ -31,7 +31,7 @@ def plan(videos,root=ROOT):
         slug='youtube-'+slug_id+'-'+hashlib.sha256(v.video_id.encode()).hexdigest()[:8]
         path=motion_path(root,slug,local.isoformat())
         if path.exists():raise ValueError(f'Refusing to overwrite {path}')
-        pending.append((path,dict(id=slug,title=v.title,module='motion',submodule='roll',topic=None,type='log',status='published',canonical=True,summary=None,parents=[],related=[],tags=[],audience=['public'],languages=['zh','en','ja'],maturity='evolving',confidence=None,visibility='public',source_of_truth='site',filename_policy='entrypoint',created=date,updated=date,metadata_updated=date,extra={'profile':'roll-post-v1','published_at':local.isoformat(),'author':'五月七日','source':'https://www.youtube.com/watch?v='+v.video_id,'video_ids':[v.video_id]})))
+        pending.append((path,dict(id=slug,title=v.title,module='motion',submodule='roll',topic=None,type='log',status='published',canonical=True,summary=None,parents=[],related=[],tags=[],audience=['public'],languages=['zh','en','ja'],maturity='evolving',confidence=None,visibility='public',source_of_truth='site',filename_policy='entrypoint',created=date,updated=date,metadata_updated=date,extra={'profile':'site-post-v1','published_at':local.isoformat(),'author':'五月七日','source':'https://www.youtube.com/watch?v='+v.video_id,'video_ids':[v.video_id]})))
         seen.add(v.video_id)
     return pending
 

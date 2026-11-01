@@ -1,106 +1,74 @@
 ---
 id: bar-night
 title: bar night
+
 module: stills
 submodule: roll
 topic: null
+
 type: log
 status: published
 canonical: true
+
 summary: null
+
 parents: []
 related: []
+
 tags: []
+
 audience:
 - public
 languages:
 - zh
 - en
 - ja
+
 maturity: stable
 confidence: null
+
 visibility: public
 source_of_truth: site
+
 filename_policy: entrypoint
+
 created: '2026-05-30'
 updated: '2026-05-30'
-metadata_updated: '2026-10-31'
+metadata_updated: '2026-11-01'
+
 extra:
-  profile: roll-post-v1
+  profile: site-post-v1
   published_at: '2026-05-30T05:07:32+08:00'
   author: 五月七日
-  source: https://fivsevn.com/2026/05/30/bar-night/
   images:
-  - file: assets/1.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-001.jpg
     alt: '1'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/1.JPG
-    source_path: stills/20220826barnight/1.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/2.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-002.jpg
     alt: '2'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/2.JPG
-    source_path: stills/20220826barnight/2.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/3.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-003.jpg
     alt: '3'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/3.JPG
-    source_path: stills/20220826barnight/3.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/4.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-004.jpg
     alt: '4'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/4.JPG
-    source_path: stills/20220826barnight/4.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/5.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-005.jpg
     alt: '5'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/5.JPG
-    source_path: stills/20220826barnight/5.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/6.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-006.jpg
     alt: '6'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/6.JPG
-    source_path: stills/20220826barnight/6.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/7.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-007.jpg
     alt: '7'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/7.JPG
-    source_path: stills/20220826barnight/7.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/8.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-008.jpg
     alt: '8'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/8.JPG
-    source_path: stills/20220826barnight/8.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/9.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-009.jpg
     alt: '9'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/9.JPG
-    source_path: stills/20220826barnight/9.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/10.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-010.jpg
     alt: '10'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/10.JPG
-    source_path: stills/20220826barnight/10.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/11.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-011.jpg
     alt: '11'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/11.JPG
-    source_path: stills/20220826barnight/11.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/12.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-012.jpg
     alt: '12'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/12.JPG
-    source_path: stills/20220826barnight/12.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/13.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-013.jpg
     alt: '13'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/13.JPG
-    source_path: stills/20220826barnight/13.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
-  - file: assets/14.JPG
+  - file: assets/20260530-050732-stills-0af1ff4a2e90-014.jpg
     alt: '14'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20220826barnight/14.JPG
-    source_path: stills/20220826barnight/14.JPG
-    source_post: https://fivsevn.com/2026/05/30/bar-night/
   display_date: '2026-05-30'
-  legacy_id: 3079
+  alt: bar night
 ---

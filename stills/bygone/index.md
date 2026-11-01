@@ -1,715 +1,318 @@
 ---
 id: bygone
 title: Bygone
+
 module: stills
 submodule: roll
 topic: null
+
 type: log
 status: published
 canonical: true
+
 summary: null
+
 parents: []
 related: []
+
 tags: []
+
 audience:
 - public
 languages:
 - zh
 - en
 - ja
+
 maturity: stable
 confidence: null
+
 visibility: public
 source_of_truth: site
+
 filename_policy: entrypoint
+
 created: '2026-06-19'
 updated: '2026-06-19'
-metadata_updated: '2026-10-31'
+metadata_updated: '2026-11-01'
+
 extra:
-  profile: roll-post-v1
+  profile: site-post-v1
   published_at: '2026-06-19T02:06:52+08:00'
   author: 五月七日
-  source: https://fivsevn.com/stills/bygone/
   mode: collection
   images:
-  - file: assets/19960910-05.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-001.jpg
     alt: 19960910 05
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-05.jpg
-    source_path: stills/bygone/19960910-05.jpg
-    source_post: https://fivsevn.com/2026/06/19/asset-stills-bygone-19960910-05-jpg/
-  - file: assets/19960910-04.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-002.jpg
     alt: 19960910 04
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-04.jpg
-    source_path: stills/bygone/19960910-04.jpg
-    source_post: https://fivsevn.com/2026/06/19/asset-stills-bygone-19960910-04-jpg/
-  - file: assets/19961221.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-003.jpg
     alt: '19961221'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961221.jpg
-    source_path: stills/bygone/19961221.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961221-jpg/
-  - file: assets/19961126.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-004.jpg
     alt: '19961126'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961126.jpg
-    source_path: stills/bygone/19961126.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961126-jpg/
-  - file: assets/19961120.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-005.jpg
     alt: '19961120'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961120.jpg
-    source_path: stills/bygone/19961120.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961120-jpg/
-  - file: assets/19961011-03.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-006.jpg
     alt: 19961011 03
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961011-03.jpg
-    source_path: stills/bygone/19961011-03.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961011-03-jpg/
-  - file: assets/19961011-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-007.jpg
     alt: 19961011 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961011-02.jpg
-    source_path: stills/bygone/19961011-02.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961011-02-jpg/
-  - file: assets/19961011-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-008.jpg
     alt: 19961011 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961011-01.jpg
-    source_path: stills/bygone/19961011-01.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961011-01-jpg/
-  - file: assets/19961002-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-009.jpg
     alt: 19961002 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961002-3.jpg
-    source_path: stills/bygone/19961002-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961002-3-jpg/
-  - file: assets/19961002-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-010.jpg
     alt: 19961002 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961002-2.jpg
-    source_path: stills/bygone/19961002-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961002-2-jpg/
-  - file: assets/19961002-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-011.jpg
     alt: 19961002 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961002-1.jpg
-    source_path: stills/bygone/19961002-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961002-1-jpg/
-  - file: assets/19961000-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-012.jpg
     alt: 19961000 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961000-02.jpg
-    source_path: stills/bygone/19961000-02.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961000-02-jpg/
-  - file: assets/19960928-4.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-013.jpg
     alt: 19960928 4
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960928-4.jpg
-    source_path: stills/bygone/19960928-4.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960928-4-jpg/
-  - file: assets/19961000-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-014.jpg
     alt: 19961000 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19961000-01.jpg
-    source_path: stills/bygone/19961000-01.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19961000-01-jpg/
-  - file: assets/19960928-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-015.jpg
     alt: 19960928 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960928-3.jpg
-    source_path: stills/bygone/19960928-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960928-3-jpg/
-  - file: assets/19960928-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-016.jpg
     alt: 19960928 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960928-2.jpg
-    source_path: stills/bygone/19960928-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960928-2-jpg/
-  - file: assets/19960928-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-017.jpg
     alt: 19960928 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960928-1.jpg
-    source_path: stills/bygone/19960928-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960928-1-jpg/
-  - file: assets/19960927-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-018.jpg
     alt: 19960927 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960927-3.jpg
-    source_path: stills/bygone/19960927-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960927-3-jpg/
-  - file: assets/19960927-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-019.jpg
     alt: 19960927 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960927-2.jpg
-    source_path: stills/bygone/19960927-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960927-2-jpg/
-  - file: assets/19960927-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-020.jpg
     alt: 19960927 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960927-1.jpg
-    source_path: stills/bygone/19960927-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960927-1-jpg/
-  - file: assets/19960925-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-021.jpg
     alt: 19960925 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960925-2.jpg
-    source_path: stills/bygone/19960925-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960925-2-jpg/
-  - file: assets/19960925-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-022.jpg
     alt: 19960925 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960925-1.jpg
-    source_path: stills/bygone/19960925-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960925-1-jpg/
-  - file: assets/19960917-7.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-023.jpg
     alt: 19960917 7
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960917-7.jpg
-    source_path: stills/bygone/19960917-7.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960917-7-jpg/
-  - file: assets/19960917-6.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-024.jpg
     alt: 19960917 6
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960917-6.jpg
-    source_path: stills/bygone/19960917-6.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960917-6-jpg/
-  - file: assets/19960917-5.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-025.jpg
     alt: 19960917 5
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960917-5.jpg
-    source_path: stills/bygone/19960917-5.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960917-5-jpg/
-  - file: assets/19960917-4.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-026.jpg
     alt: 19960917 4
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960917-4.jpg
-    source_path: stills/bygone/19960917-4.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960917-4-jpg/
-  - file: assets/19960917-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-027.jpg
     alt: 19960917 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960917-3.jpg
-    source_path: stills/bygone/19960917-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960917-3-jpg/
-  - file: assets/19960917-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-028.jpg
     alt: 19960917 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960917-1.jpg
-    source_path: stills/bygone/19960917-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960917-1-jpg/
-  - file: assets/19960917-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-029.jpg
     alt: 19960917 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960917-2.jpg
-    source_path: stills/bygone/19960917-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960917-2-jpg/
-  - file: assets/19960915.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-030.jpg
     alt: '19960915'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960915.jpg
-    source_path: stills/bygone/19960915.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960915-jpg/
-  - file: assets/19960914-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-031.jpg
     alt: 19960914 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960914-3.jpg
-    source_path: stills/bygone/19960914-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960914-3-jpg/
-  - file: assets/19960914-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-032.jpg
     alt: 19960914 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960914-2.jpg
-    source_path: stills/bygone/19960914-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960914-2-jpg/
-  - file: assets/19960914-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-033.jpg
     alt: 19960914 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960914-1.jpg
-    source_path: stills/bygone/19960914-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960914-1-jpg/
-  - file: assets/19960912-8.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-034.jpg
     alt: 19960912 8
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-8.jpg
-    source_path: stills/bygone/19960912-8.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-8-jpg/
-  - file: assets/19960912-6.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-035.jpg
     alt: 19960912 6
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-6.jpg
-    source_path: stills/bygone/19960912-6.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-6-jpg/
-  - file: assets/19960912-7.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-036.jpg
     alt: 19960912 7
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-7.jpg
-    source_path: stills/bygone/19960912-7.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-7-jpg/
-  - file: assets/19960912-5.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-037.jpg
     alt: 19960912 5
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-5.jpg
-    source_path: stills/bygone/19960912-5.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-5-jpg/
-  - file: assets/19960912-4.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-038.jpg
     alt: 19960912 4
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-4.jpg
-    source_path: stills/bygone/19960912-4.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-4-jpg/
-  - file: assets/19960912-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-039.jpg
     alt: 19960912 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-3.jpg
-    source_path: stills/bygone/19960912-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-3-jpg/
-  - file: assets/19960912-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-040.jpg
     alt: 19960912 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-2.jpg
-    source_path: stills/bygone/19960912-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-2-jpg/
-  - file: assets/19960912-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-041.jpg
     alt: 19960912 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960912-1.jpg
-    source_path: stills/bygone/19960912-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960912-1-jpg/
-  - file: assets/19960910-9.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-042.jpg
     alt: 19960910 9
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-9.jpg
-    source_path: stills/bygone/19960910-9.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-9-jpg/
-  - file: assets/19960910-7.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-043.jpg
     alt: 19960910 7
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-7.jpg
-    source_path: stills/bygone/19960910-7.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-7-jpg/
-  - file: assets/19960910-6.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-044.jpg
     alt: 19960910 6
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-6.jpg
-    source_path: stills/bygone/19960910-6.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-6-jpg/
-  - file: assets/19960910-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-045.jpg
     alt: 19960910 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-3.jpg
-    source_path: stills/bygone/19960910-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-3-jpg/
-  - file: assets/19960910-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-046.jpg
     alt: 19960910 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-2.jpg
-    source_path: stills/bygone/19960910-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-2-jpg/
-  - file: assets/19960910-15.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-047.jpg
     alt: 19960910 15
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-15.jpg
-    source_path: stills/bygone/19960910-15.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-15-jpg/
-  - file: assets/19960910-14.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-048.jpg
     alt: 19960910 14
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-14.jpg
-    source_path: stills/bygone/19960910-14.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-14-jpg/
-  - file: assets/19960910-13.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-049.jpg
     alt: 19960910 13
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-13.jpg
-    source_path: stills/bygone/19960910-13.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-13-jpg/
-  - file: assets/19960910-12.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-050.jpg
     alt: 19960910 12
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-12.jpg
-    source_path: stills/bygone/19960910-12.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-12-jpg/
-  - file: assets/19960910-11.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-051.jpg
     alt: 19960910 11
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-11.jpg
-    source_path: stills/bygone/19960910-11.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-11-jpg/
-  - file: assets/19960910-10.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-052.jpg
     alt: 19960910 10
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-10.jpg
-    source_path: stills/bygone/19960910-10.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-10-jpg/
-  - file: assets/19960910-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-053.jpg
     alt: 19960910 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960910-1.jpg
-    source_path: stills/bygone/19960910-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960910-1-jpg/
-  - file: assets/19960907-8.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-054.jpg
     alt: 19960907 8
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-8.jpg
-    source_path: stills/bygone/19960907-8.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960907-8-jpg/
-  - file: assets/19960907-7.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-055.jpg
     alt: 19960907 7
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-7.jpg
-    source_path: stills/bygone/19960907-7.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960907-7-jpg/
-  - file: assets/19960907-5.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-056.jpg
     alt: 19960907 5
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-5.jpg
-    source_path: stills/bygone/19960907-5.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960907-5-jpg/
-  - file: assets/19960907-6.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-057.jpg
     alt: 19960907 6
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-6.jpg
-    source_path: stills/bygone/19960907-6.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960907-6-jpg/
-  - file: assets/19960906-9.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-058.jpg
     alt: 19960906 9
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-9.jpg
-    source_path: stills/bygone/19960906-9.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-9-jpg/
-  - file: assets/19960906-7.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-059.jpg
     alt: 19960906 7
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-7.jpg
-    source_path: stills/bygone/19960906-7.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-7-jpg/
-  - file: assets/19960906-8.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-060.jpg
     alt: 19960906 8
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-8.jpg
-    source_path: stills/bygone/19960906-8.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-8-jpg/
-  - file: assets/19960906-6.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-061.jpg
     alt: 19960906 6
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-6.jpg
-    source_path: stills/bygone/19960906-6.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-6-jpg/
-  - file: assets/19960906-5.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-062.jpg
     alt: 19960906 5
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-5.jpg
-    source_path: stills/bygone/19960906-5.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-5-jpg/
-  - file: assets/19960906-4.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-063.jpg
     alt: 19960906 4
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-4.jpg
-    source_path: stills/bygone/19960906-4.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-4-jpg/
-  - file: assets/19960906-3.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-064.jpg
     alt: 19960906 3
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-3.jpg
-    source_path: stills/bygone/19960906-3.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-3-jpg/
-  - file: assets/19960906-21.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-065.jpg
     alt: 19960906 21
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-21.jpg
-    source_path: stills/bygone/19960906-21.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-21-jpg/
-  - file: assets/19960906-20.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-066.jpg
     alt: 19960906 20
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-20.jpg
-    source_path: stills/bygone/19960906-20.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-20-jpg/
-  - file: assets/19960906-2.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-067.jpg
     alt: 19960906 2
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-2.jpg
-    source_path: stills/bygone/19960906-2.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-2-jpg/
-  - file: assets/19960906-19.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-068.jpg
     alt: 19960906 19
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-19.jpg
-    source_path: stills/bygone/19960906-19.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-19-jpg/
-  - file: assets/19960906-18.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-069.jpg
     alt: 19960906 18
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-18.jpg
-    source_path: stills/bygone/19960906-18.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-18-jpg/
-  - file: assets/19960906-17.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-070.jpg
     alt: 19960906 17
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-17.jpg
-    source_path: stills/bygone/19960906-17.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-17-jpg/
-  - file: assets/19960906-16.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-071.jpg
     alt: 19960906 16
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-16.jpg
-    source_path: stills/bygone/19960906-16.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-16-jpg/
-  - file: assets/19960906-15.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-072.jpg
     alt: 19960906 15
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-15.jpg
-    source_path: stills/bygone/19960906-15.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-15-jpg/
-  - file: assets/19960906-14.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-073.jpg
     alt: 19960906 14
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-14.jpg
-    source_path: stills/bygone/19960906-14.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-14-jpg/
-  - file: assets/19960906-13.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-074.jpg
     alt: 19960906 13
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-13.jpg
-    source_path: stills/bygone/19960906-13.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-13-jpg/
-  - file: assets/19960906-12.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-075.jpg
     alt: 19960906 12
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-12.jpg
-    source_path: stills/bygone/19960906-12.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-12-jpg/
-  - file: assets/19960906-11.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-076.jpg
     alt: 19960906 11
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-11.jpg
-    source_path: stills/bygone/19960906-11.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-11-jpg/
-  - file: assets/19960906-10.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-077.jpg
     alt: 19960906 10
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-10.jpg
-    source_path: stills/bygone/19960906-10.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-10-jpg/
-  - file: assets/19960906-1.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-078.jpg
     alt: 19960906 1
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960906-1.jpg
-    source_path: stills/bygone/19960906-1.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-19960906-1-jpg/
-  - file: assets/1996-undated.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-079.jpg
     alt: 1996 undated
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/1996-undated.jpg
-    source_path: stills/bygone/1996-undated.jpg
-    source_post: https://fivsevn.com/2026/06/18/asset-stills-bygone-1996-undated-jpg/
-  - file: assets/undated-09-06.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-080.jpg
     alt: undated 09 06
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-09-06.jpg
-    source_path: stills/bygone/undated-09-06.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-undated-09-06-jpg/
-  - file: assets/undated-09-07.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-081.jpg
     alt: undated 09 07
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-09-07.jpg
-    source_path: stills/bygone/undated-09-07.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-undated-09-07-jpg/
-  - file: assets/undated-09-05.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-082.jpg
     alt: undated 09 05
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-09-05.jpg
-    source_path: stills/bygone/undated-09-05.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-undated-09-05-jpg/
-  - file: assets/undated-09-03.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-083.jpg
     alt: undated 09 03
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-09-03.jpg
-    source_path: stills/bygone/undated-09-03.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-undated-09-03-jpg/
-  - file: assets/undated-09-04.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-084.jpg
     alt: undated 09 04
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-09-04.jpg
-    source_path: stills/bygone/undated-09-04.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-undated-09-04-jpg/
-  - file: assets/undated-09-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-085.jpg
     alt: undated 09 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-09-02.jpg
-    source_path: stills/bygone/undated-09-02.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-undated-09-02-jpg/
-  - file: assets/19960907-04.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-086.jpg
     alt: 19960907 04
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-04.jpg
-    source_path: stills/bygone/19960907-04.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-19960907-04-jpg/
-  - file: assets/undated-09-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-087.jpg
     alt: undated 09 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-09-01.jpg
-    source_path: stills/bygone/undated-09-01.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-undated-09-01-jpg/
-  - file: assets/19960907-03.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-088.jpg
     alt: 19960907 03
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-03.jpg
-    source_path: stills/bygone/19960907-03.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-19960907-03-jpg/
-  - file: assets/19960907-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-089.jpg
     alt: 19960907 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-02.jpg
-    source_path: stills/bygone/19960907-02.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-19960907-02-jpg/
-  - file: assets/19960907-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-090.jpg
     alt: 19960907 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19960907-01.jpg
-    source_path: stills/bygone/19960907-01.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-19960907-01-jpg/
-  - file: assets/19951118.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-091.jpg
     alt: '19951118'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19951118.jpg
-    source_path: stills/bygone/19951118.jpg
-    source_post: https://fivsevn.com/2026/06/12/asset-stills-bygone-19951118-jpg/
-  - file: assets/undated-08-03.jpg.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-092.jpg
     alt: undated 08 03.jpg
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-08-03.jpg.jpg
-    source_path: stills/bygone/undated-08-03.jpg.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-undated-08-03-jpg-jpg/
-  - file: assets/undated-08-02.jpg.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-093.jpg
     alt: undated 08 02.jpg
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-08-02.jpg.jpg
-    source_path: stills/bygone/undated-08-02.jpg.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-undated-08-02-jpg-jpg/
-  - file: assets/undated-08-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-094.jpg
     alt: undated 08 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-08-01.jpg
-    source_path: stills/bygone/undated-08-01.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-undated-08-01-jpg/
-  - file: assets/19980201-04.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-095.jpg
     alt: 19980201 04
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980201-04.jpg
-    source_path: stills/bygone/19980201-04.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980201-04-jpg/
-  - file: assets/19980201-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-096.jpg
     alt: 19980201 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980201-02.jpg
-    source_path: stills/bygone/19980201-02.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980201-02-jpg/
-  - file: assets/19980201-03.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-097.jpg
     alt: 19980201 03
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980201-03.jpg
-    source_path: stills/bygone/19980201-03.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980201-03-jpg/
-  - file: assets/19980201-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-098.jpg
     alt: 19980201 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980201-01.jpg
-    source_path: stills/bygone/19980201-01.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980201-01-jpg/
-  - file: assets/19980131-10.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-099.jpg
     alt: 19980131 10
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-10.jpg
-    source_path: stills/bygone/19980131-10.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-10-jpg/
-  - file: assets/19980131-11.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-100.jpg
     alt: 19980131 11
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-11.jpg
-    source_path: stills/bygone/19980131-11.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-11-jpg/
-  - file: assets/19980131-09.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-101.jpg
     alt: 19980131 09
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-09.jpg
-    source_path: stills/bygone/19980131-09.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-09-jpg/
-  - file: assets/19980131-07.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-102.jpg
     alt: 19980131 07
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-07.jpg
-    source_path: stills/bygone/19980131-07.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-07-jpg/
-  - file: assets/19980131-08.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-103.jpg
     alt: 19980131 08
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-08.jpg
-    source_path: stills/bygone/19980131-08.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-08-jpg/
-  - file: assets/19980131-06.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-104.jpg
     alt: 19980131 06
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-06.jpg
-    source_path: stills/bygone/19980131-06.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-06-jpg/
-  - file: assets/19980131-04.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-105.jpg
     alt: 19980131 04
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-04.jpg
-    source_path: stills/bygone/19980131-04.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-04-jpg/
-  - file: assets/19980131-05.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-106.jpg
     alt: 19980131 05
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-05.jpg
-    source_path: stills/bygone/19980131-05.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-05-jpg/
-  - file: assets/19980131-03.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-107.jpg
     alt: 19980131 03
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-03.jpg
-    source_path: stills/bygone/19980131-03.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-03-jpg/
-  - file: assets/19980131-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-108.jpg
     alt: 19980131 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-02.jpg
-    source_path: stills/bygone/19980131-02.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-02-jpg/
-  - file: assets/19971122-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-109.jpg
     alt: 19971122 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19971122-02.jpg
-    source_path: stills/bygone/19971122-02.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19971122-02-jpg/
-  - file: assets/19980131-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-110.jpg
     alt: 19980131 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19980131-01.jpg
-    source_path: stills/bygone/19980131-01.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19980131-01-jpg/
-  - file: assets/19971122-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-111.jpg
     alt: 19971122 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19971122-01.jpg
-    source_path: stills/bygone/19971122-01.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19971122-01-jpg/
-  - file: assets/19970211-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-112.jpg
     alt: 19970211 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19970211-01.jpg
-    source_path: stills/bygone/19970211-01.jpg
-    source_post: https://fivsevn.com/2026/06/10/asset-stills-bygone-19970211-01-jpg/
-  - file: assets/undated-02-01-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-113.jpg
     alt: undated 02 01 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-02-01-01.jpg
-    source_path: stills/bygone/undated-02-01-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-02-01-01-jpg/
-  - file: assets/19931113.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-114.jpg
     alt: '19931113'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19931113.jpg
-    source_path: stills/bygone/19931113.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19931113-jpg/
-  - file: assets/undated-07-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-115.jpg
     alt: undated 07 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-07-01.jpg
-    source_path: stills/bygone/undated-07-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-07-01-jpg/
-  - file: assets/undated-06-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-116.jpg
     alt: undated 06 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-06-01.jpg
-    source_path: stills/bygone/undated-06-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-06-01-jpg/
-  - file: assets/undated-05-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-117.jpg
     alt: undated 05 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-05-02.jpg
-    source_path: stills/bygone/undated-05-02.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-05-02-jpg/
-  - file: assets/undated-04-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-118.jpg
     alt: undated 04 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-04-01.jpg
-    source_path: stills/bygone/undated-04-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-04-01-jpg/
-  - file: assets/undated-05-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-119.jpg
     alt: undated 05 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-05-01.jpg
-    source_path: stills/bygone/undated-05-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-05-01-jpg/
-  - file: assets/undated-03-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-120.jpg
     alt: undated 03 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-03-01.jpg
-    source_path: stills/bygone/undated-03-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-03-01-jpg/
-  - file: assets/undated-01-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-121.jpg
     alt: undated 01 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/undated-01-01.jpg
-    source_path: stills/bygone/undated-01-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-undated-01-01-jpg/
-  - file: assets/fuji01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-122.jpg
     alt: fuji01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/fuji01.jpg
-    source_path: stills/bygone/fuji01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-fuji01-jpg/
-  - file: assets/19990522-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-123.jpg
     alt: 19990522 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19990522-01.jpg
-    source_path: stills/bygone/19990522-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19990522-01-jpg/
-  - file: assets/20040801-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-124.jpg
     alt: 20040801 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/20040801-01.jpg
-    source_path: stills/bygone/20040801-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-20040801-01-jpg/
-  - file: assets/19950906.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-125.jpg
     alt: '19950906'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950906.jpg
-    source_path: stills/bygone/19950906.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950906-jpg/
-  - file: assets/19950901.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-126.jpg
     alt: '19950901'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950901.jpg
-    source_path: stills/bygone/19950901.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950901-jpg/
-  - file: assets/19950826-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-127.jpg
     alt: 19950826 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950826-02.jpg
-    source_path: stills/bygone/19950826-02.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950826-02-jpg/
-  - file: assets/19950802.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-128.jpg
     alt: '19950802'
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950802.jpg
-    source_path: stills/bygone/19950802.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950802-jpg/
-  - file: assets/19950826-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-129.jpg
     alt: 19950826 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950826-01.jpg
-    source_path: stills/bygone/19950826-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950826-01-jpg/
-  - file: assets/19950000-02-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-130.jpg
     alt: 19950000 02 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950000-02-02.jpg
-    source_path: stills/bygone/19950000-02-02.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950000-02-02-jpg/
-  - file: assets/19950000-02-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-131.jpg
     alt: 19950000 02 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950000-02-01.jpg
-    source_path: stills/bygone/19950000-02-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950000-02-01-jpg/
-  - file: assets/19950000-01-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-132.jpg
     alt: 19950000 01 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950000-01-02.jpg
-    source_path: stills/bygone/19950000-01-02.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950000-01-02-jpg/
-  - file: assets/19950000-01-03.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-133.jpg
     alt: 19950000 01 03
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950000-01-03.jpg
-    source_path: stills/bygone/19950000-01-03.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950000-01-03-jpg/
-  - file: assets/19950000-01-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-134.jpg
     alt: 19950000 01 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19950000-01-01.jpg
-    source_path: stills/bygone/19950000-01-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19950000-01-01-jpg/
-  - file: assets/19911228-02.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-135.jpg
     alt: 19911228 02
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19911228-02.jpg
-    source_path: stills/bygone/19911228-02.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19911228-02-jpg/
-  - file: assets/19911228-01.jpg
+  - file: assets/20260619-020652-stills-f6ffe4254177-136.jpg
     alt: 19911228 01
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@main/stills/bygone/19911228-01.jpg
-    source_path: stills/bygone/19911228-01.jpg
-    source_post: https://fivsevn.com/2026/06/09/asset-stills-bygone-19911228-01-jpg/
+  alt: Bygone
 ---

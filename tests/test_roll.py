@@ -14,8 +14,8 @@ class PublishingTests(unittest.TestCase):
         self.assertTrue(public({'status':'published','visibility':'public'}))
 
     def test_all_manifest_files_are_eligible_for_git_archiving(self):
-        rows=json.loads((ROOT/'migration/assets.json').read_text())['files']
-        paths='\0'.join(r['destination'] for r in rows)+'\0'
+        rows=json.loads((ROOT/'site-data/originals.json').read_text())
+        paths='\0'.join(r['path'] for r in rows)+'\0'
         result=subprocess.run(['git','check-ignore','--no-index','-z','--stdin'],input=paths.encode(),cwd=ROOT,capture_output=True)
         self.assertIn(result.returncode,(0,1))
         self.assertEqual(b'',result.stdout, 'Reviewed originals must not be silently ignored by Git')
@@ -24,16 +24,16 @@ class PublishingTests(unittest.TestCase):
         package=ROOT/'stills/2026/06/w-ren-min-rd-m-e'
         for path in ['../drafts/test.jpg','assets/../../../drafts/test.jpg','/etc/passwd','assets\\test.jpg']:
             with self.assertRaises(ValueError):safe_asset(package,path)
-        self.assertTrue(safe_asset(package,'assets/1.JPG').is_file())
+        self.assertTrue(safe_asset(package,read_post(package/'index.md')[0]['extra']['images'][0]['file']).is_file())
 
     def test_legacy_group_order_and_draft_boundary(self):
-        posts=load_posts(include_hidden=True);groups=[p for p in posts['stills'] if p['extra'].get('legacy_id')]
+        posts=load_posts(include_hidden=True);groups=[p for p in posts['stills'] if p['extra'].get('mode')!='collection']
         self.assertEqual(17,len(groups));self.assertEqual(266,sum(len(p['extra']['images']) for p in groups))
-        self.assertEqual(['assets/1.JPG','assets/2.JPG','assets/3.JPG'],groups[0]['extra']['images'] and [i['file'] for i in groups[0]['extra']['images']])
+        self.assertEqual(['001.jpg','002.jpg','003.jpg'],[i['file'].rsplit('-',1)[-1] for i in groups[0]['extra']['images']])
         self.assertEqual(136,len(next(p for p in posts['stills'] if p['id']=='bygone')['extra']['images']))
-        manifest=json.loads((ROOT/'migration/assets.json').read_text())['files']
-        self.assertEqual(91,sum(r['status']=='needs-review' and Path(r['source_path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'} for r in manifest))
-        self.assertEqual(506,len([r for r in manifest if r['source_path'].startswith('stills/')]))
+        manifest=json.loads((ROOT/'site-data/originals.json').read_text())
+        self.assertEqual(91,sum(r['role']=='draft' and Path(r['path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'} for r in manifest))
+        self.assertEqual(496,sum(Path(r['path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'} for r in manifest))
 
     def test_hidden_package_has_no_page_media_index_or_alias(self):
         with TemporaryDirectory() as temp:

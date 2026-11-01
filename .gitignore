@@ -3,6 +3,4 @@ _site/
 __pycache__/
 *.pyc
 .DS_Store
-.migration-cache/
-# Retain the original public archive metadata, while ignoring newly generated Finder files.
-!drafts/**/.DS_Store
+.metadata-spec/
