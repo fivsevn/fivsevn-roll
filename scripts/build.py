@@ -78,11 +78,12 @@ def build(root=ROOT, base_path=''):
                 if value.startswith('/') and not value.startswith('//'):element[attr]=url(value)
         section='motion' if kind=='motion' else 'stills'
         scripts='';detail_class=' roll-motion-detail' if kind=='motion' and detail else ''
+        document_class=('roll-motion-page'+(' roll-motion-detail-page' if detail else '')) if kind=='motion' else ''
         if kind=='motion':
             navigation=json.dumps({'base_path':base_path,'post_pages':{key:url(value) for key,value in motion_pages.items()}}).replace('<','\\u003c')
             version=digest(out/'site-assets/motion-navigation.js')[:12]
             scripts=f'<script type="application/json" id="motion-navigation-config">{navigation}</script><script defer src="{url("/site-assets/motion-navigation.js")}?v={version}"></script>'
-        page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>roll.fivsevn/{section}</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{stylesheet(kind)}"><link rel="stylesheet" href="{stylesheet('roll')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}{detail_class}">{body}{scripts}</body></html>'''
+        page=f'''<!doctype html><html lang="en" class="{document_class}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>roll.fivsevn/{section}</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{stylesheet(kind)}"><link rel="stylesheet" href="{stylesheet('roll')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}{detail_class}">{body}{scripts}</body></html>'''
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page)
         routes.append(route)
     def pagination(page,page_routes,current,label,extra_class=''):
@@ -194,6 +195,8 @@ def build(root=ROOT, base_path=''):
             leave=s.find('a',string='LEAVE ROOM');leave['href']=motion_pages[post['id']]+'#'+quote(post['id'],safe='');leave['title']='Back to Motion';leave['data-motion-return']=''
         authored=soup(render_body(post.get('_body','')) if detail else '')
         feed=s.select_one('.roll-comment-feed')
+        if detail:
+            feed['tabindex']='0';feed['role']='region';feed['aria-label']='Comment feed'
         for block in reversed(list(authored.children)):
             if not getattr(block,'name',None):continue
             row=s.new_tag('div',attrs={'class':'wp-block-group is-layout-flex wp-block-group-is-layout-flex roll-authored-message'})
