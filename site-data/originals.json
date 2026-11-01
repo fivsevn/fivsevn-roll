@@ -2803,8 +2803,8 @@
   },
   {
     "path": "drafts/stills/README.md",
-    "bytes": 720,
-    "sha256": "69332660ae79c9870a4787c880e41a30d8c2aa56199ba4463551c43383bc30a3",
+    "bytes": 583,
+    "sha256": "d5a905765f56935547b6502f1508efc137a9d0343c9da9911e7c97fa151cb3c0",
     "role": "draft"
   },
   {
@@ -2853,12 +2853,6 @@
     "path": "drafts/stills/acornerofhome/3-3.JPG",
     "bytes": 604370,
     "sha256": "e3266cbc04b4bbdd09a8b4d02507292b3715b9b89202126f5cacae277e98b136",
-    "role": "draft"
-  },
-  {
-    "path": "drafts/stills/bygone/README.md",
-    "bytes": 387,
-    "sha256": "43e45fe2920f5d9f57cea5dc774857d8a44fb00f2e17003686760d40b3f8492a",
     "role": "draft"
   },
   {
@@ -2937,12 +2931,6 @@
     "path": "drafts/stills/familyday/5-1.JPG",
     "bytes": 604562,
     "sha256": "452225633e46df56aaa0e74316da6d8cf15e3801de7e0fcabc1bab7f6ce21dbe",
-    "role": "draft"
-  },
-  {
-    "path": "drafts/stills/irreversibility/README.md",
-    "bytes": 405,
-    "sha256": "a24d7621d64949cdbaf582bc64a130d00527e931f796d036ced1f04a11890d3c",
     "role": "draft"
   },
   {

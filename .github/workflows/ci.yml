@@ -39,9 +39,3 @@ jobs:
           python .metadata-spec/tools/check_metadata.py --profile site-post-v1 --site motion --content-root motion --root . --schema .metadata-spec/content/content-metadata.schema.json
       - run: python scripts/build.py
       - run: python scripts/check.py
-      - uses: actions/upload-artifact@v4
-        with:
-          name: roll-site-preview
-          path: _site
-          include-hidden-files: true
-          retention-days: 7
