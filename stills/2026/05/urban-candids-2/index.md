@@ -1,176 +1,102 @@
 ---
 id: urban-candids-2
 title: urban candids 2
+
 module: stills
 submodule: roll
 topic: null
+
 type: log
 status: published
 canonical: true
+
 summary: null
+
 parents: []
 related: []
+
 tags: []
+
 audience:
 - public
 languages:
 - zh
 - en
 - ja
+
 maturity: stable
 confidence: null
+
 visibility: public
 source_of_truth: site
+
 filename_policy: entrypoint
+
 created: '2026-05-28'
 updated: '2026-05-28'
-metadata_updated: '2026-10-31'
+metadata_updated: '2026-11-01'
+
 extra:
-  profile: roll-post-v1
+  profile: site-post-v1
   published_at: '2026-05-28T06:11:41+08:00'
   author: 五月七日
-  source: https://fivsevn.com/2026/05/28/urban-candids-2/
   images:
-  - file: assets/01.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-001.jpg
     alt: 01.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/01.JPG
-    source_path: stills/20201111urban/candidshot1/01.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/02.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-002.jpg
     alt: 02.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/02.JPG
-    source_path: stills/20201111urban/candidshot1/02.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/03.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-003.jpg
     alt: 03.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/03.JPG
-    source_path: stills/20201111urban/candidshot1/03.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/04.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-004.jpg
     alt: 04.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/04.JPG
-    source_path: stills/20201111urban/candidshot1/04.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/05.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-005.jpg
     alt: 05.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/05.JPG
-    source_path: stills/20201111urban/candidshot1/05.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/06.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-006.jpg
     alt: 06.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/06.JPG
-    source_path: stills/20201111urban/candidshot1/06.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/07.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-007.jpg
     alt: 07.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/07.JPG
-    source_path: stills/20201111urban/candidshot1/07.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/08.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-008.jpg
     alt: 08.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/08.JPG
-    source_path: stills/20201111urban/candidshot1/08.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/09.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-009.jpg
     alt: 09.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/09.JPG
-    source_path: stills/20201111urban/candidshot1/09.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/010.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-010.jpg
     alt: 010.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/010.JPG
-    source_path: stills/20201111urban/candidshot1/010.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/011.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-011.jpg
     alt: 011.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/011.JPG
-    source_path: stills/20201111urban/candidshot1/011.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/012.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-012.jpg
     alt: 012.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/012.JPG
-    source_path: stills/20201111urban/candidshot1/012.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/013.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-013.jpg
     alt: 013.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/013.JPG
-    source_path: stills/20201111urban/candidshot1/013.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/014.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-014.jpg
     alt: 014.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/014.JPG
-    source_path: stills/20201111urban/candidshot1/014.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/015.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-015.jpg
     alt: 015.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/015.JPG
-    source_path: stills/20201111urban/candidshot1/015.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/016.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-016.jpg
     alt: 016.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/016.JPG
-    source_path: stills/20201111urban/candidshot1/016.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/017.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-017.jpg
     alt: 017.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/017.JPG
-    source_path: stills/20201111urban/candidshot1/017.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/018.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-018.jpg
     alt: 018.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/018.JPG
-    source_path: stills/20201111urban/candidshot1/018.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/019.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-019.jpg
     alt: 019.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/019.JPG
-    source_path: stills/20201111urban/candidshot1/019.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/020.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-020.jpg
     alt: 020.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/020.JPG
-    source_path: stills/20201111urban/candidshot1/020.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/021.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-021.jpg
     alt: 021.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/021.JPG
-    source_path: stills/20201111urban/candidshot1/021.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/022.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-022.jpg
     alt: 022.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/022.JPG
-    source_path: stills/20201111urban/candidshot1/022.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/023.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-023.jpg
     alt: 023.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/023.JPG
-    source_path: stills/20201111urban/candidshot1/023.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/024.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-024.jpg
     alt: 024.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/024.JPG
-    source_path: stills/20201111urban/candidshot1/024.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/025.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-025.jpg
     alt: 025.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/025.JPG
-    source_path: stills/20201111urban/candidshot1/025.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/026.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-026.jpg
     alt: 026.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/026.JPG
-    source_path: stills/20201111urban/candidshot1/026.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/027.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-027.jpg
     alt: 027.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/027.JPG
-    source_path: stills/20201111urban/candidshot1/027.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
-  - file: assets/028.JPG
+  - file: assets/20260528-061141-stills-3210a69655e4-028.jpg
     alt: 028.JPG
-    source_url: https://cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets@d46c58b1a8468e8c72197e6b23f0c8f6127dcf37/stills/20201111urban/candidshot1/028.JPG
-    source_path: stills/20201111urban/candidshot1/028.JPG
-    source_post: https://fivsevn.com/2026/05/28/urban-candids-2/
   display_date: '2026-05-28'
-  legacy_id: 2996
+  alt: urban candids 2
 ---

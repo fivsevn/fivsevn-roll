@@ -2,8 +2,8 @@
 from pathlib import Path, PurePosixPath
 from datetime import datetime
 from zoneinfo import ZoneInfo
-import json, re, yaml
-from jsonschema import Draft202012Validator, FormatChecker
+import json, re
+from site_post_metadata import read_frontmatter, dump_frontmatter, validate_metadata
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLISHED = {'published', 'publish', 'active'}
@@ -12,13 +12,9 @@ PUBLICATION_ZONE = ZoneInfo('Asia/Shanghai')
 
 
 def read_post(path):
-    text = path.read_text(encoding='utf-8')
-    if not text.startswith('---\n') or '\n---\n' not in text[4:]:
+    data, body = read_frontmatter(path)
+    if not data:
         raise ValueError(f'{path}: missing frontmatter')
-    header, body = text[4:].split('\n---\n', 1)
-    data = yaml.safe_load(header)
-    if not isinstance(data, dict):
-        raise ValueError(f'{path}: metadata must be a mapping')
     return data, body
 
 
@@ -64,7 +60,6 @@ def safe_asset(package, relative):
 
 
 def load_posts(root=ROOT, include_hidden=False):
-    validator = Draft202012Validator(json.loads((root/'schemas/content-metadata.schema.json').read_text()), format_checker=FormatChecker())
     result = {'stills': [], 'motion': []}
     seen_videos = set()
     for kind in result:
@@ -74,15 +69,15 @@ def load_posts(root=ROOT, include_hidden=False):
             if path.is_symlink() or any(parent.is_symlink() for parent in path.parents if parent.is_relative_to(root/kind)):
                 raise ValueError(f'Symlink not permitted: {path}')
             data, body = read_post(path)
-            validator.validate(data)
+            validate_metadata(data, site=kind, schema_dir=root/'schemas')
             if data['module'] != kind or (kind == 'stills' and data['id'] != path.parent.name):
                 raise ValueError(f'{path}: identity or module does not match path')
             if data['id'] in seen_ids:
                 raise ValueError(f'{path}: duplicate package ID: {data["id"]}')
             seen_ids.add(data['id'])
             extra = data.get('extra', {})
-            if extra.get('profile') != 'roll-post-v1':
-                raise ValueError(f'{path}: expected roll-post-v1')
+            if extra.get('profile') != 'site-post-v1':
+                raise ValueError(f'{path}: expected site-post-v1')
             stamp = datetime.fromisoformat(extra['published_at'])
             if stamp.tzinfo is None:
                 raise ValueError(f'{path}: publication time requires timezone')
@@ -120,7 +115,7 @@ def load_posts(root=ROOT, include_hidden=False):
 
 def write_post(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
-    text = '---\n'+yaml.safe_dump(data, allow_unicode=True, sort_keys=False)+'---\n'
+    text = dump_frontmatter(data)
     temporary = path.with_suffix('.tmp')
     temporary.write_text(text, encoding='utf-8')
     temporary.replace(path)

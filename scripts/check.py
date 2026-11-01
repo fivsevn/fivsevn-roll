@@ -17,10 +17,10 @@ def check(root=ROOT,base_path=''):
     stills_routes=['/stills/' if number==1 else f'/stills/page/{number}/' for number in range(1,stills_count+1)]
     stills_listing_files={route.strip('/')+'/index.html' for route in stills_routes}
     stills_pages={post['id']:stills_routes[index//stills_size] for index,post in enumerate(stills)}
-    manifest=json.loads((root/'migration/assets.json').read_text())
+    manifest={'files':json.loads((root/'site-data/originals.json').read_text())}
     for row in manifest['files']:
-        path=root/row['destination']
-        if not path.is_file() or sha(path)!=row['sha256']:errors.append(f"Archive checksum: {row['destination']}")
+        path=root/row['path']
+        if not path.is_file() or sha(path)!=row['sha256']:errors.append(f"Archive checksum: {row['path']}")
     hidden=[kind+'/'+p['id']+'/' for kind,items in posts.items() for p in items if not public(p)]
     files=[p for p in out.rglob('*') if p.is_file()]
     for p in files:
@@ -45,7 +45,7 @@ def check(root=ROOT,base_path=''):
                 target=out/path.lstrip('/') if path.startswith('/') else p.parent/path
                 if not target.exists():errors.append(f'Broken link: {rel}: {v}')
         if rel.startswith('stills/') and rel.endswith('/index.html') and rel not in stills_listing_files:
-            n=s.select_one('#rights-notice');expected=json.loads((root/'migration/rights-notice.json').read_text())['paragraphs']
+            n=s.select_one('#rights-notice');expected=json.loads((root/'site-data/rights-notice.json').read_text())['paragraphs']
             if not n or [x.get_text() for x in n.select('p')]!=expected:errors.append(f'Rights Notice changed: {rel}')
     for index,route in enumerate(stills_routes):
         listing_path=out/route.strip('/')/'index.html'
@@ -98,7 +98,7 @@ def check(root=ROOT,base_path=''):
         route='/motion/' if index//page_size==0 else f'/motion/page/{index//page_size+1}/'
         if not leave or leave.get('href')!=base_path+route+'#'+p['id'] or not leave.has_attr('data-motion-return'):errors.append(f"Leave Motion room: {p['id']}")
         if any(a.get_text() in {'HOME','◁ motion'} and not a.find_parent('li') for a in page.select('a')):errors.append(f"Extra Motion footer navigation: {p['id']}")
-    draft_hashes={r['sha256'] for r in manifest['files'] if r['status']=='needs-review' and Path(r['source_path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'}}
+    draft_hashes={r['sha256'] for r in manifest['files'] if r['role']=='draft' and Path(r['path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'}}
     for p in files:
         if p.suffix.lower() in {'.jpg','.jpeg','.png','.webp'} and sha(p) in draft_hashes:errors.append(f'Draft bytes leaked: {p}')
     if errors:raise ValueError('\n'.join(errors))

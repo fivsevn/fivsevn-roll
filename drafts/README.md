@@ -1,9 +1,43 @@
-# 未编排照片
+---
+id: roll-drafts-readme
+title: 草稿
 
-此目录保留尚未找到现站公开发布证据的原文件。它在公开 GitHub 仓库中可见，但绝不进入网站构建、相册列表、站点地图或自动发布。
+module: stills
+submodule: drafts
+topic: null
 
-保留来源目录和原始文件名。完整的来源、原仓库版本、字节数、SHA-256 和判断依据在 `migration/assets.json`。状态 `needs-review` 的意思是“此次核对未确认已在网站发布”，并不推断拍摄内容或未来编排。
+type: note
+status: active
+canonical: true
 
-发布时先选定一组照片、顺序、标题和日期，再建立 `stills/<组名>/index.md` 内容包，把选中的文件复制到该包的 `assets/`，明确设置 `status: published` 与 `visibility: public`。单独往 drafts 加文件不会发布。
+summary: null
 
-本次归档：91 张照片、9 个原始 Finder 目录记录、1 个空占位文件和 3 个原始 Markdown 文件。不要删除源映射；原文件是迁移时的归档证据。
+parents: []
+related: []
+
+tags: []
+
+audience:
+- self
+- internal
+languages:
+- zh
+
+maturity: evolving
+confidence: null
+
+visibility: public
+source_of_truth: site
+
+filename_policy: entrypoint
+
+created: null
+updated: '2026-11-01'
+metadata_updated: '2026-11-01'
+---
+
+# 草稿
+
+未编排照片保存在 `stills/`，保留原目录和文件名。此目录不会进入网站、索引、站点地图或自动发布；公开仓库中的源文件仍可直接访问。
+
+选好一组后，将照片复制到 `stills/trigger_imgs/` 并推送即可发布。修改已经发布的影集请直接编辑其发布包。

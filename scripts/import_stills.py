@@ -20,8 +20,9 @@ import tempfile
 import warnings
 
 from PIL import Image
+from media_naming import media_filename
+from site_post_metadata import normalize_metadata, validate_metadata
 from content import ROOT, PUBLICATION_ZONE, write_post
-from jsonschema import Draft202012Validator, FormatChecker
 
 INBOX = 'stills/trigger_imgs'
 STATE = '.publishing/stills.json'
@@ -83,10 +84,10 @@ def read_state(root):
             if not upload.startswith(INBOX + '/'):
                 raise ValueError('Invalid Stills image inbox path')
             path_in(root, upload)
-            relative = upload[len(INBOX) + 1:]
-            if image.get('file') != 'assets/' + relative or PurePosixPath(relative).suffix.lower() not in FORMATS:
+            saved = image.get('file', '')
+            if not isinstance(saved, str) or not saved.startswith('assets/') or PurePosixPath(saved).suffix.lower() not in FORMATS:
                 raise ValueError('Invalid Stills saved image path')
-            path_in(root, package + '/' + image['file'])
+            path_in(root, package + '/' + saved)
     return data
 
 
@@ -181,7 +182,7 @@ def ingest(root=ROOT, *, before=None, after=None, manual=False, stage=False):
                 summary=None, parents=[], related=[], tags=[], audience=['public'], languages=['zh','en','ja'],
                 maturity='evolving', confidence=None, visibility='public', source_of_truth='site',
                 filename_policy='entrypoint', created=date, updated=date, metadata_updated=date,
-                extra={'profile':'roll-post-v1', 'published_at':stamp.isoformat(timespec='seconds'),
+                extra={'profile':'site-post-v1', 'published_at':stamp.isoformat(timespec='seconds'),
                        'display_date':date, 'author':'guest_d', 'images':[], 'upload_event':event_key})
     event = {'id':ident, 'published_at':meta['extra']['published_at'], 'before':before, 'after':after,
              'package':package, 'images':[]}
@@ -189,13 +190,13 @@ def ingest(root=ROOT, *, before=None, after=None, manual=False, stage=False):
     with tempfile.TemporaryDirectory(prefix='.roll-stills-', dir=root) as temporary:
         pending = Path(temporary) / ident
         pending.mkdir()
-        for upload in uploads:
+        for number, upload in enumerate(uploads, 1):
             name = upload['upload_path']
             if upload['mode'] not in {'100644', '100755'} or upload['kind'] != 'blob':
                 raise ValueError('Stills upload must be a regular image, not a symlink or submodule: ' + name)
             data = git(root, 'cat-file', 'blob', upload['blob_sha'])
             validate_image(data, name)
-            relative = 'assets/' + name[len(INBOX) + 1:]
+            relative = 'assets/' + media_filename('stills', ident, stamp, number, PurePosixPath(name).suffix)
             target = path_in(pending, relative)
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(data)
@@ -204,8 +205,8 @@ def ingest(root=ROOT, *, before=None, after=None, manual=False, stage=False):
                                            'source_path':name, 'source_commit':after, 'sha256':digest})
             event['images'].append({'upload_path':name, 'blob_sha':upload['blob_sha'], 'sha256':digest, 'file':relative})
             paths.append(package + '/' + relative)
-        validator = Draft202012Validator(json.loads((root/'schemas/content-metadata.schema.json').read_text()), format_checker=FormatChecker())
-        validator.validate(meta)
+        meta = normalize_metadata(meta, site='stills')
+        validate_metadata(meta, site='stills', schema_dir=root/'schemas')
         write_post(pending/'index.md', meta)
         paths.append(package + '/index.md')
         updated = copy.deepcopy(state)

@@ -2,7 +2,7 @@ name: Build and deploy Roll
 on:
   push:
     branches: [main]
-    paths-ignore: ['drafts/**', 'migration/**', 'README.md', 'docs/**']
+    paths-ignore: ['drafts/**', 'README.md', 'docs/**']
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -36,11 +36,23 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: fivsevn-agy/fivsevn-spec
+          ref: main
+          path: .metadata-spec
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Verify shared contract copies
+        run: |
+          cmp scripts/site_post_metadata.py .metadata-spec/tools/site_post_metadata.py
+          cmp scripts/media_naming.py .metadata-spec/tools/media_naming.py
+          cmp schemas/content-metadata.schema.json .metadata-spec/content/content-metadata.schema.json
+          cmp schemas/site-post.schema.json .metadata-spec/content/site-post.schema.json
       - name: Verify tests before importing content
         run: python -m unittest discover -s tests -v
       - name: Verify Motion return navigation
@@ -56,6 +68,12 @@ jobs:
         env:
           YOUTUBE_FIVSEVN_CHANNEL_ID: ${{ secrets.YOUTUBE_FIVSEVN_CHANNEL_ID }}
         run: python scripts/sync_youtube.py
+      - name: Validate publication media and metadata
+        run: |
+          python scripts/media_naming.py check --site stills --root stills
+          python .metadata-spec/tools/check_metadata.py --profile site-post-v1 --site stills --content-root stills --root . --schema .metadata-spec/content/content-metadata.schema.json
+          python scripts/media_naming.py check --site motion --root motion
+          python .metadata-spec/tools/check_metadata.py --profile site-post-v1 --site motion --content-root motion --root . --schema .metadata-spec/content/content-metadata.schema.json
       - id: pages
         uses: actions/configure-pages@v5
       - run: python scripts/build.py --base-path "${{ steps.pages.outputs.base_path }}"

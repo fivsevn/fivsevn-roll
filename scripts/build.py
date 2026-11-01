@@ -155,7 +155,10 @@ def build(root=ROOT, base_path=''):
                 write(route,post['title'],'bygone',page)
             continue
         page=template('stills.html');ul=page.select_one('ul.wp-block-post-template');ul.append(list_item(post,expanded=True))
-        back=page.find('a',string='viewfinder');back['href']=stills_pages[post['id']];back['title']='Back to Stills'
+        back=page.new_tag('a',attrs={'href':stills_pages[post['id']],'title':'Back to Stills'});back.string='viewfinder'
+        navigation=page.new_tag('p',attrs={'class':'wp-block-paragraph roll-viewfinder','style':'font-size:10px'})
+        navigation.append('◁ ');navigation.append(back)
+        page.find('p',string='▽ load roll').parent.insert_before(navigation)
         # Detail uses the unchanged camera/header/current roll row, followed immediately by the group.
         for banner in page.select('a[href="/stills/bygone/"]'):banner.parent.decompose()
         header=page.select_one('.entry-content').find('div',recursive=False)
@@ -193,10 +196,11 @@ def build(root=ROOT, base_path=''):
         feed=s.select_one('.roll-comment-feed')
         for block in reversed(list(authored.children)):
             if not getattr(block,'name',None):continue
-            row=s.new_tag('div',attrs={'class':'roll-authored-message'})
-            time=s.new_tag('time',attrs={'datetime':post['extra']['published_at']});time.string=stamp.strftime('%H:%M');row.append(time)
+            row=s.new_tag('div',attrs={'class':'wp-block-group is-layout-flex wp-block-group-is-layout-flex roll-authored-message'})
+            time=s.new_tag('time',attrs={'datetime':post['extra']['published_at']});time.string=stamp.strftime('%H:%M')
+            date=s.new_tag('div',attrs={'class':'wp-block-post-date','style':'font-size:11px'});date.append(time);row.append(date)
             author=s.new_tag('span',attrs={'class':'roll-comment-author'});author.string='guest_d';row.append(author)
-            marker=s.new_tag('span',attrs={'aria-hidden':'true'});marker.string='>';row.append(marker)
+            marker=s.new_tag('span',attrs={'class':'roll-comment-marker','aria-hidden':'true'});marker.string='>';row.append(marker)
             content=s.new_tag('div',attrs={'class':'roll-comment-body'});content.append(block);row.append(content)
             feed.insert(0,row)
         return s.li
@@ -215,10 +219,6 @@ def build(root=ROOT, base_path=''):
         section='motion' if target.startswith('/motion/') else 'stills'
         dest.write_text(f'<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={escape(link)}"><link rel="canonical" href="https://roll.fivsevn.com{target}"><title>roll.fivsevn/{section}</title><a href="{escape(link)}">Continue to Roll</a></html>')
     redirect('/','/stills/')
-    for kind in posts:
-        for post in posts[kind]:
-            source=post['extra'].get('source','');old=urlparse(source)
-            if old.hostname=='fivsevn.com' and re.fullmatch(r'/\d{4}/\d{2}/\d{2}/[^/]+/',old.path):redirect(old.path,'/'+kind+'/'+post['id']+'/')
     (out/'404.html').write_text(f'<!doctype html><html lang="en"><meta charset="utf-8"><title>Not found · Roll</title><p>This page is not published.</p><a href="{url("/stills/")}">Stills</a> · <a href="{url("/motion/")}">Motion</a></html>')
     (out/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://roll.fivsevn.com/sitemap.xml\n')
     (out/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>https://roll.fivsevn.com'+r+'</loc></url>' for r in routes)+'</urlset>')
