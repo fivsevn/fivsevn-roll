@@ -36,10 +36,33 @@
 .roll-comment-body :is(pre,table) { max-width: 100%; overflow-x: auto; display: block; }
 .roll-comment-body pre { white-space: pre-wrap; }
 .roll-comment-body :is(ul,ol) { padding-left: 1.5em; }
-a:focus-visible { outline: 1px solid #58e8b7; outline-offset: 4px; }
+a:focus-visible, .roll-comment-feed:focus-visible { outline: 1px solid #58e8b7; outline-offset: 4px; }
 @media (max-width: 480px) {
   .roll-photos { gap: 16px; }
 }
 
 .roll-motion .roll-page-column > .wp-block-spacer:first-child { height: 30px !important; flex-basis: 30px; }
 .roll-viewfinder { margin-block: 12px 3px; }
+
+/* A room keeps the same frame in the feed and when opened. */
+html.roll-motion-page { scrollbar-gutter: stable both-edges; }
+.roll-motion { --motion-viewport-height: 100vh; }
+.roll-motion .roll-page-frame > .wp-block-spacer { display: none; }
+.roll-motion .roll-page-column { flex: 0 1 600px; width: 600px; max-width: calc(100vw - 48px); }
+.roll-motion :is(.wp-block-query, .wp-block-post-template) { width: 100%; min-width: 0; }
+.roll-motion-frame { display: flex; flex-direction: column; box-sizing: border-box; height: min(580px, calc(var(--motion-viewport-height) - 72px - env(safe-area-inset-top) - env(safe-area-inset-bottom))); }
+.roll-motion-frame > * { flex-shrink: 0; box-sizing: border-box; width: 100%; margin-block: 3px 0 !important; }
+.roll-motion-frame .roll-motion-video { flex: 0 1 370.5px; min-height: 0; }
+.roll-motion-video > .entry-content { flex: 1; }
+.roll-motion-video :is(.entry-content, figure, .wp-block-embed__wrapper, .embed-youtube) { width: 100%; height: 100%; min-height: 0; margin: 0; }
+.roll-motion-video iframe { display: block; width: 100%; height: 100%; }
+.roll-motion-frame .roll-comment-feed { flex: 1 1 90.8px; flex-wrap: nowrap; min-height: min(60px, 20vh); width: 100%; margin-top: 5px !important; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.roll-comment-feed > * { flex-shrink: 0; }
+.roll-comment-feed::-webkit-scrollbar { display: none; }
+.roll-motion-frame .roll-motion-composer { margin-block: 7px 5px !important; }
+html.roll-motion-detail-page, html.roll-motion-detail-page body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+.roll-motion-detail .roll-page-column > .wp-block-spacer:last-child { display: none; }
+.roll-motion-detail .roll-motion-frame { margin-bottom: 0 !important; }
+.roll-motion-detail .roll-comment-feed { overscroll-behavior: contain; }
+@supports (height: 100svh) { .roll-motion { --motion-viewport-height: 100svh; } }
+@supports (height: 100dvh) { .roll-motion { --motion-viewport-height: 100dvh; } }
