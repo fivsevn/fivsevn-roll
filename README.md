@@ -68,7 +68,7 @@ A public page requires both `visibility: public` and `status: active`, `publish`
 
 Stills retains its camera header and portfolio list. Album details show `◁ viewfinder`, the selected roll, photos in `extra.images` order, optional Markdown body, then the rights notice. The camera returns to the main blog. The portfolio list has no redundant viewfinder. Stills pagination follows `site-data/stills.json`; a detail link returns to the appropriate list page.
 
-Bygone stays independent of chronological albums. It has collection pagination without photo detail pages. Its displayed titles and dates come from `site-data/bygone.json`; they remain independent of media filenames. Optional collection notes appear once, after the final photo page and before the rights notice.
+Bygone stays independent of chronological albums. It has collection pagination without photo detail pages. Each collection page includes `◁ viewfinder` to return to Stills. Its displayed titles and dates come from `site-data/bygone.json`; they remain independent of media filenames. Optional collection notes appear once, after the final photo page and before the rights notice.
 
 Motion lists video rooms without body text. Room details add authored Markdown as `guest_d` comments using the same natural spacing and typography as the existing feed. `LEAVE ROOM` restores the source list page and room position. The heart, sample comments, viewer count and comment input are part of the existing visual interface. Videos play through YouTube embeds; no video files or local thumbnails are downloaded.
 
