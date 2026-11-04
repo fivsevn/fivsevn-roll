@@ -61,7 +61,7 @@ Motion checks the verified public uploads playlist of the configured YouTube cha
 
 ## Metadata and media
 
-All five boards use the [shared site-post profile](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-site-post-001.md) and [publication media names](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-media-naming-001.md). Local copies of the helper and schemas support offline builds; CI checks them against spec.
+All five boards use the [shared site-post profile](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-site-post-001.md) and [publication media names](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-media-naming-001.md). Local copies of the helper and schemas support offline builds; CI checks them against the Spec revision pinned in [`.github/spec-ref`](.github/spec-ref). Update the pin and local helper/schema copies together when adopting a new contract version.
 
 Publication images are `YYYYMMDD-HHMMSS-<board>-<package-key>-NNN.ext`. The key is derived from the stable package ID; titles, image order and image bytes do not determine it. Ordinary Stills albums preserve original bytes and create display WebP derivatives only in `_site/`; Bygone stores WebP at the original oriented resolution (photographs quality 95, PNG/alpha lossless). Shared camera images, banners, fonts and unarranged original drafts retain their own names. Shared interface assets are validated before copying and again in the output; unsupported files and symlinks are rejected.
 
