@@ -45,6 +45,10 @@ class StillsArchiveTests(unittest.TestCase):
 
     def test_bygone_is_an_independent_collection_outside_the_date_archive(self):
         path, data = self.save(slug='bygone')
+        with Image.open(path.parent / 'assets/sample.png') as image:
+            image.save(path.parent / 'assets/sample.webp', 'WEBP')
+        (path.parent / 'assets/sample.png').unlink()
+        data['extra']['images'][0]['file'] = 'assets/sample.webp'
         data['extra']['mode'] = 'collection'
         write_post(path, data)
         self.assertEqual('stills/bygone/index.md', path.relative_to(self.root).as_posix())
