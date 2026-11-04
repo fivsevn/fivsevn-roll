@@ -143,6 +143,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         if: steps.content.outputs.changed == 'true'
         with:
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: _site
       - name: Check that this deployment still represents the latest main
         if: steps.content.outputs.changed == 'true'
@@ -152,6 +153,8 @@ jobs:
       - id: deployment
         if: steps.content.outputs.changed == 'true'
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Verify all public page and media bytes
         if: steps.content.outputs.changed == 'true'
         run: python scripts/verify_live.py --url "${{ steps.deployment.outputs.page_url }}"
