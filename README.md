@@ -55,7 +55,7 @@ Source for [Stills](https://roll.fivsevn.com/stills/) and [Motion](https://roll.
 | Bygone collection | `stills/bygone/index.md`, `assets/`, `site-data/bygone.json` | `/stills/bygone/` and collection pagination |
 | Motion room | `motion/YYYY/MM/YYYY-MM-DD-HHMMSS-<id>/index.md` | `/motion/<id>/` |
 
-One push to `stills/trigger_imgs/` becomes one album, regardless of image count. The upload commit time in Asia/Shanghai supplies its initial title and `extra.published_at`. The importer reads the exact push snapshot, sorts uploaded paths, checks the complete batch, and saves the package and event ledger together. Replaying the event preserves later editorial changes. A later push creates a new album.
+With GitHub Desktop or Working Copy, first sync the latest `main`, save photos in the upload entry, then commit and push. One push to `stills/trigger_imgs/` becomes one album, regardless of image count; `stills/bygone/trigger_img/` independently adds WebP photos to Bygone. The upload commit time in Asia/Shanghai supplies the album's initial title and `extra.published_at`. The importer reads the exact push snapshot, sorts uploaded paths, checks the complete batch, and saves the package and event ledger together. Replaying the event preserves later editorial changes. A later push creates a new album.
 
 Motion checks the verified public uploads playlist of the configured YouTube channel every hour. It follows continuation pages and obtains evidenced publication dates before saving new rooms. Existing video IDs, including hidden records, prevent duplicate imports. Editing a saved room is independent of later YouTube title changes.
 
@@ -63,7 +63,7 @@ Motion checks the verified public uploads playlist of the configured YouTube cha
 
 All five boards use the [shared site-post profile](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-site-post-001.md) and [publication media names](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-media-naming-001.md). Local copies of the helper and schemas support offline builds; CI checks them against spec.
 
-Publication images are `YYYYMMDD-HHMMSS-<board>-<package-key>-NNN.ext`. The key is derived from the stable package ID; titles, image order and image bytes do not determine it. Ordinary Stills albums preserve original bytes and create display WebP derivatives only in `_site/`; Bygone stores WebP at the original oriented resolution (photographs quality 95, PNG/alpha lossless). Verified publication also removes Bygone originals from `main` history; ordinary album originals are excluded. Use GitHub uploads or a direct API shortcut, and re-clone old local checkouts rather than merging old history. Read-only PR refs and server object retention are managed by GitHub. Shared camera images, banners, fonts and unarranged original drafts retain their own names. Shared interface assets are validated before copying and again in the output; unsupported files and symlinks are rejected.
+Publication images are `YYYYMMDD-HHMMSS-<board>-<package-key>-NNN.ext`. The key is derived from the stable package ID; titles, image order and image bytes do not determine it. Ordinary Stills albums preserve original bytes and create display WebP derivatives only in `_site/`; Bygone stores WebP at the original oriented resolution (photographs quality 95, PNG/alpha lossless). Shared camera images, banners, fonts and unarranged original drafts retain their own names. Shared interface assets are validated before copying and again in the output; unsupported files and symlinks are rejected.
 
 A public page requires both `visibility: public` and `status: active`, `publish`, or `published`. Draft and hidden packages remain saved but are excluded from website output. The source repository is public: these controls do not restrict access to source files.
 
@@ -82,7 +82,7 @@ Motion lists video rooms without body text. Listings and details share a centere
 `Build and deploy Roll` handles main-branch pushes, hourly YouTube checks, and manual runs. `Check Roll` validates pull requests and other branches without deployment. It does not upload preview artifacts.
 
 1. Validate shared contracts, image names and behavioral tests.
-2. Import the push's Stills batch or explicitly requested pending batch; synchronize YouTube on scheduled or requested runs.
+2. Import the push's Stills and Bygone batches or explicitly requested pending batches; synchronize YouTube on scheduled or requested runs.
 3. Build a clean `_site/` using the configured Pages base path; check media hashes, ordering, links and publication boundaries.
 4. Save generated packages and upload state without overwriting concurrent branch changes.
 5. Deploy the artifact and verify all public files against the build receipt.
@@ -90,7 +90,9 @@ Motion lists video rooms without body text. Listings and details share a centere
 
 Scheduled runs skip saving, upload and deployment when the public build receipt already matches the checked artifact. A changed or unavailable receipt continues publication; push and manual runs always publish.
 
-Failures preserve matching upload inputs for a later successful run. `.publishing/stills.json` records event identities and file digests; do not clear it to retry. Manual runs with neither import option rebuild saved content. `sync_youtube` requests immediate video discovery; `import_stills` explicitly publishes pending inbox images as one batch.
+Failures preserve upload inputs. Retry temporary network failures; for invalid photos, follow the [publishing recovery instructions](stills/README.md). Do not clear `.publishing/stills.json` or `.publishing/bygone.json` to retry. Manual `import_stills` publishes unprocessed images as one album; `import_bygone` adds unprocessed photos to the collection. Manual runs with neither import option rebuild saved content. `sync_youtube` requests immediate video discovery.
+
+Daily publication clears verified inbox copies without rewriting Git history. Optional maintenance uses Run workflow with `compact_image_history: true` (default `false`) to remove converted Bygone originals from `main` history; ordinary album originals are excluded. After maintenance, realign local copies with the new `main` and do not merge old history. Read-only PR refs and server object retention are managed by GitHub.
 
 GitHub Pages uses the Actions deployment source and `CNAME` specifies `roll.fivsevn.com`. YouTube channel identity is in `site-data/youtube.json`; `YOUTUBE_FIVSEVN_CHANNEL_ID` may override it through Actions Secrets. There is no WordPress credential or API dependency.
 
