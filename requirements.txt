@@ -1,6 +1,7 @@
 beautifulsoup4==4.15.0
 PyYAML==6.0.3
 jsonschema==4.26.0
+referencing==0.37.0
 Pillow==13.0.0
 pillow-heif==1.8.1
 requests==2.34.2

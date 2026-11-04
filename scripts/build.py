@@ -10,6 +10,9 @@ from PIL import Image, ImageOps
 from content import ROOT, load_posts, safe_asset
 from bygone import render_pages as bygone_pages
 from motion_body import render as render_body
+from head_metadata import compact_text, metadata_head
+
+SITE_URL = 'https://roll.fivsevn.com'
 
 
 def soup(text):
@@ -79,7 +82,7 @@ def build(root=ROOT, base_path=''):
     def url(path):return base_path+path
     def template(name):return soup((root/'templates'/name).read_text())
     def stylesheet(name):return url('/site-assets/'+name+'.css')+'?v='+digest(out/'site-assets'/f'{name}.css')[:12]
-    def write(route,title,kind,body,detail=False,page_number=1):
+    def write(route,title,kind,body,detail=False,page_number=1,post=None):
         frame=body.select_one('.wp-site-blocks > .wp-block-group > .wp-block-group')
         if frame:
             frame['class']=frame.get('class',[])+['roll-page-frame']
@@ -91,13 +94,26 @@ def build(root=ROOT, base_path=''):
                 if value.startswith('/') and not value.startswith('//'):element[attr]=url(value)
         label=f'{title} · Page {page_number}' if page_number>1 else title
         document_title=escape(f'{label} · roll.fivsevn')
+        descriptions={'stills':'Stills · fivsevn 的摄影影集。','motion':'Motion · fivsevn 的影像放映室。','bygone':'Bygone · 留存旧照片的影像集合。'}
+        description=descriptions[kind]+(f' 第 {page_number} 页。' if page_number>1 else '')
+        covers={'stills':'site-assets/homepage20260418pentaxmx.webp','motion':'site-assets/homepage20260531motion.webp','bygone':'site-assets/homepage20260609bygone.webp'}
+        image=SITE_URL+'/'+covers[kind] if (root/covers[kind]).is_file() else None
+        image_alt=title
+        if post and kind!='bygone':
+            notes=''.join(block['html'] for block in post.get('_stills_layout',[]) if block['kind']=='text') if '_stills_layout' in post else render_body(post.get('_body',''))
+            description=compact_text(post.get('summary') or soup(notes).get_text(' ',strip=True),f'{title} · {kind.capitalize()} / roll.fivsevn。')
+            selected=post.get('_display_images',post['extra'].get('images',[]))
+            if kind=='stills' and selected:
+                image=SITE_URL+quote('/stills/'+post['id']+'/'+selected[0]['file'],safe='/')
+                image_alt=selected[0].get('alt','') or title
+        metadata=metadata_head(f'{label} · roll.fivsevn',description,SITE_URL+quote(route,safe='/'),site_name='roll.fivsevn',image=image,image_alt=image_alt,article=bool(post and kind!='bygone'))
         scripts='';detail_class=' roll-motion-detail' if kind=='motion' and detail else ''
         document_class=('roll-motion-page'+(' roll-motion-detail-page' if detail else '')) if kind=='motion' else ''
         if kind=='motion':
             navigation=json.dumps({'base_path':base_path,'post_pages':{key:url(value) for key,value in motion_pages.items()}}).replace('<','\\u003c')
             version=digest(out/'site-assets/motion-navigation.js')[:12]
             scripts=f'<script type="application/json" id="motion-navigation-config">{navigation}</script><script defer src="{url("/site-assets/motion-navigation.js")}?v={version}"></script>'
-        page=f'''<!doctype html><html lang="en" class="{document_class}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{document_title}</title><link rel="canonical" href="https://roll.fivsevn.com{route}"><link rel="stylesheet" href="{stylesheet(kind)}"><link rel="stylesheet" href="{stylesheet('roll')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}{detail_class}">{body}{scripts}</body></html>'''
+        page=f'''<!doctype html><html lang="en" class="{document_class}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{document_title}</title>{metadata}<link rel="stylesheet" href="{stylesheet(kind)}"><link rel="stylesheet" href="{stylesheet('roll')}"></head><body class="wp-singular page-template-default page wp-embed-responsive wp-theme-mpho is-block-theme roll-{kind}{detail_class}">{body}{scripts}</body></html>'''
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page)
         routes.append(route)
     def pagination(page,page_routes,current,label,extra_class=''):
@@ -168,7 +184,7 @@ def build(root=ROOT, base_path=''):
                 if index==len(collection_pages)-1:
                     body=stills_body(post)
                     if body:page.select_one('#rights-notice').insert_before(body)
-                write(route,post['title'],'bygone',page,page_number=index+1)
+                write(route,post['title'],'bygone',page,page_number=index+1,post=post)
             continue
         page=template('stills.html');ul=page.select_one('ul.wp-block-post-template');ul.append(list_item(post,expanded=True))
         back=page.new_tag('a',attrs={'href':stills_pages[post['id']],'title':'Back to Stills'});back.string='viewfinder'
@@ -196,7 +212,7 @@ def build(root=ROOT, base_path=''):
             body=stills_body(post)
             if body:entry.append(body)
         entry.append(template('rights-notice.html'))
-        write('/stills/'+post['id']+'/',post['title'],'stills',page)
+        write('/stills/'+post['id']+'/',post['title'],'stills',page,post=post)
     config=json.loads((root/'site-data/youtube.json').read_text());page_size=config['page_size']
     motion=posts['motion'];pages=max(1,(len(motion)+page_size-1)//page_size)
     motion_pages={post['id']:('/motion/' if i//page_size==0 else f'/motion/page/{i//page_size+1}/') for i,post in enumerate(motion)}
@@ -241,13 +257,15 @@ def build(root=ROOT, base_path=''):
         page=template('motion.html');page.select_one('ul.wp-block-post-template').append(card(post,detail=True))
         home=page.find('a',string='HOME')
         if home:home.find_parent('p').parent.decompose()
-        write('/motion/'+post['id']+'/',post['title'],'motion',page,detail=True)
+        write('/motion/'+post['id']+'/',post['title'],'motion',page,detail=True,post=post)
     def redirect(route,target):
         dest=out/route.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);link=url(target)
         section='Motion' if target.startswith('/motion/') else 'Stills'
-        dest.write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={escape(link)}"><link rel="canonical" href="https://roll.fivsevn.com{target}"><title>{section} · roll.fivsevn</title></head><body><a href="{escape(link)}">Continue to Roll</a></body></html>')
+        metadata=metadata_head(f'{section} · roll.fivsevn',f'{section} · roll.fivsevn。',SITE_URL+target,site_name='roll.fivsevn')
+        dest.write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={escape(link)}">{metadata}<title>{section} · roll.fivsevn</title></head><body><a href="{escape(link)}">Continue to Roll</a></body></html>')
     redirect('/','/stills/')
-    (out/'404.html').write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Not found · Roll</title></head><body><p>This page is not published.</p><a href="{url("/stills/")}">Stills</a> · <a href="{url("/motion/")}">Motion</a></body></html>')
+    missing=metadata_head('Not found · Roll','The requested Roll page could not be found.',SITE_URL+'/404.html',site_name='roll.fivsevn',noindex=True)
+    (out/'404.html').write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Not found · Roll</title>{missing}</head><body><p>This page is not published.</p><a href="{url("/stills/")}">Stills</a> · <a href="{url("/motion/")}">Motion</a></body></html>')
     (out/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://roll.fivsevn.com/sitemap.xml\n')
     (out/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>https://roll.fivsevn.com'+r+'</loc></url>' for r in routes)+'</urlset>')
     files={p.relative_to(out).as_posix():digest(p) for p in sorted(out.rglob('*')) if p.is_file()}
