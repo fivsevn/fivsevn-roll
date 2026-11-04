@@ -95,6 +95,27 @@ class StillsBodyTests(unittest.TestCase):
         self.assertIs(last.select_one('#rights-notice'), notes.find_next_sibling())
         self.assertLess(str(last).index('wp-block-post-template'), str(last).index('roll-stills-body'))
 
+    def test_bygone_keeps_original_resolution_without_changing_album_derivatives(self):
+        self.save(collection=True)
+        collection, _ = read_post(self.root/'stills/bygone/index.md')
+        photo = collection['extra']['images'][0]['file']
+        Image.new('RGB', (1701, 900), 'gray').save(self.root/'stills/bygone'/photo, 'WEBP', lossless=True)
+        slug = self.save()
+        album, _ = read_post(self.root/'stills/2026/06'/slug/'index.md')
+        original = self.root/'stills/2026/06'/slug/album['extra']['images'][0]['file']
+        Image.new('RGB', (1701, 900), 'gray').save(original)
+        original_bytes = original.read_bytes()
+        build(self.root)
+        shown = self.page('stills/bygone').select_one('li.wp-block-post figure img')
+        self.assertEqual(shown['src'], '/stills/bygone/'+photo)
+        self.assertEqual((shown['width'], shown['height']), ('1701', '900'))
+        self.assertFalse(list((self.root/'_site/stills/bygone/assets').glob('*.display.webp')))
+        album_image = self.page('stills/'+slug).select_one('.roll-photos img')
+        self.assertTrue(album_image['src'].endswith('.display.webp'))
+        self.assertEqual(album_image['width'], '1600')
+        self.assertEqual((self.root/'_site/stills'/slug/album['extra']['images'][0]['file']).read_bytes(), original_bytes)
+        self.assertEqual(original.read_bytes(), original_bytes)
+
 
 if __name__ == '__main__':
     unittest.main()

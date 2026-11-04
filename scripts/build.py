@@ -126,7 +126,7 @@ def build(root=ROOT, base_path=''):
             with Image.open(original) as im:
                 width,height=ImageOps.exif_transpose(im).size
                 # Keep originals byte-for-byte; display-only derivatives are disposable.
-                if max(width,height)>1600 and not getattr(im,'is_animated',False):
+                if not collection and max(width,height)>1600 and not getattr(im,'is_animated',False):
                     image=ImageOps.exif_transpose(im);image.thumbnail((1600,1600));rel_display=display_paths[rel];thumb=out/rel_display
                     image.save(thumb,'WEBP',quality=88,icc_profile=im.info.get('icc_profile',b''));width,height=image.size
                 else:rel_display=rel

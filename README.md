@@ -45,6 +45,7 @@ Source for [Stills](https://roll.fivsevn.com/stills/) and [Motion](https://roll.
 ## Publish and edit
 
 - [Stills publishing guide](stills/README.md) and [image upload entry](stills/trigger_imgs/README.md).
+- [Bygone image upload entry](stills/bygone/trigger_img/README.md) adds WebP photos to the existing collection.
 - [Motion publishing guide](motion/README.md).
 - Edit an existing package's `index.md` to change its title, body, publication status, or image order. Keep its ID and publication instant stable.
 
@@ -62,7 +63,7 @@ Motion checks the verified public uploads playlist of the configured YouTube cha
 
 All five boards use the [shared site-post profile](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-site-post-001.md) and [publication media names](https://github.com/fivsevn-agy/fivsevn-spec/blob/main/content/spec-content-media-naming-001.md). Local copies of the helper and schemas support offline builds; CI checks them against spec.
 
-Publication images are `YYYYMMDD-HHMMSS-<board>-<package-key>-NNN.ext`. The key is derived from the stable package ID; titles, image order and image bytes do not determine it. Stills preserves original bytes and creates display WebP derivatives only in `_site/`. Shared camera images, banners, fonts and unarranged original drafts retain their own names. Shared interface assets are validated before copying and again in the output; unsupported files and symlinks are rejected.
+Publication images are `YYYYMMDD-HHMMSS-<board>-<package-key>-NNN.ext`. The key is derived from the stable package ID; titles, image order and image bytes do not determine it. Ordinary Stills albums preserve original bytes and create display WebP derivatives only in `_site/`; Bygone stores WebP at the original oriented resolution (photographs quality 95, PNG/alpha lossless). Verified publication also removes Bygone originals from `main` history; ordinary album originals are excluded. Use GitHub uploads or a direct API shortcut, and re-clone old local checkouts rather than merging old history. Read-only PR refs and server object retention are managed by GitHub. Shared camera images, banners, fonts and unarranged original drafts retain their own names. Shared interface assets are validated before copying and again in the output; unsupported files and symlinks are rejected.
 
 A public page requires both `visibility: public` and `status: active`, `publish`, or `published`. Draft and hidden packages remain saved but are excluded from website output. The source repository is public: these controls do not restrict access to source files.
 

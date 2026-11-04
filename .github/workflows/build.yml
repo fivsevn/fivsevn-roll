@@ -15,6 +15,10 @@ on:
         description: Publish currently unprocessed image-inbox files as one Stills group
         type: boolean
         default: false
+      import_bygone:
+        description: Publish currently unprocessed Bygone image-inbox files
+        type: boolean
+        default: false
 permissions:
   contents: write
   pages: write
@@ -63,6 +67,12 @@ jobs:
       - name: Publish a manually requested Stills image batch
         if: github.event_name == 'workflow_dispatch' && inputs.import_stills == true
         run: python scripts/import_stills.py --manual --stage
+      - name: Publish this push's Bygone image batch
+        if: github.event_name == 'push'
+        run: python scripts/import_bygone.py --event-path "$GITHUB_EVENT_PATH" --stage
+      - name: Publish manually requested Bygone images
+        if: github.event_name == 'workflow_dispatch' && inputs.import_bygone == true
+        run: python scripts/import_bygone.py --manual --stage
       - name: Append new verified YouTube uploads
         if: github.event_name == 'schedule' || inputs.sync_youtube == true
         env:
@@ -103,10 +113,10 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # The Stills importer staged only its exact new package and ledger.
+          # Photo importers staged only their exact packages, collection files and ledgers.
           git add -- motion
           if ! git diff --cached --quiet; then
-            git commit -m 'publish: Save Stills upload batch and verified YouTube uploads'
+            git commit -m 'publish: Save photo uploads and verified YouTube uploads'
           fi
           for attempt in 1 2 3; do
             git fetch origin main
@@ -150,10 +160,45 @@ jobs:
             exit 0
           fi
           python scripts/stills_inbox.py
-          git add -u -- stills/trigger_imgs
+          python scripts/bygone_inbox.py
+          git add -u -- stills/trigger_imgs stills/bygone/trigger_img
           if ! git diff --cached --quiet; then
-            git commit -m 'publish: Clear verified Stills image inbox copies'
+            git commit -m 'publish: Clear verified photo inbox copies'
             if ! git push origin HEAD:main; then
               echo 'Newer work arrived during cleanup. Remote inbox copies are retained; published originals are safe.'
             fi
           fi
+      - name: Prepare verified image history cleanup
+        id: media_history
+        if: steps.content.outputs.changed == 'true'
+        run: |
+          python -m pip install git-filter-repo==2.47.0
+          python scripts/compact_media_history.py --prepare --scope roll --repo "$GITHUB_WORKSPACE" --output-dir "$RUNNER_TEMP/webp-history" --defer-if-pending > "$RUNNER_TEMP/webp-history-result.json"
+          python - <<'PY_HISTORY'
+          import json, os
+          from pathlib import Path
+          report = json.loads((Path(os.environ['RUNNER_TEMP']) / 'webp-history/report.json').read_text())
+          ready = report['status'] == 'prepared'
+          if ready:
+              assert report['protected_files_equal'] and report['cursor_ancestors_verified']
+              assert report['remaining_target_paths'] == 0 and report['backup']['verified']
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('ready=' + str(ready).lower() + '\n')
+          print('Image history cleanup:', report['status'], report.get('reason', ''), 'paths:', report.get('filtered_path_count', 0))
+          PY_HISTORY
+      - name: Push compacted history without overwriting newer work
+        if: steps.media_history.outputs.ready == 'true'
+        run: python scripts/compact_media_history.py --push --repo "$GITHUB_WORKSPACE" --output-dir "$RUNNER_TEMP/webp-history" --defer-if-pending
+      - name: Retain the image history cleanup report
+        if: always() && steps.media_history.outcome != 'skipped'
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-history-cleanup-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/webp-history/report.json
+            ${{ runner.temp }}/webp-history/filtered-paths.json
+            ${{ runner.temp }}/webp-history/commit-map.json
+            ${{ runner.temp }}/webp-history/filter-repo.log
+            ${{ runner.temp }}/webp-history/push.log
+          if-no-files-found: ignore
+          retention-days: 1
