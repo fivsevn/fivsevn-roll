@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: boots
 title: boots
 
@@ -71,4 +73,34 @@ extra:
     alt: 14.JPG
   display_date: '2026-05-26'
   alt: boots
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![1\.JPG](assets/20260526-221815-stills-50c6f6dac24e-001.jpg)
+
+![2\.JPG](assets/20260526-221815-stills-50c6f6dac24e-002.jpg)
+
+![3\.JPG](assets/20260526-221815-stills-50c6f6dac24e-003.jpg)
+
+![4\.JPG](assets/20260526-221815-stills-50c6f6dac24e-004.jpg)
+
+![5\.JPG](assets/20260526-221815-stills-50c6f6dac24e-005.jpg)
+
+![6\.JPG](assets/20260526-221815-stills-50c6f6dac24e-006.jpg)
+
+![7\.JPG](assets/20260526-221815-stills-50c6f6dac24e-007.jpg)
+
+![8\.JPG](assets/20260526-221815-stills-50c6f6dac24e-008.jpg)
+
+![9\.JPG](assets/20260526-221815-stills-50c6f6dac24e-009.jpg)
+
+![10\.JPG](assets/20260526-221815-stills-50c6f6dac24e-010.jpg)
+
+![11\.JPG](assets/20260526-221815-stills-50c6f6dac24e-011.jpg)
+
+![12\.JPG](assets/20260526-221815-stills-50c6f6dac24e-012.jpg)
+
+![13\.JPG](assets/20260526-221815-stills-50c6f6dac24e-013.jpg)
+
+![14\.JPG](assets/20260526-221815-stills-50c6f6dac24e-014.jpg)

@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: urban-candids-1
 title: urban candids 1
 
@@ -61,4 +63,24 @@ extra:
     alt: 3-3
   display_date: '2026-05-25'
   alt: urban candids 1
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![1\-1](assets/20260525-230745-stills-4691ba5d4aff-001.jpg)
+
+![1\-2](assets/20260525-230745-stills-4691ba5d4aff-002.jpg)
+
+![1\-3](assets/20260525-230745-stills-4691ba5d4aff-003.jpg)
+
+![2\-1](assets/20260525-230745-stills-4691ba5d4aff-004.jpg)
+
+![2\-2](assets/20260525-230745-stills-4691ba5d4aff-005.jpg)
+
+![2\-3](assets/20260525-230745-stills-4691ba5d4aff-006.jpg)
+
+![3\-1](assets/20260525-230745-stills-4691ba5d4aff-007.jpg)
+
+![3\-2](assets/20260525-230745-stills-4691ba5d4aff-008.jpg)
+
+![3\-3](assets/20260525-230745-stills-4691ba5d4aff-009.jpg)

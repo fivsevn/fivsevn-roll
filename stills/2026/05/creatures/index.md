@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: creatures
 title: creatures
 
@@ -57,4 +59,20 @@ extra:
     alt: 20211116creatures-7
   display_date: '2026-05-23'
   alt: creatures
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![20211116creatures\-1](assets/20260523-210449-stills-b72d1f14602f-001.jpg)
+
+![20211116creatures\-2](assets/20260523-210449-stills-b72d1f14602f-002.jpg)
+
+![20211116creatures\-3](assets/20260523-210449-stills-b72d1f14602f-003.jpg)
+
+![20211116creatures\-4](assets/20260523-210449-stills-b72d1f14602f-004.jpg)
+
+![20211116creatures\-5](assets/20260523-210449-stills-b72d1f14602f-005.jpg)
+
+![20211116creatures\-6](assets/20260523-210449-stills-b72d1f14602f-006.jpg)
+
+![20211116creatures\-7](assets/20260523-210449-stills-b72d1f14602f-007.jpg)

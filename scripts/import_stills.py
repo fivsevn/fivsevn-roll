@@ -22,7 +22,8 @@ import warnings
 from PIL import Image
 from media_naming import media_filename
 from site_post_metadata import normalize_metadata, validate_metadata
-from content import ROOT, PUBLICATION_ZONE, write_post
+from content import ROOT, PUBLICATION_ZONE
+from stills_document import LAYOUT_MARKER, compose_document, image_reference
 
 INBOX = 'stills/trigger_imgs'
 STATE = '.publishing/stills.json'
@@ -182,7 +183,7 @@ def ingest(root=ROOT, *, before=None, after=None, manual=False, stage=False):
                 summary=None, parents=[], related=[], tags=[], audience=['public'], languages=['zh','en','ja'],
                 maturity='evolving', confidence=None, visibility='public', source_of_truth='site',
                 filename_policy='entrypoint', created=date, updated=date, metadata_updated=date,
-                extra={'profile':'site-post-v1', 'published_at':stamp.isoformat(timespec='seconds'),
+                extra={'profile':'site-post-v1', 'stills_layout':'body-v1', 'published_at':stamp.isoformat(timespec='seconds'),
                        'display_date':date, 'author':'guest_d', 'images':[], 'upload_event':event_key})
     event = {'id':ident, 'published_at':meta['extra']['published_at'], 'before':before, 'after':after,
              'package':package, 'images':[]}
@@ -207,7 +208,8 @@ def ingest(root=ROOT, *, before=None, after=None, manual=False, stage=False):
             paths.append(package + '/' + relative)
         meta = normalize_metadata(meta, site='stills')
         validate_metadata(meta, site='stills', schema_dir=root/'schemas')
-        write_post(pending/'index.md', meta)
+        body = LAYOUT_MARKER + '\n\n' + '\n\n'.join(image_reference(image) for image in meta['extra']['images']) + '\n'
+        (pending/'index.md').write_text(compose_document(meta, body), encoding='utf-8')
         paths.append(package + '/index.md')
         updated = copy.deepcopy(state)
         updated['events'][event_key] = event

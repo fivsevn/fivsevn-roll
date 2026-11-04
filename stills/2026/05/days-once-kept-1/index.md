@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: days-once-kept-1
 title: Days Once Kept 1
 
@@ -91,4 +93,54 @@ extra:
     alt: Days Once Kept 24
   display_date: '2026-05-23'
   alt: Days Once Kept 1
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![Days Once Kept 1](assets/20260523-031333-stills-4b17a078cf9d-001.jpg)
+
+![Days Once Kept 2](assets/20260523-031333-stills-4b17a078cf9d-002.jpg)
+
+![Days Once Kept 3](assets/20260523-031333-stills-4b17a078cf9d-003.jpg)
+
+![Days Once Kept 4](assets/20260523-031333-stills-4b17a078cf9d-004.jpg)
+
+![Days Once Kept 5](assets/20260523-031333-stills-4b17a078cf9d-005.jpg)
+
+![Days Once Kept 6](assets/20260523-031333-stills-4b17a078cf9d-006.jpg)
+
+![Days Once Kept 7](assets/20260523-031333-stills-4b17a078cf9d-007.jpg)
+
+![Days Once Kept 8](assets/20260523-031333-stills-4b17a078cf9d-008.jpg)
+
+![Days Once Kept 9](assets/20260523-031333-stills-4b17a078cf9d-009.jpg)
+
+![Days Once Kept 10](assets/20260523-031333-stills-4b17a078cf9d-010.jpg)
+
+![Days Once Kept 11](assets/20260523-031333-stills-4b17a078cf9d-011.jpg)
+
+![Days Once Kept 12](assets/20260523-031333-stills-4b17a078cf9d-012.jpg)
+
+![Days Once Kept 13](assets/20260523-031333-stills-4b17a078cf9d-013.jpg)
+
+![Days Once Kept 14](assets/20260523-031333-stills-4b17a078cf9d-014.jpg)
+
+![Days Once Kept 15](assets/20260523-031333-stills-4b17a078cf9d-015.jpg)
+
+![Days Once Kept 16](assets/20260523-031333-stills-4b17a078cf9d-016.jpg)
+
+![Days Once Kept 17](assets/20260523-031333-stills-4b17a078cf9d-017.jpg)
+
+![Days Once Kept 18](assets/20260523-031333-stills-4b17a078cf9d-018.jpg)
+
+![Days Once Kept 19](assets/20260523-031333-stills-4b17a078cf9d-019.jpg)
+
+![Days Once Kept 20](assets/20260523-031333-stills-4b17a078cf9d-020.jpg)
+
+![Days Once Kept 21](assets/20260523-031333-stills-4b17a078cf9d-021.jpg)
+
+![Days Once Kept 22](assets/20260523-031333-stills-4b17a078cf9d-022.jpg)
+
+![Days Once Kept 23](assets/20260523-031333-stills-4b17a078cf9d-023.jpg)
+
+![Days Once Kept 24](assets/20260523-031333-stills-4b17a078cf9d-024.jpg)

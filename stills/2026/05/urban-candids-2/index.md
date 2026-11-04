@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: urban-candids-2
 title: urban candids 2
 
@@ -99,4 +101,62 @@ extra:
     alt: 028.JPG
   display_date: '2026-05-28'
   alt: urban candids 2
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![01\.JPG](assets/20260528-061141-stills-3210a69655e4-001.jpg)
+
+![02\.JPG](assets/20260528-061141-stills-3210a69655e4-002.jpg)
+
+![03\.JPG](assets/20260528-061141-stills-3210a69655e4-003.jpg)
+
+![04\.JPG](assets/20260528-061141-stills-3210a69655e4-004.jpg)
+
+![05\.JPG](assets/20260528-061141-stills-3210a69655e4-005.jpg)
+
+![06\.JPG](assets/20260528-061141-stills-3210a69655e4-006.jpg)
+
+![07\.JPG](assets/20260528-061141-stills-3210a69655e4-007.jpg)
+
+![08\.JPG](assets/20260528-061141-stills-3210a69655e4-008.jpg)
+
+![09\.JPG](assets/20260528-061141-stills-3210a69655e4-009.jpg)
+
+![010\.JPG](assets/20260528-061141-stills-3210a69655e4-010.jpg)
+
+![011\.JPG](assets/20260528-061141-stills-3210a69655e4-011.jpg)
+
+![012\.JPG](assets/20260528-061141-stills-3210a69655e4-012.jpg)
+
+![013\.JPG](assets/20260528-061141-stills-3210a69655e4-013.jpg)
+
+![014\.JPG](assets/20260528-061141-stills-3210a69655e4-014.jpg)
+
+![015\.JPG](assets/20260528-061141-stills-3210a69655e4-015.jpg)
+
+![016\.JPG](assets/20260528-061141-stills-3210a69655e4-016.jpg)
+
+![017\.JPG](assets/20260528-061141-stills-3210a69655e4-017.jpg)
+
+![018\.JPG](assets/20260528-061141-stills-3210a69655e4-018.jpg)
+
+![019\.JPG](assets/20260528-061141-stills-3210a69655e4-019.jpg)
+
+![020\.JPG](assets/20260528-061141-stills-3210a69655e4-020.jpg)
+
+![021\.JPG](assets/20260528-061141-stills-3210a69655e4-021.jpg)
+
+![022\.JPG](assets/20260528-061141-stills-3210a69655e4-022.jpg)
+
+![023\.JPG](assets/20260528-061141-stills-3210a69655e4-023.jpg)
+
+![024\.JPG](assets/20260528-061141-stills-3210a69655e4-024.jpg)
+
+![025\.JPG](assets/20260528-061141-stills-3210a69655e4-025.jpg)
+
+![026\.JPG](assets/20260528-061141-stills-3210a69655e4-026.jpg)
+
+![027\.JPG](assets/20260528-061141-stills-3210a69655e4-027.jpg)
+
+![028\.JPG](assets/20260528-061141-stills-3210a69655e4-028.jpg)

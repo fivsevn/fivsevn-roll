@@ -82,6 +82,8 @@ jobs:
         env:
           YOUTUBE_FIVSEVN_CHANNEL_ID: ${{ secrets.YOUTUBE_FIVSEVN_CHANNEL_ID }}
         run: python scripts/sync_youtube.py
+      - name: Arrange photos added directly to existing Stills packages
+        run: python scripts/prepare_stills.py --stage
       - name: Validate publication media and metadata
         run: |
           python scripts/media_naming.py check --site stills --root stills
@@ -117,16 +119,21 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # Photo importers staged only their exact packages, collection files and ledgers.
+          # Importers and the Stills arranger stage only their own package changes.
           git add -- motion
           if ! git diff --cached --quiet; then
-            git commit -m 'publish: Save photo uploads and verified YouTube uploads'
+            git commit -m 'publish: Save photo packages and verified YouTube uploads'
           fi
           for attempt in 1 2 3; do
             git fetch origin main
             previous_head=$(git rev-parse HEAD)
             git rebase FETCH_HEAD
             if [ "$(git rev-parse HEAD)" != "$previous_head" ]; then
+              python scripts/prepare_stills.py --stage
+              if ! git diff --cached --quiet; then
+                git commit -m 'publish: Arrange updated Stills packages'
+              fi
+              python scripts/media_naming.py check --site stills --root stills
               python -m unittest discover -s tests -v
               node --test tests/test_motion_navigation.mjs
               python scripts/build.py --base-path "${{ steps.pages.outputs.base_path }}"

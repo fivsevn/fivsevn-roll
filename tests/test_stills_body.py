@@ -26,6 +26,7 @@ class StillsBodyTests(unittest.TestCase):
         slug = 'bygone' if collection else 'w-ren-min-rd-m-e'
         source = ROOT / 'stills/bygone/index.md' if collection else ROOT / 'stills/2026/06' / slug / 'index.md'
         data, _ = read_post(source)
+        data['extra'].pop('stills_layout', None)
         data['status'] = status
         if title is not None:
             data['title'] = title

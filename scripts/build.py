@@ -118,10 +118,10 @@ def build(root=ROOT, base_path=''):
             s.select_one('p.wp-block-paragraph').string='▽'
         time=s.select_one('time');time['datetime']=post['extra']['published_at'];time.string=post['extra'].get('display_date',post['extra']['published_at'][:10])
         s.li['class']=['wp-block-post'];return s.li
-    def photos(post,collection=False):
+    def photos(post,collection=False,items=None,start=0):
         fragment=soup('<div class="roll-photos"></div>');target=fragment.div
         display_paths=photo_display_paths(post)
-        for n,item in enumerate(post['extra']['images']):
+        for n,item in enumerate(post['extra']['images'] if items is None else items,start):
             original=safe_asset(post['_path'].parent,item['file']);rel='stills/'+post['id']+'/'+item['file'];dest=out/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,dest)
             with Image.open(original) as im:
                 width,height=ImageOps.exif_transpose(im).size
@@ -137,12 +137,13 @@ def build(root=ROOT, base_path=''):
                 a=fragment.new_tag('a',attrs={'href':'/'+quote(rel,safe='/'),'aria-label':f"{post['title']} — photo {n+1}, original"});a.append(img);fig.append(a)
             target.append(fig)
         return fragment.div
-    def stills_body(post):
-        rendered=render_body(post.get('_body',''))
+    def text_block(rendered):
         if not rendered:return None
         fragment=soup('<div class="roll-stills-body"></div>')
         for block in list(soup(rendered).children):fragment.div.append(block)
         return fragment.div
+    def stills_body(post):
+        return text_block(render_body(post.get('_body','')))
     stills=[p for p in posts['stills'] if p['extra'].get('mode')!='collection']
     stills_count=max(1,(len(stills)+stills_size-1)//stills_size)
     def stills_route(number):return '/stills/' if number==1 else f'/stills/page/{number}/'
@@ -181,9 +182,19 @@ def build(root=ROOT, base_path=''):
             if not getattr(child,'name',None):continue
             if 'wp-block-spacer' in child.get('class',[]):child.decompose()
             else:break
-        entry=page.select_one('.entry-content');entry.append(photos(post))
-        body=stills_body(post)
-        if body:entry.append(body)
+        entry=page.select_one('.entry-content')
+        if '_stills_layout' in post:
+            offset=0
+            for block in post['_stills_layout']:
+                if block['kind']=='photos':
+                    entry.append(photos(post,items=block['images'],start=offset))
+                    offset+=len(block['images'])
+                else:
+                    entry.append(text_block(block['html']))
+        else:
+            entry.append(photos(post))
+            body=stills_body(post)
+            if body:entry.append(body)
         entry.append(template('rights-notice.html'))
         write('/stills/'+post['id']+'/',post['title'],'stills',page)
     config=json.loads((root/'site-data/youtube.json').read_text());page_size=config['page_size']

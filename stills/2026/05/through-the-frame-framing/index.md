@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: through-the-frame-framing
 title: through-the-frame framing
 
@@ -57,4 +59,20 @@ extra:
     alt: throughtheframeframing-7
   display_date: '2026-05-23'
   alt: through-the-frame framing
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![throughtheframeframing\-1](assets/20260523-212733-stills-fa9d8246fa52-001.jpg)
+
+![throughtheframeframing\-2](assets/20260523-212733-stills-fa9d8246fa52-002.jpg)
+
+![throughtheframeframing\-3](assets/20260523-212733-stills-fa9d8246fa52-003.jpg)
+
+![throughtheframeframing\-4](assets/20260523-212733-stills-fa9d8246fa52-004.jpg)
+
+![throughtheframeframing\-5](assets/20260523-212733-stills-fa9d8246fa52-005.jpg)
+
+![throughtheframeframing\-6](assets/20260523-212733-stills-fa9d8246fa52-006.jpg)
+
+![throughtheframeframing\-7](assets/20260523-212733-stills-fa9d8246fa52-007.jpg)

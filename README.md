@@ -32,8 +32,8 @@ source_of_truth: site
 filename_policy: entrypoint
 
 created: null
-updated: '2026-11-01'
-metadata_updated: '2026-11-01'
+updated: '2026-11-05'
+metadata_updated: '2026-11-05'
 ---
 
 # roll.fivsevn
@@ -47,7 +47,7 @@ Source for [Stills](https://roll.fivsevn.com/stills/) and [Motion](https://roll.
 - [Stills publishing guide](stills/README.md) and [image upload entry](stills/trigger_imgs/README.md).
 - [Bygone image upload entry](stills/bygone/trigger_img/README.md) adds WebP photos to the existing collection.
 - [Motion publishing guide](motion/README.md).
-- Edit an existing package's `index.md` to change its title, body, publication status, or image order. Keep its ID and publication instant stable.
+- Edit an existing package's `index.md` to change its title, body, publication status, or image order. Move image references and text in the Markdown body to arrange ordinary Stills albums; `extra.images` is maintained as the resource inventory. Keep its ID and publication instant stable.
 
 | Content | Source | Public address |
 |---|---|---|
@@ -65,13 +65,15 @@ All five boards use the [shared site-post profile](https://github.com/fivsevn-ag
 
 Publication images are `YYYYMMDD-HHMMSS-<board>-<package-key>-NNN.ext`. The key is derived from the stable package ID; titles, image order and image bytes do not determine it. Ordinary Stills albums preserve original bytes and create display WebP derivatives only in `_site/`; Bygone stores WebP at the original oriented resolution (photographs quality 95, PNG/alpha lossless). Shared camera images, banners, fonts and unarranged original drafts retain their own names. Shared interface assets are validated before copying and again in the output; unsupported files and symlinks are rejected.
 
+To add photos to an existing ordinary Stills album, place them in its `assets/` and push. Publication assigns standard names and appends references for the new photos to the body; references already written with the original filenames are updated in place. Existing photos keep their names and original bytes.
+
 A public page requires both `visibility: public` and `status: active`, `publish`, or `published`. Draft and hidden packages remain saved but are excluded from website output. The source repository is public: these controls do not restrict access to source files.
 
 ## Rendering
 
 Browser tab titles use `Content title · roll.fivsevn` for Stills albums, Motion rooms, and the first Bygone collection page. List pages use `Stills` or `Motion`; subsequent list and Bygone pages add `· Page N` before the site suffix. Every build derives these titles from the saved content and page number, including packages created by automatic uploads or YouTube discovery.
 
-Stills retains its camera header and portfolio list. Album details show `◁ viewfinder`, the selected roll, photos in `extra.images` order, optional Markdown body, then the rights notice. The camera returns to the main blog. The portfolio list has no redundant viewfinder. Stills pagination follows `site-data/stills.json`; a detail link returns to the appropriate list page.
+Stills retains its camera header and portfolio list. Album details show `◁ viewfinder`, the selected roll, images and text in Markdown body order, then the rights notice. Keep `<!-- stills-layout: body-v1 -->` in the body; move standalone image references such as `![description](assets/filename.jpg)` and paragraphs below it to arrange the album. Short YAML comments immediately after the opening `---` explain editing without appearing on the website. The camera returns to the main blog. The portfolio list has no redundant viewfinder. Stills pagination follows `site-data/stills.json`; a detail link returns to the appropriate list page.
 
 Bygone stays independent of chronological albums. It has collection pagination without photo detail pages. Each collection page includes `◁ viewfinder` to return to Stills. Its displayed titles and dates come from `site-data/bygone.json`; they remain independent of media filenames. Optional collection notes appear once, after the final photo page and before the rights notice.
 

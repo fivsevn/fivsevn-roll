@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: kamakura
 title: kamakura
 
@@ -55,4 +57,18 @@ extra:
     alt: Kamakura 6
   display_date: '2026-04-20'
   alt: kamakura
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![Kamakura 1](assets/20260420-232537-stills-f2aa72cd031e-001.jpg)
+
+![Kamakura 2](assets/20260420-232537-stills-f2aa72cd031e-002.jpg)
+
+![Kamakura 3](assets/20260420-232537-stills-f2aa72cd031e-003.jpg)
+
+![Kamakura 4](assets/20260420-232537-stills-f2aa72cd031e-004.jpg)
+
+![Kamakura 5](assets/20260420-232537-stills-f2aa72cd031e-005.jpg)
+
+![Kamakura 6](assets/20260420-232537-stills-f2aa72cd031e-006.jpg)

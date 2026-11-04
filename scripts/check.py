@@ -90,7 +90,7 @@ def check(root=ROOT,base_path=''):
     for p in posts['stills']:
         if not public(p):continue
         page=BeautifulSoup((out/'stills'/p['id']/'index.html').read_text(),'html.parser')
-        expected=p['extra']['images']
+        expected=p.get('_display_images',p['extra']['images'])
         if p['extra'].get('mode')=='collection':
             config=json.loads((root/'site-data/bygone.json').read_text())
             page_size=config['page_size'];images=[]

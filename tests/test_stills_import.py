@@ -11,9 +11,12 @@ import unittest
 from io import BytesIO
 
 from PIL import Image
+from bs4 import BeautifulSoup
+from markdown import markdown
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from content import ROOT, load_posts, read_post, write_post
+from content import ROOT, load_posts, read_post
 from import_stills import INBOX, STATE, ingest, read_state
+from stills_document import LAYOUT_MARKER, compose_document, image_reference
 
 
 def png(color):
@@ -67,8 +70,13 @@ class StillsUploadTests(unittest.TestCase):
         meta, body = read_post(self.saved(event))
         self.assertEqual('31 Oct, 2026 17:04', meta['title'])
         self.assertEqual('2026-10-31T17:04:00+08:00', meta['extra']['published_at'])
+        self.assertEqual('body-v1', meta['extra']['stills_layout'])
         self.assertEqual(['001.png','002.png'],[i['file'].rsplit('-',1)[-1] for i in meta['extra']['images']])
-        self.assertFalse(body.strip())
+        self.assertEqual(1, body.count(LAYOUT_MARKER))
+        images = BeautifulSoup(markdown(body), 'html.parser').find_all('img')
+        self.assertEqual([image['file'] for image in meta['extra']['images']], [image['src'] for image in images])
+        self.assertEqual(['01.png', '02 相片.png'], [image['alt'] for image in images])
+        self.assertTrue(self.saved(event).read_text().startswith('---\n# 操作：'))
         self.assertEqual(1, len(load_posts(self.root)['stills']))
         for name, data in originals.items():
             image=next(i for i in event['images'] if i['upload_path']==INBOX+'/'+name)
@@ -78,19 +86,35 @@ class StillsUploadTests(unittest.TestCase):
 
     def test_rerun_preserves_edited_title_body_and_hidden_decision(self):
         self.upload('one.png')
+        self.upload('two.png', png('blue'))
         after = self.commit('Upload')
         event = ingest(self.root, before=self.base, after=after)
         path = self.saved(event)
         meta, _ = read_post(path)
         edited_title = 'Edited album & 夜景'
         meta.update(title=edited_title, status='hidden')
-        write_post(path, meta)
-        revised = path.read_text() + '\nEdited story.\n'
+        images = list(reversed(meta['extra']['images']))
+        edited_body = LAYOUT_MARKER + '\n\nEdited story.\n\n' + image_reference(images[0]) + '\n\nBetween photos.\n\n' + image_reference(images[1]) + '\n'
+        revised = compose_document(meta, edited_body)
         path.write_text(revised)
         self.assertIsNone(ingest(self.root, before=self.base, after=after))
         self.assertEqual(revised, path.read_text())
         self.assertEqual(edited_title, read_post(path)[0]['title'])
         self.assertEqual(1, len(read_state(self.root)['events']))
+
+    def test_initial_body_keeps_original_alt_with_markdown_punctuation(self):
+        names = ['夜景 [一] & "二".png', 'a &amp; b.png', 'a `夜景`.png']
+        original = png('green')
+        for name in names:
+            self.upload(name, original)
+        after = self.commit('Upload photos with editorial filenames')
+        event = ingest(self.root, before=self.base, after=after)
+        meta, body = read_post(self.saved(event))
+        images = BeautifulSoup(markdown(body), 'html.parser').find_all('img')
+        self.assertEqual(sorted(names), [image['alt'] for image in images])
+        self.assertEqual([image['file'] for image in meta['extra']['images']], [image['src'] for image in images])
+        for image in images:
+            self.assertEqual(original, (self.saved(event).parent/image['src']).read_bytes())
 
     def test_later_push_reusing_filename_creates_new_group_and_preserves_old_bytes(self):
         self.upload('phone.png', png('red'))

@@ -26,6 +26,7 @@ class StillsArchiveTests(unittest.TestCase):
 
     def save(self, slug='test-stills', published_at='2026-06-01T12:20:45+08:00'):
         data = copy.deepcopy(self.example)
+        data['extra'].pop('stills_layout', None)
         data['id'] = slug
         data['title'] = slug
         data['extra']['published_at'] = published_at

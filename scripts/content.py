@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 import json, re
 from PIL import Image, UnidentifiedImageError
 from site_post_metadata import read_frontmatter, dump_frontmatter, validate_metadata
+from stills_body import is_body_layout, parse_layout, display_images
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLISHED = {'published', 'publish', 'active'}
@@ -89,6 +90,7 @@ def load_posts(root=ROOT, include_hidden=False):
             if path.is_symlink() or any(parent.is_symlink() for parent in path.parents if parent.is_relative_to(root/kind)):
                 raise ValueError(f'Symlink not permitted: {path}')
             data, body = read_post(path)
+            layout = None
             validate_metadata(data, site=kind, schema_dir=root/'schemas')
             if data['module'] != kind or (kind == 'stills' and data['id'] != path.parent.name):
                 raise ValueError(f'{path}: identity or module does not match path')
@@ -116,6 +118,8 @@ def load_posts(root=ROOT, include_hidden=False):
                     safe_asset(path.parent, item['file'])
                 if data['id'] == 'bygone':
                     validate_bygone_assets(path.parent, images)
+                elif extra.get('mode') != 'collection' and is_body_layout(body, data):
+                    layout = parse_layout(body, images)
             else:
                 expected_path = motion_path(root, data['id'], extra['published_at'])
                 if path != expected_path:
@@ -126,6 +130,8 @@ def load_posts(root=ROOT, include_hidden=False):
                 # Historical duplicate embeds are retained. Sync never recreates any existing ID.
                 seen_videos.update(ids)
             data = dict(data, _path=path, _body=body)
+            if layout is not None:
+                data.update(_stills_layout=layout, _display_images=display_images(layout))
             if include_hidden or public(data):
                 result[kind].append(data)
     history = json.loads((root/'site-data/history.json').read_text())

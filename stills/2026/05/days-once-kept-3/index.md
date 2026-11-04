@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: days-once-kept-3
 title: Days Once Kept 3
 
@@ -91,4 +93,54 @@ extra:
     alt: Days Once Kept 3-24
   display_date: '2026-05-23'
   alt: Days Once Kept 3
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![Days Once Kept 3\-1](assets/20260523-031817-stills-bf1263a2e36c-001.jpg)
+
+![Days Once Kept 3\-2](assets/20260523-031817-stills-bf1263a2e36c-002.jpg)
+
+![Days Once Kept 3\-3](assets/20260523-031817-stills-bf1263a2e36c-003.jpg)
+
+![Days Once Kept 3\-4](assets/20260523-031817-stills-bf1263a2e36c-004.jpg)
+
+![Days Once Kept 3\-5](assets/20260523-031817-stills-bf1263a2e36c-005.jpg)
+
+![Days Once Kept 3\-6](assets/20260523-031817-stills-bf1263a2e36c-006.jpg)
+
+![Days Once Kept 3\-7](assets/20260523-031817-stills-bf1263a2e36c-007.jpg)
+
+![Days Once Kept 3\-8](assets/20260523-031817-stills-bf1263a2e36c-008.jpg)
+
+![Days Once Kept 3\-9](assets/20260523-031817-stills-bf1263a2e36c-009.jpg)
+
+![Days Once Kept 3\-10](assets/20260523-031817-stills-bf1263a2e36c-010.jpg)
+
+![Days Once Kept 3\-11](assets/20260523-031817-stills-bf1263a2e36c-011.jpg)
+
+![Days Once Kept 3\-12](assets/20260523-031817-stills-bf1263a2e36c-012.jpg)
+
+![Days Once Kept 3\-13](assets/20260523-031817-stills-bf1263a2e36c-013.jpg)
+
+![Days Once Kept 3\-14](assets/20260523-031817-stills-bf1263a2e36c-014.jpg)
+
+![Days Once Kept 3\-15](assets/20260523-031817-stills-bf1263a2e36c-015.jpg)
+
+![Days Once Kept 3\-16](assets/20260523-031817-stills-bf1263a2e36c-016.jpg)
+
+![Days Once Kept 3\-17](assets/20260523-031817-stills-bf1263a2e36c-017.jpg)
+
+![Days Once Kept 3\-18](assets/20260523-031817-stills-bf1263a2e36c-018.jpg)
+
+![Days Once Kept 3\-19](assets/20260523-031817-stills-bf1263a2e36c-019.jpg)
+
+![Days Once Kept 3\-20](assets/20260523-031817-stills-bf1263a2e36c-020.jpg)
+
+![Days Once Kept 3\-21](assets/20260523-031817-stills-bf1263a2e36c-021.jpg)
+
+![Days Once Kept 3\-22](assets/20260523-031817-stills-bf1263a2e36c-022.jpg)
+
+![Days Once Kept 3\-23](assets/20260523-031817-stills-bf1263a2e36c-023.jpg)
+
+![Days Once Kept 3\-24](assets/20260523-031817-stills-bf1263a2e36c-024.jpg)

@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: days-once-kept-7
 title: Days Once Kept 7
 
@@ -93,4 +95,56 @@ extra:
     alt: Days Once Kept 7-25
   display_date: '2026-05-23'
   alt: Days Once Kept 7
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![Days Once Kept 7\-1](assets/20260523-032648-stills-001e4d7167ca-001.jpg)
+
+![Days Once Kept 7\-2](assets/20260523-032648-stills-001e4d7167ca-002.jpg)
+
+![Days Once Kept 7\-3](assets/20260523-032648-stills-001e4d7167ca-003.jpg)
+
+![Days Once Kept 7\-4](assets/20260523-032648-stills-001e4d7167ca-004.jpg)
+
+![Days Once Kept 7\-5](assets/20260523-032648-stills-001e4d7167ca-005.jpg)
+
+![Days Once Kept 7\-6](assets/20260523-032648-stills-001e4d7167ca-006.jpg)
+
+![Days Once Kept 7\-7](assets/20260523-032648-stills-001e4d7167ca-007.jpg)
+
+![Days Once Kept 7\-8](assets/20260523-032648-stills-001e4d7167ca-008.jpg)
+
+![Days Once Kept 7\-9](assets/20260523-032648-stills-001e4d7167ca-009.jpg)
+
+![Days Once Kept 7\-10](assets/20260523-032648-stills-001e4d7167ca-010.jpg)
+
+![Days Once Kept 7\-11](assets/20260523-032648-stills-001e4d7167ca-011.jpg)
+
+![Days Once Kept 7\-12](assets/20260523-032648-stills-001e4d7167ca-012.jpg)
+
+![Days Once Kept 7\-13](assets/20260523-032648-stills-001e4d7167ca-013.jpg)
+
+![Days Once Kept 7\-14](assets/20260523-032648-stills-001e4d7167ca-014.jpg)
+
+![Days Once Kept 7\-15](assets/20260523-032648-stills-001e4d7167ca-015.jpg)
+
+![Days Once Kept 7\-16](assets/20260523-032648-stills-001e4d7167ca-016.jpg)
+
+![Days Once Kept 7\-17](assets/20260523-032648-stills-001e4d7167ca-017.jpg)
+
+![Days Once Kept 7\-18](assets/20260523-032648-stills-001e4d7167ca-018.jpg)
+
+![Days Once Kept 7\-19](assets/20260523-032648-stills-001e4d7167ca-019.jpg)
+
+![Days Once Kept 7\-20](assets/20260523-032648-stills-001e4d7167ca-020.jpg)
+
+![Days Once Kept 7\-21](assets/20260523-032648-stills-001e4d7167ca-021.jpg)
+
+![Days Once Kept 7\-22](assets/20260523-032648-stills-001e4d7167ca-022.jpg)
+
+![Days Once Kept 7\-23](assets/20260523-032648-stills-001e4d7167ca-023.jpg)
+
+![Days Once Kept 7\-24](assets/20260523-032648-stills-001e4d7167ca-024.jpg)
+
+![Days Once Kept 7\-25](assets/20260523-032648-stills-001e4d7167ca-025.jpg)

@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: days-once-kept-5
 title: Days Once Kept 5
 
@@ -93,4 +95,56 @@ extra:
     alt: Days Once Kept 5-25
   display_date: '2026-05-23'
   alt: Days Once Kept 5
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![Days Once Kept 5\-1](assets/20260523-032206-stills-4592db2f729b-001.jpg)
+
+![Days Once Kept 5\-2](assets/20260523-032206-stills-4592db2f729b-002.jpg)
+
+![Days Once Kept 5\-3](assets/20260523-032206-stills-4592db2f729b-003.jpg)
+
+![Days Once Kept 5\-4](assets/20260523-032206-stills-4592db2f729b-004.jpg)
+
+![Days Once Kept 5\-5](assets/20260523-032206-stills-4592db2f729b-005.jpg)
+
+![Days Once Kept 5\-6](assets/20260523-032206-stills-4592db2f729b-006.jpg)
+
+![Days Once Kept 5\-7](assets/20260523-032206-stills-4592db2f729b-007.jpg)
+
+![Days Once Kept 5\-8](assets/20260523-032206-stills-4592db2f729b-008.jpg)
+
+![Days Once Kept 5\-9](assets/20260523-032206-stills-4592db2f729b-009.jpg)
+
+![Days Once Kept 5\-10](assets/20260523-032206-stills-4592db2f729b-010.jpg)
+
+![Days Once Kept 5\-11](assets/20260523-032206-stills-4592db2f729b-011.jpg)
+
+![Days Once Kept 5\-12](assets/20260523-032206-stills-4592db2f729b-012.jpg)
+
+![Days Once Kept 5\-13](assets/20260523-032206-stills-4592db2f729b-013.jpg)
+
+![Days Once Kept 5\-14](assets/20260523-032206-stills-4592db2f729b-014.jpg)
+
+![Days Once Kept 5\-15](assets/20260523-032206-stills-4592db2f729b-015.jpg)
+
+![Days Once Kept 5\-16](assets/20260523-032206-stills-4592db2f729b-016.jpg)
+
+![Days Once Kept 5\-17](assets/20260523-032206-stills-4592db2f729b-017.jpg)
+
+![Days Once Kept 5\-18](assets/20260523-032206-stills-4592db2f729b-018.jpg)
+
+![Days Once Kept 5\-19](assets/20260523-032206-stills-4592db2f729b-019.jpg)
+
+![Days Once Kept 5\-20](assets/20260523-032206-stills-4592db2f729b-020.jpg)
+
+![Days Once Kept 5\-21](assets/20260523-032206-stills-4592db2f729b-021.jpg)
+
+![Days Once Kept 5\-22](assets/20260523-032206-stills-4592db2f729b-022.jpg)
+
+![Days Once Kept 5\-23](assets/20260523-032206-stills-4592db2f729b-023.jpg)
+
+![Days Once Kept 5\-24](assets/20260523-032206-stills-4592db2f729b-024.jpg)
+
+![Days Once Kept 5\-25](assets/20260523-032206-stills-4592db2f729b-025.jpg)

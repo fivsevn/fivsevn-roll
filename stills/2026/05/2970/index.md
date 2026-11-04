@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: '2970'
 title: sewing work
 
@@ -51,4 +53,14 @@ extra:
     alt: 20220916sewingwork-4
   display_date: '2026-05-24'
   alt: sewing work
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![20220916sewingwork\-1](assets/20260524-044904-stills-8058adaac2e8-001.jpg)
+
+![20220916sewingwork\-2](assets/20260524-044904-stills-8058adaac2e8-002.jpg)
+
+![20220916sewingwork\-3](assets/20260524-044904-stills-8058adaac2e8-003.jpg)
+
+![20220916sewingwork\-4](assets/20260524-044904-stills-8058adaac2e8-004.jpg)

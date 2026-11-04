@@ -1,4 +1,6 @@
 ---
+# 操作：修改 title 和正文；移动正文图片引用可调整顺序。
+# 补图放本包 assets/，自动命名并补引用；保持 id、目录和发布时间不变。
 id: w-ren-min-rd-m-e
 title: W Ren min Rd.(M) E
 
@@ -49,4 +51,12 @@ extra:
     alt: 3.JPG
   display_date: '2026-06-01'
   alt: W Ren min Rd.(M) E
+  stills_layout: body-v1
 ---
+<!-- stills-layout: body-v1 -->
+
+![1\.JPG](assets/20260601-122045-stills-5a7cd0fdaff1-001.jpg)
+
+![2\.JPG](assets/20260601-122045-stills-5a7cd0fdaff1-002.jpg)
+
+![3\.JPG](assets/20260601-122045-stills-5a7cd0fdaff1-003.jpg)
