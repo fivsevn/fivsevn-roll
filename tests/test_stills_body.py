@@ -116,6 +116,39 @@ class StillsBodyTests(unittest.TestCase):
         self.assertEqual((self.root/'_site/stills'/slug/album['extra']['images'][0]['file']).read_bytes(), original_bytes)
         self.assertEqual(original.read_bytes(), original_bytes)
 
+    def test_bygone_rejects_unlisted_jpeg_but_allows_pending_inbox_originals(self):
+        self.save(collection=True)
+        inbox = self.root/'stills/bygone/trigger_img'
+        inbox.mkdir()
+        pending = inbox/'pending.jpg'
+        Image.new('RGB', (3, 2), 'gray').save(pending)
+        build(self.root)
+        self.assertTrue((self.root/'_site/stills/bygone/index.html').exists())
+        self.assertTrue(pending.exists())
+        manual = self.root/'stills/bygone/assets/manual.jpg'
+        Image.new('RGB', (3, 2), 'gray').save(manual)
+        originals = {path: path.read_bytes() for path in (self.root/'stills/bygone').rglob('*') if path.is_file()}
+        with self.assertRaisesRegex(ValueError, 'Bygone.*WebP'):
+            build(self.root)
+        self.assertEqual(originals, {path: path.read_bytes() for path in originals})
+
+    def test_bygone_rejects_disguised_webp_without_restricting_other_album_jpeg(self):
+        slug = self.save()
+        album, _ = read_post(self.root/'stills/2026/06'/slug/'index.md')
+        original = self.root/'stills/2026/06'/slug/album['extra']['images'][0]['file']
+        original_bytes = original.read_bytes()
+        build(self.root)
+        self.assertTrue((self.root/'_site/stills'/slug/'index.html').exists())
+        self.save(collection=True)
+        collection, _ = read_post(self.root/'stills/bygone/index.md')
+        disguised = self.root/'stills/bygone'/collection['extra']['images'][0]['file']
+        Image.new('RGB', (3, 2), 'gray').save(disguised, 'JPEG')
+        disguised_bytes = disguised.read_bytes()
+        with self.assertRaisesRegex(ValueError, 'Bygone.*WebP'):
+            build(self.root)
+        self.assertEqual(original.read_bytes(), original_bytes)
+        self.assertEqual(disguised.read_bytes(), disguised_bytes)
+
 
 if __name__ == '__main__':
     unittest.main()

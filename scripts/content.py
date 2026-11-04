@@ -3,6 +3,7 @@ from pathlib import Path, PurePosixPath
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import json, re
+from PIL import Image, UnidentifiedImageError
 from site_post_metadata import read_frontmatter, dump_frontmatter, validate_metadata
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,6 +60,25 @@ def safe_asset(package, relative):
     return target
 
 
+def validate_bygone_assets(package, images):
+    if any(PurePosixPath(item['file']).suffix.lower() != '.webp' for item in images):
+        raise ValueError('Bygone collection images must be WebP')
+    raster = {'.webp', '.jpg', '.jpeg', '.png', '.gif', '.heic', '.heif', '.avif', '.tif', '.tiff', '.bmp', '.ico', '.mpo'}
+    for asset in (package/'assets').rglob('*'):
+        if asset.is_symlink():
+            raise ValueError(f'Symlink not permitted in Bygone assets: {asset}')
+        if not asset.is_file():
+            continue
+        try:
+            with Image.open(asset) as image:
+                if asset.suffix.lower() != '.webp' or image.format != 'WEBP':
+                    raise ValueError(f'Bygone assets must be WebP: {asset}')
+                image.verify()
+        except (UnidentifiedImageError, OSError) as error:
+            if asset.suffix.lower() in raster:
+                raise ValueError(f'Bygone assets must contain valid WebP data: {asset}') from error
+
+
 def load_posts(root=ROOT, include_hidden=False):
     result = {'stills': [], 'motion': []}
     seen_videos = set()
@@ -94,6 +114,8 @@ def load_posts(root=ROOT, include_hidden=False):
                     raise ValueError(f'{path}: duplicate images')
                 for item in images:
                     safe_asset(path.parent, item['file'])
+                if data['id'] == 'bygone':
+                    validate_bygone_assets(path.parent, images)
             else:
                 expected_path = motion_path(root, data['id'], extra['published_at'])
                 if path != expected_path:
