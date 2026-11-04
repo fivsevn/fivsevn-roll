@@ -12,7 +12,7 @@ from io import BytesIO
 
 from PIL import Image
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from content import ROOT, load_posts, read_post
+from content import ROOT, load_posts, read_post, write_post
 from import_stills import INBOX, STATE, ingest, read_state
 
 
@@ -81,10 +81,15 @@ class StillsUploadTests(unittest.TestCase):
         after = self.commit('Upload')
         event = ingest(self.root, before=self.base, after=after)
         path = self.saved(event)
-        revised = path.read_text().replace('status: published','status: hidden') + '\nEdited story.\n'
+        meta, _ = read_post(path)
+        edited_title = 'Edited album & 夜景'
+        meta.update(title=edited_title, status='hidden')
+        write_post(path, meta)
+        revised = path.read_text() + '\nEdited story.\n'
         path.write_text(revised)
         self.assertIsNone(ingest(self.root, before=self.base, after=after))
         self.assertEqual(revised, path.read_text())
+        self.assertEqual(edited_title, read_post(path)[0]['title'])
         self.assertEqual(1, len(read_state(self.root)['events']))
 
     def test_later_push_reusing_filename_creates_new_group_and_preserves_old_bytes(self):

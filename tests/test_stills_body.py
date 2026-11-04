@@ -22,11 +22,13 @@ class StillsBodyTests(unittest.TestCase):
             shutil.copytree(ROOT / folder, self.root / folder)
         shutil.copyfile(ROOT / 'CNAME', self.root / 'CNAME')
 
-    def save(self, body='', status='published', collection=False):
+    def save(self, body='', status='published', collection=False, title=None):
         slug = 'bygone' if collection else 'w-ren-min-rd-m-e'
         source = ROOT / 'stills/bygone/index.md' if collection else ROOT / 'stills/2026/06' / slug / 'index.md'
         data, _ = read_post(source)
         data['status'] = status
+        if title is not None:
+            data['title'] = title
         data['extra']['images'] = data['extra']['images'][:2]
         path = stills_path(self.root, slug, data['extra']['published_at'])
         (path.parent / 'assets').mkdir(parents=True, exist_ok=True)
@@ -41,9 +43,15 @@ class StillsBodyTests(unittest.TestCase):
         return BeautifulSoup((self.root / '_site' / route / 'index.html').read_text(), 'html.parser')
 
     def test_group_notes_follow_photos_before_the_unchanged_notice(self):
-        slug = self.save('这是一组 **街头影像**。\n\n记录当时的光线。[Motion](/motion/)\n')
+        title = '中文 & <光影> "双引号" \'单引号\' </title><script>window.titleInjected=true</script>'
+        slug = self.save('这是一组 **街头影像**。\n\n记录当时的光线。[Motion](/motion/)\n', title=title)
         build(self.root, base_path='/preview')
         page = self.page('stills/' + slug)
+        self.assertEqual(1, len(page.find_all('title')))
+        self.assertEqual(title + ' · roll.fivsevn', page.title.get_text())
+        self.assertFalse(page.head.find_all('script'))
+        self.assertFalse(page.find('script', string='window.titleInjected=true'))
+        self.assertEqual('https://roll.fivsevn.com/stills/' + slug + '/', page.select_one('link[rel="canonical"]')['href'])
         photos = page.select_one('.roll-photos')
         notes = page.select_one('.roll-stills-body')
         notice = page.select_one('#rights-notice')
@@ -69,14 +77,19 @@ class StillsBodyTests(unittest.TestCase):
             self.assertNotIn('DRAFT-STILLS-NOTES', path.read_text())
 
     def test_collection_notes_appear_once_after_the_final_photo_page(self):
-        self.save('相册的结束语。', collection=True)
+        self.save('相册的结束语。', collection=True, title='Bygone & 回忆')
         config_path = self.root / 'site-data/bygone.json'
         config = json.loads(config_path.read_text())
         config['page_size'] = 1
         config_path.write_text(json.dumps(config))
         build(self.root)
-        self.assertFalse(self.page('stills/bygone').select('.roll-stills-body'))
+        first = self.page('stills/bygone')
+        self.assertEqual(1, len(first.find_all('title')))
+        self.assertEqual('Bygone & 回忆 · roll.fivsevn', first.title.get_text())
+        self.assertFalse(first.select('.roll-stills-body'))
         last = self.page('stills/bygone/page/2')
+        self.assertEqual(1, len(last.find_all('title')))
+        self.assertEqual('Bygone & 回忆 · Page 2 · roll.fivsevn', last.title.get_text())
         notes = last.select_one('.roll-stills-body')
         self.assertEqual('相册的结束语。', notes.get_text())
         self.assertIs(last.select_one('#rights-notice'), notes.find_next_sibling())

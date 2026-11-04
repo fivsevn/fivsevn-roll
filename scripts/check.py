@@ -17,6 +17,30 @@ def check(root=ROOT,base_path=''):
     stills_routes=['/stills/' if number==1 else f'/stills/page/{number}/' for number in range(1,stills_count+1)]
     stills_listing_files={route.strip('/')+'/index.html' for route in stills_routes}
     stills_pages={post['id']:stills_routes[index//stills_size] for index,post in enumerate(stills)}
+    motion=[p for p in posts['motion'] if public(p)]
+    motion_size=json.loads((root/'site-data/youtube.json').read_text())['page_size']
+    motion_count=max(1,(len(motion)+motion_size-1)//motion_size)
+    # Derive expected document titles from source records and public routes,
+    # independently of the rendered headings or the builder's title helper.
+    page_titles={'index.html':'Stills · roll.fivsevn','404.html':'Not found · Roll'}
+    for number,route in enumerate(stills_routes,start=1):
+        page_titles[route.strip('/')+'/index.html']='Stills'+(f' · Page {number}' if number>1 else '')+' · roll.fivsevn'
+    for number in range(1,motion_count+1):
+        route='motion/index.html' if number==1 else f'motion/page/{number}/index.html'
+        page_titles[route]='Motion'+(f' · Page {number}' if number>1 else '')+' · roll.fivsevn'
+    for post in posts['stills']:
+        if not public(post):continue
+        count=1
+        if post['extra'].get('mode')=='collection':
+            collection_size=json.loads((root/'site-data/bygone.json').read_text())['page_size']
+            count=max(1,(len(post['extra']['images'])+collection_size-1)//collection_size)
+        for number in range(1,count+1):
+            route='stills/'+post['id']+('/index.html' if number==1 else f'/page/{number}/index.html')
+            page_titles[route]=post['title']+(f' · Page {number}' if number>1 else '')+' · roll.fivsevn'
+    for post in motion:
+        page_titles['motion/'+post['id']+'/index.html']=post['title']+' · roll.fivsevn'
+    for route in page_titles:
+        if not (out/route).is_file():errors.append(f'Missing titled page: {route}')
     manifest={'files':json.loads((root/'site-data/originals.json').read_text())}
     for row in manifest['files']:
         path=root/row['path']
@@ -31,9 +55,8 @@ def check(root=ROOT,base_path=''):
         if any(x in text for x in ('/drafts/','footer.rs','cdn.jsdelivr.net/gh/fivsevn/fivsevn-assets')):errors.append(f'Forbidden public reference: {rel}')
         if p.suffix!='.html':continue
         s=BeautifulSoup(text,'html.parser')
-        if rel.startswith(('stills/','motion/')):
-            section=rel.split('/')[0]
-            if not s.title or s.title.get_text()!=f'roll.fivsevn/{section}':errors.append(f'Page title: {rel}')
+        titles=s.find_all('title')
+        if rel not in page_titles or len(titles)!=1 or titles[0].parent is not s.head or titles[0].get_text()!=page_titles[rel]:errors.append(f'Page title: {rel}')
         for e in s.select('[href],[src]'):
             for a in ('href','src'):
                 v=e.get(a,'');u=urlparse(v)
@@ -90,12 +113,10 @@ def check(root=ROOT,base_path=''):
         for image,item in zip(images,expected):
             path=unquote(urlparse(image['src']).path);original='stills/'+p['id']+'/'+item['file']
             if path not in {base_path+'/'+original,base_path+'/'+displays[original]}:errors.append(f"Image ordering: {p['id']}: {path}")
-    motion=[p for p in posts['motion'] if public(p)]
-    page_size=json.loads((root/'site-data/youtube.json').read_text())['page_size']
     for index,p in enumerate(motion):
         page=BeautifulSoup((out/'motion'/p['id']/'index.html').read_text(),'html.parser')
         leave=page.find('a',string='LEAVE ROOM')
-        route='/motion/' if index//page_size==0 else f'/motion/page/{index//page_size+1}/'
+        route='/motion/' if index//motion_size==0 else f'/motion/page/{index//motion_size+1}/'
         if not leave or leave.get('href')!=base_path+route+'#'+p['id'] or not leave.has_attr('data-motion-return'):errors.append(f"Leave Motion room: {p['id']}")
         if any(a.get_text() in {'HOME','◁ motion'} and not a.find_parent('li') for a in page.select('a')):errors.append(f"Extra Motion footer navigation: {p['id']}")
     draft_hashes={r['sha256'] for r in manifest['files'] if r['role']=='draft' and Path(r['path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp'}}

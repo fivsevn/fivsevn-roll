@@ -68,6 +68,8 @@ A public page requires both `visibility: public` and `status: active`, `publish`
 
 ## Rendering
 
+Browser tab titles use `Content title · roll.fivsevn` for Stills albums, Motion rooms, and the first Bygone collection page. List pages use `Stills` or `Motion`; subsequent list and Bygone pages add `· Page N` before the site suffix. Every build derives these titles from the saved content and page number, including packages created by automatic uploads or YouTube discovery.
+
 Stills retains its camera header and portfolio list. Album details show `◁ viewfinder`, the selected roll, photos in `extra.images` order, optional Markdown body, then the rights notice. The camera returns to the main blog. The portfolio list has no redundant viewfinder. Stills pagination follows `site-data/stills.json`; a detail link returns to the appropriate list page.
 
 Bygone stays independent of chronological albums. It has collection pagination without photo detail pages. Each collection page includes `◁ viewfinder` to return to Stills. Its displayed titles and dates come from `site-data/bygone.json`; they remain independent of media filenames. Optional collection notes appear once, after the final photo page and before the rights notice.

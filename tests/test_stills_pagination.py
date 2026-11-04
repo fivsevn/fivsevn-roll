@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from content import ROOT, read_post, stills_path, write_post
 from build import build, stills_page_size
+from check import check
 from sync_youtube import plan, Video
 
 
@@ -42,6 +43,10 @@ class StillsPaginationTests(unittest.TestCase):
     def page(self, route):
         return BeautifulSoup((self.root / '_site' / route / 'index.html').read_text(), 'html.parser')
 
+    def assert_title(self, page, expected):
+        self.assertEqual(1, len(page.find_all('title')))
+        self.assertEqual(expected, page.title.get_text())
+
     def assert_arrows(self, pager, number, routes):
         previous = pager.select_one('[aria-label="Previous Page"]')
         following = pager.select_one('[aria-label="Next Page"]')
@@ -59,6 +64,8 @@ class StillsPaginationTests(unittest.TestCase):
     def test_current_sized_collection_has_no_pager(self):
         self.save('one')
         build(self.root)
+        self.assert_title(self.page('stills'), 'Stills · roll.fivsevn')
+        self.assert_title(self.page('stills/one'), 'one · roll.fivsevn')
         self.assertIsNone(self.page('stills').select_one('.roll-stills-pagination'))
         self.assertFalse((self.root / '_site/stills/page').exists())
         self.assertEqual('/stills/', self.page('stills/one').find('a', string='viewfinder')['href'])
@@ -75,6 +82,7 @@ class StillsPaginationTests(unittest.TestCase):
         for number, expected in enumerate([order[:2], order[2:4], order[4:]], start=1):
             route = 'stills' if number == 1 else f'stills/page/{number}'
             page = self.page(route)
+            self.assert_title(page, 'Stills' + (f' · Page {number}' if number > 1 else '') + ' · roll.fivsevn')
             titles = [link.get_text() for link in page.select('ul.wp-block-post-template h2 a')]
             self.assertEqual(expected, titles)
             all_titles.extend(titles)
@@ -87,6 +95,7 @@ class StillsPaginationTests(unittest.TestCase):
             self.assertIs(pager, page.select_one('ul.wp-block-post-template').find_next_sibling('nav'))
             for slug in expected:
                 detail = self.page('stills/' + slug)
+                self.assert_title(detail, slug + ' · roll.fivsevn')
                 self.assertEqual('/roll/' + route + '/', detail.find('a', string='viewfinder')['href'])
         self.assertEqual(order, all_titles)
         self.assertFalse((self.root / '_site/stills/unpublished').exists())
@@ -98,7 +107,8 @@ class StillsPaginationTests(unittest.TestCase):
         videos = [Video('one', 'AbCdEf12345', '2026-01-01T00:00:00Z'),
                   Video('two', 'BcDeFg23456', '2026-01-02T00:00:00Z'),
                   Video('three', 'CdEfGh34567', '2026-01-03T00:00:00Z')]
-        for path, data in plan(videos, self.root):
+        imported_rooms = plan(videos, self.root)
+        for path, data in imported_rooms:
             write_post(path, data)
         config_path = self.root / 'site-data/youtube.json'
         config = json.loads(config_path.read_text())
@@ -108,9 +118,33 @@ class StillsPaginationTests(unittest.TestCase):
         routes = ['/roll/motion/', '/roll/motion/page/2/', '/roll/motion/page/3/']
         for number in range(1, 4):
             route = 'motion' if number == 1 else f'motion/page/{number}'
-            pager = self.page(route).select_one('.roll-pagination')
+            page = self.page(route)
+            self.assert_title(page, 'Motion' + (f' · Page {number}' if number > 1 else '') + ' · roll.fivsevn')
+            pager = page.select_one('.roll-pagination')
             self.assert_arrows(pager, number, routes)
             self.assertEqual(routes, [link['href'] for link in pager.select('a.page-numbers')])
+        for path, data in imported_rooms:
+            self.assert_title(self.page('motion/' + data['id']), data['title'] + ' · roll.fivsevn')
+
+    def test_root_redirect_and_404_titles_and_checker_reject_duplicate_titles(self):
+        self.save('one')
+        (self.root / 'site-data/originals.json').write_text('[]')
+        build(self.root, base_path='/roll')
+        root_page = self.page('')
+        self.assert_title(root_page, 'Stills · roll.fivsevn')
+        self.assertEqual('0;url=/roll/stills/', root_page.select_one('meta[http-equiv="refresh"]')['content'])
+        self.assertEqual('https://roll.fivsevn.com/stills/', root_page.select_one('link[rel="canonical"]')['href'])
+        missing = BeautifulSoup((self.root / '_site/404.html').read_text(), 'html.parser')
+        self.assert_title(missing, 'Not found · Roll')
+        self.assertTrue(check(self.root, base_path='/roll'))
+        detail_path = self.root / '_site/stills/one/index.html'
+        detail = self.page('stills/one')
+        duplicate = detail.new_tag('title')
+        duplicate.string = detail.title.get_text()
+        detail.head.append(duplicate)
+        detail_path.write_text(str(detail))
+        with self.assertRaisesRegex(ValueError, 'Page title: stills/one/index.html'):
+            check(self.root, base_path='/roll')
 
     def test_page_size_rejects_zero_negative_boolean_and_noninteger(self):
         for invalid in (0, -1, True, 1.5, '2', None):

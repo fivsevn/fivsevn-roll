@@ -31,7 +31,15 @@ class MotionRoomTests(unittest.TestCase):
         return BeautifulSoup(page.read_text(),'html.parser') if page.exists() else None
 
     def test_markdown_is_first_in_feed_and_room_navigation_returns_to_list(self):
+        title='视频 & <夜色> "双引号" \'单引号\' </title><script>window.titleInjected=true</script>'
+        self.post['title']=title
         page=self.render('这里是 **拍摄记录**。\n\n第二段 [链接](https://example.com)。\n')
+        self.assertEqual(1,len(page.find_all('title')))
+        self.assertEqual(title+' · roll.fivsevn',page.title.get_text())
+        self.assertFalse(page.head.find_all('script'))
+        self.assertFalse(page.find('script',string='window.titleInjected=true'))
+        self.assertEqual([title]*len(self.post['extra']['video_ids']),[frame['title'] for frame in page.select('iframe')])
+        self.assertEqual('https://roll.fivsevn.com/motion/'+self.post['id']+'/',page.select_one('link[rel="canonical"]')['href'])
         feed=page.select_one('.roll-comment-feed')
         messages=feed.select('.roll-authored-message')
         self.assertEqual(2,len(messages))
@@ -42,6 +50,7 @@ class MotionRoomTests(unittest.TestCase):
         self.assertEqual('/preview/motion/#'+self.post['id'],page.find('a',string='LEAVE ROOM')['href'])
         self.assertFalse(any(a.get_text() in {'HOME','◁ motion'} and not a.find_parent('li') for a in page.select('a')))
         listing=BeautifulSoup((self.root/'_site/motion/index.html').read_text(),'html.parser')
+        self.assertEqual('Motion · roll.fivsevn',listing.title.get_text())
         self.assertFalse(listing.select('.roll-authored-message'))
         self.assertNotIn('拍摄记录',listing.get_text())
 
@@ -57,11 +66,13 @@ class MotionRoomTests(unittest.TestCase):
         config_path.write_text(json.dumps(config))
         build(self.root,base_path='/preview')
         page=BeautifulSoup((self.root/'_site/motion'/posts[1]['id']/'index.html').read_text(),'html.parser')
+        self.assertEqual(posts[1]['title']+' · roll.fivsevn',page.title.get_text())
         self.assertEqual('/preview/motion/page/2/#'+posts[1]['id'],page.select_one('[data-motion-return]')['href'])
         self.assertIn('roll-motion-detail',page.body['class'])
         navigation=json.loads(page.select_one('#motion-navigation-config').string)
         self.assertEqual('/preview/motion/page/2/',navigation['post_pages'][posts[1]['id']])
         listing=BeautifulSoup((self.root/'_site/motion/page/2/index.html').read_text(),'html.parser')
+        self.assertEqual('Motion · Page 2 · roll.fivsevn',listing.title.get_text())
         self.assertEqual(posts[1]['id'],listing.select_one('[data-motion-room]')['id'])
         self.assertEqual('/preview/motion/'+posts[1]['id']+'/',listing.select_one('[data-motion-open]')['href'])
         self.assertNotIn('DETAIL-ONLY-MOTION-TEXT',listing.get_text())
